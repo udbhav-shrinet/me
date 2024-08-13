@@ -1,0 +1,760 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Udbhav Shrinet</title>
+	<style>
+		
+	/* cspell:disable-file */
+	/* webkit printing magic: print all background colors */
+	html {
+		-webkit-print-color-adjust: exact;
+	}
+	* {
+		box-sizing: border-box;
+		-webkit-print-color-adjust: exact;
+	}
+	
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	@media only screen {
+		body {
+			margin: 2em auto;
+			max-width: 900px;
+			color: rgb(55, 53, 47);
+		}
+	}
+	
+	body {
+		line-height: 1.5;
+		white-space: pre-wrap;
+		background-color: #000;
+		color: #fff;
+	}
+	
+	a,
+	a.visited {
+		color: #ccc;
+		text-decoration: underline;
+	}
+	
+	.pdf-relative-link-path {
+		font-size: 80%;
+		color: #444;
+	}
+	hr {
+		background: transparent;
+		display: block;
+		width: 100%;
+		height: 1px;
+		visibility: visible;
+		border: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.09); /* Change hr color to a lighter shade */
+	}
+	
+	h1,
+	h2,
+	h3 {
+		letter-spacing: -0.01em;
+		line-height: 1.2;
+		font-weight: 600;
+		margin-bottom: 0;
+	}
+	
+	.page-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-top: 0;
+		margin-bottom: 0.75em;
+	}
+	
+	h1 {
+		font-size: 1.875rem;
+		margin-top: 1.875rem;
+	}
+	
+	h2 {
+		font-size: 1.5rem;
+		margin-top: 1.5rem;
+	}
+	
+	h3 {
+		font-size: 1.25rem;
+		margin-top: 1.25rem;
+	}
+	
+	.source {
+		border: 1px solid #ddd;
+		border-radius: 3px;
+		padding: 1.5em;
+		word-break: break-all;
+	}
+	
+	.callout {
+		border-radius: 3px;
+		padding: 1rem;
+	}
+	
+	figure {
+		margin: 1.25em 0;
+		page-break-inside: avoid;
+	}
+	
+	figcaption {
+		opacity: 0.5;
+		font-size: 85%;
+		margin-top: 0.5em;
+	}
+	
+	mark {
+		background-color: #000;
+	}
+	
+	.indented {
+		padding-left: 1.5em;
+	}
+	
+	hr {
+		background: #000;
+		display: block;
+		width: 100%;
+		height: 1px;
+		visibility: visible;
+		border: none;
+		border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+	}
+	
+	img {
+		max-width: 100%;
+	}
+	
+	@media only print {
+		img {
+			max-height: 100vh;
+			object-fit: contain;
+		}
+	}
+	
+	@page {
+		margin: 1in;
+	}
+	
+	.collection-content {
+		font-size: 0.875rem;
+	}
+	
+	.column-list {
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	.column {
+		padding: 0 1em;
+	}
+	
+	.column:first-child {
+		padding-left: 0;
+	}
+	
+	.column:last-child {
+		padding-right: 0;
+	}
+	
+	.table_of_contents-item {
+		display: block;
+		font-size: 0.875rem;
+		line-height: 1.3;
+		padding: 0.125rem;
+	}
+	
+	.table_of_contents-indent-1 {
+		margin-left: 1.5rem;
+	}
+	
+	.table_of_contents-indent-2 {
+		margin-left: 3rem;
+	}
+	
+	.table_of_contents-indent-3 {
+		margin-left: 4.5rem;
+	}
+	
+	.table_of_contents-link {
+		text-decoration: none;
+		opacity: 0.7;
+		border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+	}
+	
+	table,
+	th,
+	td {
+		border: 1px solid rgba(55, 53, 47, 0.09);
+		border-collapse: collapse;
+	}
+	
+	table {
+		border-left: none;
+		border-right: none;
+	}
+	
+	th,
+	td {
+		font-weight: normal;
+		padding: 0.25em 0.5em;
+		line-height: 1.5;
+		min-height: 1.5em;
+		text-align: left;
+	}
+	
+	th {
+		color: rgba(55, 53, 47, 0.6);
+	}
+	
+	ol,
+	ul {
+		margin: 0;
+		margin-block-start: 0.6em;
+		margin-block-end: 0.6em;
+	}
+	
+	li > ol:first-child,
+	li > ul:first-child {
+		margin-block-start: 0.6em;
+	}
+	
+	ul > li {
+		list-style: disc;
+	}
+	
+	ul.to-do-list {
+		padding-inline-start: 0;
+	}
+	
+	ul.to-do-list > li {
+		list-style: none;
+	}
+	
+	.to-do-children-checked {
+		text-decoration: line-through;
+		opacity: 0.375;
+	}
+	
+	ul.toggle > li {
+		list-style: none;
+	}
+	
+	ul {
+		padding-inline-start: 1.7em;
+	}
+	
+	ul > li {
+		padding-left: 0.1em;
+	}
+	
+	ol {
+		padding-inline-start: 1.6em;
+	}
+	
+	ol > li {
+		padding-left: 0.2em;
+	}
+	
+	.mono ol {
+		padding-inline-start: 2em;
+	}
+	
+	.mono ol > li {
+		text-indent: -0.4em;
+	}
+	
+	.toggle {
+		padding-inline-start: 0em;
+		list-style-type: none;
+	}
+	
+	/* Indent toggle children */
+	.toggle > li > details {
+		padding-left: 1.7em;
+	}
+	
+	.toggle > li > details > summary {
+		margin-left: -1.1em;
+	}
+	
+	.selected-value {
+		display: inline-block;
+		padding: 0 0.5em;
+		background: rgba(206, 205, 202, 0.5);
+		border-radius: 3px;
+		margin-right: 0.5em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+		white-space: nowrap;
+	}
+	
+	.collection-title {
+		display: inline-block;
+		margin-right: 1em;
+	}
+	
+	.page-description {
+		margin-bottom: 2em;
+	}
+	
+	.simple-table {
+		margin-top: 1em;
+		font-size: 0.875rem;
+		empty-cells: show;
+	}
+	.simple-table td {
+		height: 29px;
+		min-width: 120px;
+	}
+	
+	.simple-table th {
+		height: 29px;
+		min-width: 120px;
+	}
+	
+	.simple-table-header-color {
+		background: rgb(247, 246, 243);
+		color: black;
+	}
+	.simple-table-header {
+		font-weight: 500;
+	}
+	
+	time {
+		opacity: 0.5;
+	}
+	
+	.icon {
+		display: inline-block;
+		max-width: 1.2em;
+		max-height: 1.2em;
+		text-decoration: none;
+		vertical-align: text-bottom;
+		margin-right: 0.5em;
+	}
+	
+	img.icon {
+		border-radius: 3px;
+	}
+	
+	.user-icon {
+		width: 1.5em;
+		height: 1.5em;
+		border-radius: 100%;
+		margin-right: 0.5rem;
+	}
+	
+	.user-icon-inner {
+		font-size: 0.8em;
+	}
+	
+	.text-icon {
+		border: 1px solid #000;
+		text-align: center;
+	}
+	
+	.page-cover-image {
+		display: block;
+		object-fit: cover;
+		width: 100%;
+		max-height: 30vh;
+	}
+	
+	.page-header-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+	
+	.page-header-icon-with-cover {
+		margin-top: -0.72em;
+		margin-left: 0.07em;
+	}
+	
+	.page-header-icon img {
+		border-radius: 3px;
+	}
+	
+	.link-to-page {
+		margin: 1em 0;
+		padding: 0;
+		border: none;
+		font-weight: 500;
+	}
+	
+	p > .user {
+		opacity: 0.5;
+	}
+	
+	td > .user,
+	td > time {
+		white-space: nowrap;
+	}
+	
+	input[type="checkbox"] {
+		transform: scale(1.5);
+		margin-right: 0.6em;
+		vertical-align: middle;
+	}
+	
+	p {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+	
+	.image {
+		border: none;
+		margin: 1.5em 0;
+		padding: 0;
+		border-radius: 0;
+		text-align: center;
+	}
+	
+	.code,
+	code {
+		background: rgba(135, 131, 120, 0.15);
+		border-radius: 3px;
+		padding: 0.2em 0.4em;
+		border-radius: 3px;
+		font-size: 85%;
+		tab-size: 2;
+	}
+	
+	code {
+		color: #eb5757;
+	}
+	
+	.code {
+		padding: 1.5em 1em;
+	}
+	
+	.code-wrap {
+		white-space: pre-wrap;
+		word-break: break-all;
+	}
+	
+	.code > code {
+		background: none;
+		padding: 0;
+		font-size: 100%;
+		color: inherit;
+	}
+	
+	blockquote {
+		font-size: 1.25em;
+		margin: 1em 0;
+		padding-left: 1em;
+		border-left: 3px solid rgb(55, 53, 47);
+	}
+	
+	.bookmark {
+		text-decoration: none;
+		max-height: 8em;
+		padding: 0;
+		display: flex;
+		width: 100%;
+		align-items: stretch;
+	}
+	
+	.bookmark-title {
+		font-size: 0.85em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: 1.75em;
+		white-space: nowrap;
+	}
+	
+	.bookmark-text {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.bookmark-info {
+		flex: 4 1 180px;
+		padding: 12px 14px 14px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	
+	.bookmark-image {
+		width: 33%;
+		flex: 1 1 180px;
+		display: block;
+		position: relative;
+		object-fit: cover;
+		border-radius: 1px;
+	}
+	
+	.bookmark-description {
+		color: rgba(55, 53, 47, 0.6);
+		font-size: 0.75em;
+		overflow: hidden;
+		max-height: 4.5em;
+		word-break: break-word;
+	}
+	
+	.bookmark-href {
+		font-size: 0.75em;
+		margin-top: 0.25em;
+	}
+	
+	.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+	.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+	.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+	.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+	.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+	.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+	.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+	.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+	.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+	.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+	.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+	.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+	.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+	.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+	.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+	.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+	.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+	.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+	.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+	.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+	.highlight-default {
+		color: rgb(246, 246, 245);
+	}
+	.highlight-gray {
+		color: rgba(120, 119, 116, 1);
+		fill: rgba(120, 119, 116, 1);
+	}
+	.highlight-brown {
+		color: rgba(159, 107, 83, 1);
+		fill: rgba(159, 107, 83, 1);
+	}
+	.highlight-orange {
+		color: rgba(217, 115, 13, 1);
+		fill: rgba(217, 115, 13, 1);
+	}
+	.highlight-yellow {
+		color: rgba(203, 145, 47, 1);
+		fill: rgba(203, 145, 47, 1);
+	}
+	.highlight-teal {
+		color: rgba(68, 131, 97, 1);
+		fill: rgba(68, 131, 97, 1);
+	}
+	.highlight-blue {
+		color: rgba(51, 126, 169, 1);
+		fill: rgba(51, 126, 169, 1);
+	}
+	.highlight-purple {
+		color: rgba(144, 101, 176, 1);
+		fill: rgba(144, 101, 176, 1);
+	}
+	.highlight-pink {
+		color: rgba(193, 76, 138, 1);
+		fill: rgba(193, 76, 138, 1);
+	}
+	.highlight-red {
+		color: rgba(212, 76, 71, 1);
+		fill: rgba(212, 76, 71, 1);
+	}
+	.highlight-gray_background {
+		background: rgba(241, 241, 239, 1);
+	}
+	.highlight-brown_background {
+		background: rgba(244, 238, 238, 1);
+	}
+	.highlight-orange_background {
+		background: rgba(251, 236, 221, 1);
+	}
+	.highlight-yellow_background {
+		background: rgba(251, 243, 219, 1);
+	}
+	.highlight-teal_background {
+		background: rgba(237, 243, 236, 1);
+	}
+	.highlight-blue_background {
+		background: rgba(231, 243, 248, 1);
+	}
+	.highlight-purple_background {
+		background: rgba(244, 240, 247, 0.8);
+	}
+	.highlight-pink_background {
+		background: rgba(249, 238, 243, 0.8);
+	}
+	.highlight-red_background {
+		background: rgba(253, 235, 236, 1);
+	}
+	.block-color-default {
+		color: inherit;
+		fill: inherit;
+	}
+	.block-color-gray {
+		color: rgba(120, 119, 116, 1);
+		fill: rgba(120, 119, 116, 1);
+	}
+	.block-color-brown {
+		color: rgba(159, 107, 83, 1);
+		fill: rgba(159, 107, 83, 1);
+	}
+	.block-color-orange {
+		color: rgba(217, 115, 13, 1);
+		fill: rgba(217, 115, 13, 1);
+	}
+	.block-color-yellow {
+		color: rgba(203, 145, 47, 1);
+		fill: rgba(203, 145, 47, 1);
+	}
+	.block-color-teal {
+		color: rgba(68, 131, 97, 1);
+		fill: rgba(68, 131, 97, 1);
+	}
+	.block-color-blue {
+		color: rgba(51, 126, 169, 1);
+		fill: rgba(51, 126, 169, 1);
+	}
+	.block-color-purple {
+		color: rgba(144, 101, 176, 1);
+		fill: rgba(144, 101, 176, 1);
+	}
+	.block-color-pink {
+		color: rgba(193, 76, 138, 1);
+		fill: rgba(193, 76, 138, 1);
+	}
+	.block-color-red {
+		color: rgba(212, 76, 71, 1);
+		fill: rgba(212, 76, 71, 1);
+	}
+	.block-color-gray_background {
+		background: rgba(241, 241, 239, 1);
+	}
+	.block-color-brown_background {
+		background: rgba(244, 238, 238, 1);
+	}
+	.block-color-orange_background {
+		background: rgba(251, 236, 221, 1);
+	}
+	.block-color-yellow_background {
+		background: rgba(251, 243, 219, 1);
+	}
+	.block-color-teal_background {
+		background: rgba(237, 243, 236, 1);
+	}
+	.block-color-blue_background {
+		background: rgba(231, 243, 248, 1);
+	}
+	.block-color-purple_background {
+		background: rgba(244, 240, 247, 0.8);
+	}
+	.block-color-pink_background {
+		background: rgba(249, 238, 243, 0.8);
+	}
+	.block-color-red_background {
+		background: rgba(253, 235, 236, 1);
+	}
+	.select-value-color-uiBlue { background-color: rgb(255, 255, 255); }
+	.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+	.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+	.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+	.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+	.select-value-color-transparentGray { background-color: rgb(255, 255, 255); }
+	.select-value-color-translucentGray { background-color: #ffffff; }
+	.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+	.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+	.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+	.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+	.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+	.select-value-color-pageGlass { background-color: undefined; }
+	.select-value-color-washGlass { background-color: undefined; }
+	
+	.checkbox {
+		display: inline-flex;
+		vertical-align: text-bottom;
+		width: 16;
+		height: 16;
+		background-size: 16px;
+		margin-left: 2px;
+		margin-right: 5px;
+	}
+	
+
+
+	body {
+		font-family: Arial, sans-serif;
+	}
+	
+	.content {
+		margin: 50px;
+		padding: 20px;
+		border: 1px solid #ccc;
+	}
+	
+	.animate {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 1s ease-out, transform 1s ease-out;
+	}
+	
+	.animate.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	
+	/* Apply a fade-in animation to the entire body */
+body {
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Apply a fade-in animation to all elements with class 'content' */
+.content {
+    opacity: 0; /* Ensure elements are hidden initially */
+    animation: fadeIn 2s ease-in-out forwards; /* Apply the fade-in animation */
+}
+
+/* Define the fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: Arial, sans-serif;
+		position: absolute; /* Ensure positioning context for absolute elements */
+	}
+	.top-left-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 0px; /* Optional: adds spacing from the edges */
+	}
+	.top-left-image img {
+		width: 100px; /* Adjust size as needed */
+		height: auto;
+		border: none; /* Optional: removes border around the image */
+	}
+</style>
+</head>
+<body>
+<a href="index.html" class="top-left-image">
+	<img src="img/admin logo.jpg" alt="Image">
+</a>
+</body>
+
+		
+	</style></head><body><article id="5ab2a543-b6a7-4332-b929-9fd72e761f42" class="page mono"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/woodcuts_1.jpg" style="object-position:center 65.24%"/><h1 class="page-title">Udbhav Shrinet</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-blue callout" style="white-space:pre-wrap;display:flex" id="c2bb8101-5efb-4a57-a645-5ea68caa40a0"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/chat-user_blue.svg"/></div><div style="width:100%"><strong>Aspiring Economist and Skilled Programmer Pursuing Opportunities for Impact</strong><br/><br/>I&#x27;m a dedicated third-year Economics Honours student, I bring a dynamic blend of skills in programming, graphics, data analysis, and visualization. With hands-on experience from multiple internships in both data and graphic design, I thrive on blending creativity with analytical rigor. My goal is to harness these talents to achieve meaningful success, contributing innovative solutions in the fields of economics and technology.<br/></div></figure><div id="fd054c2d-fd0a-48d3-bcfa-375a88dc8460" class="column-list"><div id="a92447c4-c9fd-491e-a1ee-2393a4eb26ca" style="width:68.75%" class="column"><h1 id="67dcd06d-956f-4729-a406-342a5789bbe7" class="">Experience</h1><h3 id="dd9ae3bc-88d5-415f-adfd-6ed0ab58444e" class=""><strong>Data Analyst </strong></h3><blockquote id="68ed206b-f0e4-487c-924f-8d3f2c07bf37" class="block-color-blue"><em><strong>ABP Network, Noida</strong></em><em> – (May 2024- June 2024)</em></blockquote><p id="5caa9603-fa2e-4ed3-b8e4-c3791135cc4c" class="">
+	</p><ul id="1c3ccd2b-95f3-4351-86d6-145f6af8c589" class="bulleted-list"><li style="list-style-type:disc">Expert in data cleaning using macros: Developed and maintained robust macros for automating data cleaning processes, ensuring high-quality and consistent datasets. Utilized advanced Excel functions and scripting to handle large volumes of data efficiently, reducing manual intervention and error rates.</li></ul><ul id="c1dc743a-31d5-4c35-8cb3-0a8cedab4329" class="bulleted-list"><li style="list-style-type:disc">Proficient in data visualization with Looker Studio: Designed and implemented comprehensive dashboards and reports using Looker Studio. Regularly updated and optimized visualizations to reflect the latest market metrics and trends.</li></ul><ul id="97f1ce0c-7232-43ec-abfd-d45587f4ed30" class="bulleted-list"><li style="list-style-type:disc">Skilled in API integration using Python and JavaScript: Engineered seamless data retrieval and integration solutions by writing efficient API calls in Python and JavaScript. Automated data extraction from various external sources, ensuring real-time data availability for analysis. Developed error-handling mechanisms and logging to maintain data integrity and troubleshoot issues promptly</li></ul><ul id="a9fd4dd8-7384-4fa3-a35b-ab4e95fcd99c" class="bulleted-list"><li style="list-style-type:disc">Experienced in automating workflows with Google Run functions, BigQuery, and Scheduler using Pub/Sub: Designed and deployed serverless functions on Google Cloud Run to automate routine tasks. Integrated BigQuery for scalable data processing and analysis. Utilized Google Cloud Scheduler and Pub/Sub to orchestrate and manage complex workflows, ensuring timely execution and coordination of automated tasks.</li></ul><h3 id="b1bbb559-be7f-432e-8d92-38e0524f445e" class="">Data Analyst</h3><blockquote id="c3468298-e33b-4fdc-b94a-1e72f321a555" class="block-color-blue"><em><strong>Max Life Insurance, CP</strong></em><em> – (May 2024 - June 2023)</em></blockquote><ul id="457679a9-e4eb-4b36-80fa-e24b1d08549e" class="bulleted-list"><li style="list-style-type:disc">Utilized advanced analytics for insights, developed reports, collaborated on data-driven solutions, conducted trend analysis, optimized processes, and provided training support</li></ul><ul id="3053c84e-6d8d-43d4-96f2-35be8614d8e3" class="bulleted-list"><li style="list-style-type:disc">Conducted in-depth analysis of insurance claims data to identify trends and patterns, facilitating strategic decision-making and risk assessment.</li></ul><h3 id="e9936e04-d02a-4a1e-b290-14a2c5d84b82" class=""><strong>Graphic Designe</strong>r</h3><blockquote id="0142b6ac-90eb-4c9e-87f9-c9c852ee8bcd" class="block-color-blue"><em><mark class="highlight-blue"><strong>Safalta, Noida</strong></mark></em><em>– </em><em><mark class="highlight-gray">(June 2023 - July 2023)</mark></em></blockquote><ul id="a6beb5c9-0b1d-43c1-9f86-7bc0161f3e59" class="bulleted-list"><li style="list-style-type:disc">Created posters for websites and social media: Designed visually compelling graphics using Adobe Photoshop and Illustrator, enhancing online presence and engagement through impactful visual storytelling..</li></ul><ul id="dc964ca1-08f9-4bb2-8a02-20be217d5768" class="bulleted-list"><li style="list-style-type:disc">Mastered color theory and typography: Applied advanced principles to create harmonious designs, selecting fonts and colors that optimized readability and aesthetic appeal across various digital platforms.</li></ul><ul id="52aace40-7fa1-45ce-9f8d-a22e79a3671c" class="bulleted-list"><li style="list-style-type:disc">Utilized AI for image editing and generation: Implemented AI tools like Adobe Sensei and DeepArt to innovate image editing techniques, improving efficiency and creativity in graphic design projects.</li></ul><p id="bc50c284-f501-4802-ac7a-0f7b87bd8839" class="">
+	</p><h1 id="03b0119e-179b-4dd0-afde-2b0897745da5" class="">Position of Responsibility</h1><h3 id="c4a8dbdd-3d0d-44ee-a725-28d0e84c2725" class=""><strong>Content Writer </strong></h3><blockquote id="6fc601a1-8e06-4c64-b425-9eb1c39aece5" class="block-color-blue"><em><mark class="highlight-blue"><strong>Digital Wing, Christ University</strong></mark></em><em> – </em><em><mark class="highlight-gray">(2022 - 2023)</mark></em></blockquote><ul id="85003626-7ed0-4c05-98c3-0fa12354fd0f" class="bulleted-list"><li style="list-style-type:disc">Providing written content for various digital platforms, emphasizing integration between Instagram and linked Facebook accounts.</li></ul><h3 id="35994934-3425-4820-a480-774aff09da7e" class="">Editor</h3><blockquote id="05226202-4ad8-4be7-9083-c7da56fd1d49" class="block-color-blue"><em><mark class="highlight-blue"><strong>Oikos Economics Magazine, Christ University</strong></mark></em><strong> </strong><em>– </em><em><mark class="highlight-gray">(May 2023 - June 2024)</mark></em></blockquote><ul id="1d9723fc-d8e4-49a6-bfa0-6ddce3a72da4" class="bulleted-list"><li style="list-style-type:disc">Overseeing team: Collecting, reviewing, and editing articles from students for magazine publication.</li></ul><p id="271a6aba-807b-419d-a8fe-386d4f8303db" class="">
+	</p><h1 id="a0834fa6-0611-447a-ae15-a255f2ea5323" class="">Projects</h1><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><strong>NimbusYT: Cloud-Driven YouTube Data Integration and Analytics</strong></summary><div class="indented"><h3 id="4589a334-b5a5-4763-8d1c-dbef77130cc8" class=""><mark class="highlight-blue">Project Overview</mark></h3><ul id="b6159b60-5ec9-4ea2-a59b-fb06274f7cf0" class="bulleted-list"><li style="list-style-type:disc">Cloud-Based Code: Hosted on Google Cloud.</li></ul><ul id="f288b0b3-dad6-4030-8c9b-e00898ba6b87" class="bulleted-list"><li style="list-style-type:disc">Event Trigger: Utilizes Google Cloud Pub/Sub.</li></ul><ul id="f5b67e51-3ed1-45da-af2c-63e9636e0ed4" class="bulleted-list"><li style="list-style-type:disc">Scheduling: Managed by Google Cloud Scheduler.</li></ul><h3 id="5f83020f-ae2e-45b7-a721-9341fb7928a3" class=""><mark class="highlight-blue">Data Workflow</mark></h3><ul id="ed984c22-3b28-4ded-971f-a274d1ddf4a1" class="bulleted-list"><li style="list-style-type:disc">Data Collection: Automated fetching of YouTube data.</li></ul><ul id="6b419315-7758-4ebf-af58-257b917bdc9b" class="bulleted-list"><li style="list-style-type:disc">Intermediate Storage: Data stored in Google Cloud Storage.</li></ul><ul id="0d189d4a-a735-437c-aeff-38c61d244aa8" class="bulleted-list"><li style="list-style-type:disc">BigQuery Integration: Data transferred to Google BigQuery.</li></ul><ul id="fd4887cb-4b0f-4dff-8297-00bb99dc12aa" class="bulleted-list"><li style="list-style-type:disc">Visualization: Data visualized on Looker Studio.</li></ul><h3 id="32a17423-cc9a-42e6-aee4-c8e4609bb3dc" class=""><mark class="highlight-blue">Key Features</mark></h3><ul id="2358e56e-2e7b-4e18-ad2d-37f10ccedf9d" class="bulleted-list"><li style="list-style-type:disc">Scalable Data Processing: Efficiently handles large volumes of YouTube data with Google Cloud&#x27;s scalable infrastructure.</li></ul><ul id="990ef326-4310-4e9f-a29c-5ac826ddabe3" class="bulleted-list"><li style="list-style-type:disc">Automated Scheduling: Seamlessly schedules data fetch operations using Google Cloud Scheduler and Pub/Sub.</li></ul><ul id="8cd1eede-e62d-4f0a-8e14-21927dbd6dbc" class="bulleted-list"><li style="list-style-type:disc">Intermediate Data Backup: Ensures data integrity by storing raw data in Google Cloud Storage before processing.</li></ul><ul id="d495248e-5786-4c91-92c0-d187fa381a8d" class="bulleted-list"><li style="list-style-type:disc">Real-Time Analytics: Provides near real-time insights and visualizations via Looker Studio for timely decision-making.</li></ul><ul id="632dbfbb-22b7-462e-94ef-42d41fc06f2b" class="bulleted-list"><li style="list-style-type:disc">Cost-Efficient Storage: Utilizes BigQuery’s optimized storage solutions for cost-effective data management.</li></ul><ul id="22e772d1-0f05-4b82-9511-5c50f87f3baf" class="bulleted-list"><li style="list-style-type:disc">Customizable Reporting: Offers customizable and interactive reports in Looker Studio to meet specific analysis needs.</li></ul></div></details><blockquote id="88566241-38bc-4c57-8578-dd61da4cd9e1" class="block-color-blue"><em>June 2024 (</em><em><a href="https://github.com/udbhav-shrinet/Youtube_Live_Data_Extractor">Github Link</a></em><em>)</em></blockquote></div><div id="ae1114ab-a38f-49b9-a7ce-c0d024604067" style="width:31.250000000000007%" class="column"><h1 id="facfd04b-658d-4237-a005-5c4219e5a791" class="block-color-blue">Contact</h1><p id="ebb1b8f4-ba16-44b0-9a6b-f2263657711c" class=""><a href="https://www.notion.so/Udbhav-Shrinet-5ab2a543b6a74332b9299fd72e761f42?pvs=21">📧 udbhav.singh.shrinet@gmail.com</a></p><p id="bfe9c249-3e64-42d6-a409-ce94e2a332d8" class=""><a href="https://medium.com/@udiii">🐦 medium</a><a href="https://www.linkedin.com/company/notionhq/mycompany/">.com</a></p><p id="48743189-ca2f-4a75-908d-5d1a8ac8c6a3" class=""><a href="https://www.linkedin.com/in/udbhav-shrinet/">🔗 linkedin.com</a></p><p id="e0cd2a98-e57b-46df-9fa8-c3331508fc76" class=""><a href="https://github.com/udbhav-shrinet">👾 github.com</a></p><p id="2ba648b3-86a6-4f3b-9765-1b54098f3c1e" class="">
+	</p><hr id="e9b1a353-ea88-4f47-9bc6-697ebdbc24e8"/><h1 id="c811ea37-4db8-4562-b511-952fd9abcd66" class="block-color-blue">Education</h1><h3 id="649ae712-cebd-43b2-98c2-3e924491ba0e" class="">X (CBSE) | Father Agnel School<strong> </strong></h3><h3 id="f31165e4-c93b-4fdb-92af-eeaa5e292696" class=""><strong>XII (CBSE) | Father Agnel School</strong></h3><h3 id="abfaf31c-3fc0-456f-92b4-fe3882151604" class=""><strong>Bachelor&#x27;s of Science in Economics (Honours)</strong></h3><hr id="51b53653-c33c-4e65-b3b6-7927cbfb74a6"/><h1 id="7342b90e-6c05-42fb-bf40-a24503d8457e" class="block-color-blue">Skills</h1><h3 id="53149462-0322-4c23-89ff-62e59e73b31a" class="">Tools</h3><ul id="8015c69f-9e26-4051-8b97-63fd7be45be0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">PowerBi</mark></li></ul><ul id="dc30a22f-e90c-4f16-a070-2da41520a92c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Tableau</mark></li></ul><ul id="b1624926-ec3f-4877-aad5-41bc1d8d02b9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Looker Studio</mark></li></ul><ul id="ae6caf5b-c1b4-4010-b748-a1ea4975cfa2" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Advance Excel</mark></li></ul><ul id="82dbf99a-9a4f-41c7-bc0e-8c6a7a345118" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Stata</mark></li></ul><ul id="50c2e223-0b19-4103-92e6-e6e0c653aaa5" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">SPSS</mark></li></ul><ul id="38a1e979-c5e9-46c4-b49f-d755b4db8af3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">R </mark></li></ul><ul id="5d5b5b1b-ca4e-4665-9c9f-98b28a554277" class="toggle"><li><details open=""><summary><mark class="highlight-default">Graphic Designing</mark></summary><ul id="f4498bd2-cbe7-4fe3-8659-f6f6a60112b6" class="bulleted-list"><li style="list-style-type:disc">Photoshop</li></ul><ul id="1db73cb2-4c2e-4ead-9012-25ae367081cd" class="bulleted-list"><li style="list-style-type:disc">Canva</li></ul><ul id="a20ccf68-ad0d-4301-be7f-01e468c460d7" class="bulleted-list"><li style="list-style-type:disc">Figma </li></ul><ul id="f7cc8015-5939-4038-b925-f323c8d00746" class="bulleted-list"><li style="list-style-type:disc">Illustrator</li></ul><ul id="d9e4b8a9-5e36-49b4-b758-7f5f16b03b89" class="bulleted-list"><li style="list-style-type:disc">Gimp</li></ul></details></li></ul><h3 id="7e06d7bb-61ae-4abe-9a40-274b499e23a0" class=""><mark class="highlight-default">Technical</mark></h3><ul id="4c88322c-cf9c-4910-a8c7-25e9fce5cf0d" class="toggle"><li><details open=""><summary><mark class="highlight-default">Python</mark></summary><ul id="0a3744ba-b52c-47c6-8e87-bc7380165bf8" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Pandas</mark></li></ul><ul id="d5cf7b74-3bc3-4ed6-9db7-fccbc7bd3ffb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Numpy</mark></li></ul><ul id="ebbd59df-5048-4b91-abc1-83f63dc3f04a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">MatplotLob</mark></li></ul><ul id="e1f0fd5a-ebe0-492c-b36c-f37cd680ce3a" class="bulleted-list"><li style="list-style-type:disc">Beautiful Soup</li></ul><ul id="6f7146c3-cf44-4523-9c93-6d9902918ea9" class="bulleted-list"><li style="list-style-type:disc">Flask</li></ul></details></li></ul><ul id="5d2ca796-3956-43c0-a98a-ea61c65907ac" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">SQL</mark></li></ul><ul id="5a52c802-b01d-43c3-842e-dbd7a8b01e75" class="bulleted-list"><li style="list-style-type:disc">Bash</li></ul><ul id="66cf3974-7d47-46d8-b9b3-88112675b1e0" class="bulleted-list"><li style="list-style-type:disc">Linux</li></ul><ul id="dda919f8-ecd4-4deb-8154-7c9872174a69" class="bulleted-list"><li style="list-style-type:disc">Git</li></ul><ul id="ba19f9f9-826a-4aa4-8ac8-bcd49a7b309b" class="bulleted-list"><li style="list-style-type:disc">HTML</li></ul><ul id="323c7a36-20c8-4916-8a30-8f18cc2599a7" class="bulleted-list"><li style="list-style-type:disc">CSS</li></ul><ul id="1217b723-0be3-47e3-9e38-b74a775ea2b9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Appscript </mark></li></ul><ul id="59696535-e951-49b2-b54c-d9078c7505d5" class="toggle"><li><details open=""><summary><mark class="highlight-default">Google Cloud Console</mark></summary><ul id="1e5be11a-5d09-4bad-98d6-6c1d34c11839" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Google Run</mark></li></ul><ul id="cd167de0-80e8-4f53-825b-ffe4d8f69e93" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Google Fucntions</mark></li></ul><ul id="2adcbf42-ab40-494b-af22-7f3458d98a2c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Google Scheduler</mark></li></ul><ul id="6b9561e4-2951-4315-bda9-2ef70cd8a4e1" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Google Big Query</mark></li></ul><ul id="cab1f0e6-c74c-4ed5-b438-2a5a841d4d1c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Google PubSub</mark></li></ul></details></li></ul><p id="8f72c793-b62c-4bc0-a6a3-5e050e46ad00" class="">
+	</p></div></div><hr id="d425bf8c-3060-4dc7-9634-76daab829577"/><div id="473c4a3e-a868-4afd-9ffb-40aace0edced" class="column-list"><div id="eab9961e-3541-432c-bd37-257aac6b7b5c" style="width:29.166666666666664%" class="column"><h1 id="f0270ebe-c9db-4c5b-99fe-8e341c4d9264" class="">Certifications</h1><h3 id="1bc9e256-606f-4d92-a61e-8d5253f2604a" class=""><br/>Introduction to Psychology<br/></h3><blockquote id="6ef37a25-39a4-44d9-bf57-c5adab4adbc1" class="block-color-blue">Swayam Course</blockquote><p id="6f3a8cf7-b7cf-4cc4-98ea-e878903adca6" class=""><mark class="highlight-blue">June 2023</mark></p><h3 id="d974635e-a9f8-4c1f-86ec-2f0562cd168f" class="">Statistics Course</h3><blockquote id="eb4b425b-f299-4a78-b90f-18215b21b2a5" class="block-color-blue">Stanford University Coursera</blockquote><p id="88b1eb0c-c3ee-4817-a091-9987f89c0499" class=""><mark class="highlight-blue">June 2022</mark></p><h3 id="99227ebe-a35b-412a-99a7-bfde9b05e440" class="">The Cryptic Hunt by IEEE</h3><blockquote id="925e6120-ff0d-485b-8b9b-e7b6d58d9100" class="block-color-blue">VIT Chennai</blockquote><p id="9839c2e8-61a5-4ca9-87d7-3d9ef7233ea8" class=""><mark class="highlight-blue">June 2020</mark></p><p id="ceaa0aa8-8190-4b88-8e82-fcd6ada28914" class="">
+	</p></div><div id="726da277-9dd4-41e2-a93a-53424386dd98" style="width:29.166666666666664%" class="column"><h1 id="75d9faa9-869e-4b2f-b406-bec748aa1b00" class="">Languages</h1><h3 id="fe946231-ff13-4114-85ad-e403b7028abe" class="">Hindi 🇮🇳 </h3><blockquote id="f2276753-6ce4-41c5-abed-f84f39f495d0" class="block-color-blue">Native speaker</blockquote><h3 id="91e2c3c2-fb1c-44d3-8138-6d868f18ac8b" class="">English 🇺🇸</h3><blockquote id="c9a3522c-20bf-44cb-beb8-a9b00bbbf4ec" class="block-color-blue">Proficient speaker</blockquote></div><div id="da432448-ba12-4ddf-84b1-b0f28b6945b5" style="width:41.66666666666667%" class="column"><h1 id="540c6a49-db3c-44d7-81f7-aee87bd3dcac" class="">Hobbies</h1><ul id="ea6d7294-d6c7-4ec3-8d7d-79b0d3670d01" class="toggle"><li><details open=""><summary><strong>Chess </strong></summary><ul id="54d7c53c-4d77-4b76-8cca-4db717eea2a1" class="bulleted-list"><li style="list-style-type:disc">District Level Chess Player</li></ul><ul id="2bd3396f-408a-4c65-a8ce-9b3a7c0d7d29" class="bulleted-list"><li style="list-style-type:disc">Chess rating - 1100</li></ul></details></li></ul><ul id="460027ca-dc7d-4d4a-863b-94fafcc86704" class="toggle"><li><details open=""><summary><strong>Music </strong></summary><p id="5c8f2b9f-8aa7-42d8-9956-6501f6ed40ed" class="">Junior Diploma in Piano</p><p id="456041ea-12d4-4ea6-ae7b-015fc9d0d026" class=""><mark class="highlight-blue"><span style="border-bottom:0.05em solid">Instruments</span></mark></p><ul id="a92cf2d9-818f-42ed-b98e-46f6351cda65" class="bulleted-list"><li style="list-style-type:disc">Piano</li></ul><ul id="8fbdf381-7250-4c6d-b4a5-71ee9516b865" class="bulleted-list"><li style="list-style-type:disc">Synthesizer</li></ul><ul id="e3c40e8e-23e6-42b1-95ec-f1a3af0f4f7a" class="bulleted-list"><li style="list-style-type:disc">Harmonium </li></ul><ul id="268067d2-a8d8-450e-b5b0-9fa7af38b495" class="bulleted-list"><li style="list-style-type:disc">Flute</li></ul></details></li></ul><ul id="d4c4d689-50a2-419e-95f7-2acd6c0affd5" class="toggle"><li><details open=""><summary><strong>Writer on Medium </strong></summary><p id="c96372b3-b701-4760-8d43-da54f71caa02" class="block-color-blue">Topic related to :-</p><ul id="d30788c2-350d-4411-af1c-06a0cf375142" class="bulleted-list"><li style="list-style-type:disc">Economics</li></ul><ul id="dd5c237f-c0a5-4b0a-9e33-ca882d9b1f72" class="bulleted-list"><li style="list-style-type:disc">Politics</li></ul><ul id="25b7af7b-cb93-426b-b45d-e623c2431c08" class="bulleted-list"><li style="list-style-type:disc">Cinema  </li></ul></details></li></ul></div></div><p id="f98a5f31-69dc-4e12-a643-8ddc4977b836" class="">
+	</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Udbhav Shrinet, based in India">
+    <meta name="keywords" content="portfolio, web design, front-end engineer, Udbhav Shrinet, India">
+    <title>Udbhav Shrinet - Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('img/cat.jpg');
+            background-size: cover;
+            background-position: left;
+            cursor: none; /* Hide default cursor */
+            overflow: hidden; /* Disable scrollbars */
+            position: relative; /* Ensure bubbles are positioned relative to body */
+        }
+        .top-left-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0px; /* Optional: adds spacing from the edges */
+        }
+        .top-left-image img {
+            width: 100px; /* Adjust size as needed */
+            height: auto;
+            border: none; /* Optional: removes border around the image */
+        }
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 2; /* Ensure content is above bubbles */
+            display: flex;
+            justify-content: center; /* Center the boxes */
+            flex-wrap: wrap; /* Allow boxes to wrap */
+            width: 100%;
+            max-width: 1200px; /* Set a max-width for large screens */
+            padding: 0 20px; /* Optional padding */
+        }
+        .box-container {
+            text-align: center;
+            width: 200px; /* Adjust width */
+            margin: 0 10px; /* Margin between boxes */
+        }
+        .box {
+            width: 200px; /* Fixed width */
+            height: 200px; /* Fixed height to make it square */
+            border: 2px solid #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.1); /* Light semi-transparent background */
+            transition: transform 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer; /* Indicate that the box is clickable */
+        }
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%); /* Make image black and white */
+        }
+        .box:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+        .box-title {
+            margin-top: 10px;
+            color: #3860a0;
+            font-weight: bold;
+            font-size: 1.1em; /* Slightly larger font size */
+        }
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(8, 101, 176, 0.55); /* Blue color with 55% opacity */
+            filter: blur(60px); /* Increased blur effect */
+            opacity: 0; /* Initial opacity for fade-in effect */
+            animation: fadeInOut 20s ease-in-out infinite; /* Slower animation duration */
+        }
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 0.55;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+        /* Custom cursor styles */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+            z-index: 9999;
+            background-color: transparent; /* Circle color */
+            border: 2px solid #fff; /* Circle border */
+        }
+        /* Cursor trail styles */
+        .trail {
+            position: absolute;
+            width: 20px; /* Slightly larger size */
+            height: 20px; /* Slightly larger size */
+            background-color: rgba(255, 255, 255, 0.3); /* Softer white color */
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            filter: blur(8px); /* Increased blur */
+            animation: trailAnimation 0.5s ease-out forwards; /* Shorter animation duration */
+        }
+        @keyframes trailAnimation {
+            from {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(2); /* Slightly increased scaling */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box-container">
+            <!-- Box with click event to open two links -->
+            <div class="box" onclick="openLinks('prj/attd.html')">
+                <img src="img/11.jpeg" alt="Image 1">
+            </div>
+            <div class="box-title">Attendance Calculator</div>
+        </div>
+        <div class="box-container">
+            <div class="box" onclick="openLinks('prj/p1.html')">
+                <img src="img/12.jpeg" alt="Image 2">
+            </div>
+            <div class="box-title">Youtube Live Analytics</div>
+        </div>
+        <div class="box-container">
+            <div class="box" onclick="openLinks('prj/p2.html')">
+                <img src="img/42.jpeg" alt="Image 3">
+            </div>
+            <div class="box-title">Youtube Analytics</div>
+        </div>
+    </div>
+
+    <!-- Custom cursor element -->
+    <div class="custom-cursor" id="customCursor"></div>
+    
+    <!-- Top-left image -->
+    <a href="index.html" class="top-left-image">
+        <img src="img/admin logo.jpg" alt="Image">
+    </a>
+
+    <script>
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 200 + 10; // Bubble size between 100px and 300px
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.top = `${Math.random() * 100}vh`;
+            bubble.style.left = `${Math.random() * 100}vw`;
+
+            // Remove the bubble after its animation completes
+            bubble.addEventListener('animationiteration', () => {
+                bubble.remove();
+                // Create a new bubble to keep the count consistent
+                createBubble();
+            });
+
+            document.body.appendChild(bubble);
+        }
+
+        // Create an initial set of bubbles
+        for (let i = 0; i < 15; i++) {
+            createBubble();
+        }
+
+        const customCursor = document.getElementById('customCursor');
+        const trailContainer = document.createDocumentFragment();
+
+        document.addEventListener('mousemove', (e) => {
+            customCursor.style.left = `${e.clientX}px`;
+            customCursor.style.top = `${e.clientY}px`;
+            
+            // Create a new trail element
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+            trail.style.left = `${e.clientX}px`;
+            trail.style.top = `${e.clientY}px`;
+            trailContainer.appendChild(trail);
+
+            // Remove the trail element after the animation duration
+            setTimeout(() => {
+                trail.remove();
+            }, 500); // Shorter removal time to match the animation duration
+
+            // Append the trail to the body
+            document.body.appendChild(trailContainer);
+        });
+
+        function openLinks(link1, link2) {
+            window.open(link1, '_blank'); // Open first link
+            window.open(link2, '_blank'); // Open second link
+        }
+    </script>
+</body>
+</html>
