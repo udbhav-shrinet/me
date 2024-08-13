@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calculator</title>
+    <style>
+        body {
+            background-image: url('attdimg.avif'); /* Replace with the path to your image */
+            background-color: black; /* Fallback color */
+            background-size: cover; /* Ensure the background image covers the entire page */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            animation: slideInDown 1s ease-out;
+        }
+        input {
+            padding: 15px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1em;
+            background-color: #1f1f1f;
+            color: white;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        input:focus {
+            border: 1px solid #00bfff;
+        }
+        button {
+            padding: 15px 30px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #00bfff;
+            color: black;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #009acd;
+            transform: scale(1.05);
+        }
+        .results {
+            margin-top: 20px;
+            animation: slideInUp 1s ease-out;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            animation: fadeIn 2s ease-in-out;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ffffff;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        th {
+            background-color: #00bfff;
+            color: black;
+        }
+        .low-attendance {
+            color: red;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance Calculator</h1>
+        <div>
+            <input type="number" id="attended" placeholder="No. of Classes Attended">
+            <input type="number" id="total" placeholder="No. of Classes in Total">
+            <input type="number" id="yellow" placeholder="Yellow Forms">
+            <input type="number" id="weeklyTotal" placeholder="Total Classes in Week">
+        </div>
+        <button onclick="calculateAttendance()">Calculate</button>
+        <div class="results">
+            <h2>Results</h2>
+            <p id="currentAttendance">Current Attendance: </p>
+            <p id="result75">Classes required for 75%: </p>
+            <p id="result85">Classes required for 85%: </p>
+            <p id="result95">Classes required for 95%: </p>
+            <p id="weeks75">Weeks required for 75%: </p>
+            <p id="weeks85">Weeks required for 85%: </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Classes Missed</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody id="attendanceTable">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function calculateAttendance() {
+            let attended = parseInt(document.getElementById('attended').value) || 0;
+            let total = parseInt(document.getElementById('total').value) || 0;
+            let yellow = parseInt(document.getElementById('yellow').value) || 0;
+            let weeklyTotal = parseInt(document.getElementById('weeklyTotal').value) || 0;
+
+            let actualAttended = attended + yellow;
+            let totalClasses = total + yellow;
+            let currentAttendance = (actualAttended / totalClasses) * 100;
+
+            let currentAttendanceElement = document.getElementById('currentAttendance');
+            currentAttendanceElement.textContent = `Current Attendance: ${currentAttendance.toFixed(2)}%`;
+
+            if (currentAttendance < 75) {
+                currentAttendanceElement.classList.add('low-attendance');
+            } else {
+                currentAttendanceElement.classList.remove('low-attendance');
+            }
+
+            let calculateRequiredClasses = (targetPercentage) => {
+                let required = Math.ceil((targetPercentage * totalClasses - 100 * actualAttended) / (100 - targetPercentage));
+                return required > 0 ? required : 0;
+            }
+
+            let classesFor75 = calculateRequiredClasses(75);
+            let classesFor85 = calculateRequiredClasses(85);
+            let classesFor95 = calculateRequiredClasses(95);
+
+            document.getElementById('result75').textContent = `Classes required for 75%: ${classesFor75}`;
+            document.getElementById('result85').textContent = `Classes required for 85%: ${classesFor85}`;
+            document.getElementById('result95').textContent = `Classes required for 95%: ${classesFor95}`;
+
+            let weeksFor75 = Math.ceil(classesFor75 / weeklyTotal);
+            let weeksFor85 = Math.ceil(classesFor85 / weeklyTotal);
+
+            document.getElementById('weeks75').textContent = `Weeks required for 75%: ${weeksFor75}`;
+            document.getElementById('weeks85').textContent = `Weeks required for 85%: ${weeksFor85}`;
+
+            let tableBody = document.getElementById('attendanceTable');
+            tableBody.innerHTML = '';
+
+            for (let i = 1; i <= 10; i++) {
+                let missed = attended - i;
+                let newTotal = totalClasses + i;
+                let newAttendance = ((actualAttended - i) / newTotal) * 100;
+                let row = `<tr><td>${i}</td><td${newAttendance < 75 ? ' class="low-attendance"' : ''}>${newAttendance.toFixed(2)}%</td></tr>`;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            }
+        }
+    </script>
+</body>
+</html>
