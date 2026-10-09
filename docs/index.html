@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udbhav Shrinet — Software Engineer & Systems Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0c10;
+            --bg-card: #12161f;
+            --bg-card-hover: #181e2b;
+            --accent-purple: #c084fc;
+            --accent-blue: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-pink: #f43f5e;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #1e293b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+        header { padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); background: rgba(10, 12, 16, 0.85); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-dot { width: 10px; height: 10px; background: var(--accent-purple); border-radius: 50%; box-shadow: 0 0 10px var(--accent-purple); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent-purple); }
+        .hero { padding: 6rem 2rem 4rem; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(192, 132, 252, 0.1); border: 1px solid rgba(192, 132, 252, 0.3); color: var(--accent-purple); padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ffffff 30%, var(--accent-purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 750px; margin: 0 auto 2.5rem; }
+        .hero-cta { display: flex; gap: 1rem; justify-content: center; }
+        .btn-primary { background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); color: white; padding: 0.85rem 1.75rem; border-radius: 10px; text-decoration: none; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3); }
+        .btn-secondary { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); padding: 0.85rem 1.75rem; border-radius: 10px; text-decoration: none; font-weight: 700; transition: border-color 0.2s; }
+        .btn-secondary:hover { border-color: var(--accent-purple); }
+        .section-title { text-align: center; font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; margin: 4rem 0 1rem; }
+        .section-subtitle { text-align: center; color: var(--text-secondary); font-size: 1rem; margin-bottom: 3rem; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.75rem; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .project-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; transition: transform 0.2s, border-color 0.2s, background-color 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .project-card:hover { transform: translateY(-4px); border-color: var(--accent-purple); background-color: var(--bg-card-hover); }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .card-icon { font-size: 1.75rem; }
+        .card-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; background: rgba(255,255,255,0.05); padding: 0.25rem 0.6rem; border-radius: 6px; color: var(--text-secondary); border: 1px solid var(--border-color); }
+        .project-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+        .project-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; flex: 1; }
+        .card-links { display: flex; gap: 1rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-color); }
+        .card-link { font-size: 0.85rem; font-weight: 700; text-decoration: none; color: var(--accent-purple); display: flex; align-items: center; gap: 0.3rem; }
+        .card-link:hover { text-decoration: underline; }
+        .card-code { color: var(--text-secondary); }
+        .card-code:hover { color: var(--text-primary); text-decoration: none; }
+        footer { border-top: 1px solid var(--border-color); padding: 3rem 2rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-top: 6rem; background: #07080b; }
+        @media (max-width: 768px) {
+            header { padding: 1rem 1.5rem; }
+            .hero h1 { font-size: 2.25rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-dot"></div>
+            <span>udbhav.dev</span>
+        </div>
+        <div class="nav-links">
+            <a href="#projects">Engineering Projects</a>
+            <a href="https://github.com/udbhav-shrinet" target="_blank">GitHub Profile</a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-badge">⚡ SYSTEMS ARCHITECT & DATA ENGINEER</div>
+        <h1>Engineering Scalable Pipelines & Interactive Data Systems</h1>
+        <p>Specializing in distributed telemetry ingestion, high-throughput automated scraping, quantitative market research, and hardware-accelerated scientific visualizers.</p>
+        <div class="hero-cta">
+            <a href="#projects" class="btn-primary">Explore Interactive Projects</a>
+            <a href="https://github.com/udbhav-shrinet" target="_blank" class="btn-secondary">GitHub Repository Suite</a>
+        </div>
+    </div>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Production Engineering Suite</h2>
+        <p class="section-subtitle">Every project is backed by verified source code and deployed with a live interactive web application.</p>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🧠</span>
+                        <span class="card-badge">WebGL / Simulation</span>
+                    </div>
+                    <h3>Drosophila Synaptic Cafe (Pac-Fly)</h3>
+                    <p>Authentic fruit fly brain connectome neural simulation with Leaky Integrate-and-Fire dynamics, 3D WebGL neural visualization, and WebAudio spike sonification.</p>
+                </div>
+                <div class="card-links">
+                    <a href="https://udbhav-shrinet.github.io/Pac-Fly/" target="_blank" class="card-link">Live Demo →</a>
+                    <a href="https://github.com/udbhav-shrinet/Pac-Fly" target="_blank" class="card-link card-code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">📈</span>
+                        <span class="card-badge">Quant Finance / Python</span>
+                    </div>
+                    <h3>Multi-Agent Algorithmic Trading Engine</h3>
+                    <p>Hierarchical multi-process trading architecture combining FRED macroeconomic regime scoring, stationary price forecasting, and Alpaca risk execution.</p>
+                </div>
+                <div class="card-links">
+                    <a href="https://udbhav-shrinet.github.io/Multi-Agent-Trading-Bot/" target="_blank" class="card-link">Live Dashboard →</a>
+                    <a href="https://github.com/udbhav-shrinet/Multi-Agent-Trading-Bot" target="_blank" class="card-link card-code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">📊</span>
+                        <span class="card-badge">Python / Pytrends</span>
+                    </div>
+                    <h3>Google Trends Intelligence Engine</h3>
+                    <p>Automated multi-region keyword interest extraction, volatility index calculations, and interactive time-series comparative analysis.</p>
+                </div>
+                <div class="card-links">
+                    <a href="https://udbhav-shrinet.github.io/googletrends/" target="_blank" class="card-link">Live Studio →</a>
+                    <a href="https://github.com/udbhav-shrinet/googletrends" target="_blank" class="card-link card-code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🌐</span>
+                        <span class="card-badge">Macroeconomics / REST</span>
+                    </div>
+                    <h3>World Bank Open Data Ingestion</h3>
+                    <p>Automated macroeconomic time-series extraction for global GDP, inflation rates, CO2 emissions, and demographic population trajectories.</p>
+                </div>
+                <div class="card-links">
+                    <a href="https://udbhav-shrinet.github.io/World-Bank-Data-Fetcher/" target="_blank" class="card-link">Live Explorer →</a>
+                    <a href="https://github.com/udbhav-shrinet/World-Bank-Data-Fetcher" target="_blank" class="card-link card-code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🎧</span>
+                        <span class="card-badge">Python / Flask / Spotipy</span>
+                    </div>
+                    <h3>Spotify Audio Analytics & Clustering</h3>
+                    <p>Full-stack listening analytics platform computing energy-valence quadrants, tempo histograms, and acoustic clustering profiles.</p>
+                </div>
+                <div class="card-links">
+                    <a href="https://udbhav-shrinet.github.io/spotify-data-analysis/" target="_blank" class="card-link">Live Analytics →</a>
+                    <a href="https://github.com/udbhav-shrinet/spotify-data-analysis" target="_blank" class="card-link card-code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🔴</span>
+                        <span class="card-badge">Live Telemetry / YouTube API</span>
+                    </div>
+                    <h3>YouTube Live Telemetry Extractor</h3>
+                    <p>High-throughput live stream ingestion monitoring concurrent viewership velocity, live chat messages, and engagement spikes.</p>
+                </div>
+                <div class="card-links">
+                    <a href="https://udbhav-shrinet.github.io/Youtube_Live_Data_Extractor/" target="_blank" class="card-link">Live Stream Studio →</a>
+                    <a href="https://github.com/udbhav-shrinet/Youtube_Live_Data_Extractor" target="_blank" class="card-link card-code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🗺️</span>
+                        <span class="card-badge">XML / News Feeds</span>
+                    </div>
+                    <h3>News Sitemap Velocity & Editorial Studio</h3>
+                    <p>Real-time Google News XML sitemap crawler tracking publishing velocity, article cadence, and topic frequency distributions.</p>
+                </div>
+                <div class="card-links">
+                    <a href="https://udbhav-shrinet.github.io/Sitemap-News-Web-Analysis/" target="_blank" class="card-link">Live News Studio →</a>
+                    <a href="https://github.com/udbhav-shrinet/Sitemap-News-Web-Analysis" target="_blank" class="card-link card-code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">⏳</span>
+                        <span class="card-badge">JavaScript / History</span>
+                    </div>
+                    <h3>Chronological Timeline Visualizer</h3>
+                    <p>Interactive single-page historical timeline visualizer with multi-scale zooming, dynamic category filtering, and event modals.</p>
+                </div>
+                <div class="card-links">
+                    <a href="https://udbhav-shrinet.github.io/timeline/" target="_blank" class="card-link">Live Visualizer →</a>
+                    <a href="https://github.com/udbhav-shrinet/timeline" target="_blank" class="card-link card-code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">📱</span>
+                        <span class="card-badge">Video Pipeline / Automation</span>
+                    </div>
+                    <h3>YouTube Shorts & Reels Publisher</h3>
+                    <p>Automated vertical 9:16 aspect ratio validator, hashtag generator, and scheduled YouTube Shorts publishing engine.</p>
+                </div>
+                <div class="card-links">
+                    <a href="https://udbhav-shrinet.github.io/youtube-reel-uploader/" target="_blank" class="card-link">Live Creator Studio →</a>
+                    <a href="https://github.com/udbhav-shrinet/youtube-reel-uploader" target="_blank" class="card-link card-code">Source Code</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        Designed & Engineered by Udbhav Shrinet • Deployed via GitHub Pages • All Systems Operational
+    </footer>
+</body>
+</html>
