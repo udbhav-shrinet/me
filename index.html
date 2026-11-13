@@ -318,8 +318,17 @@
             color: #c084fc;
         }
         
-        .reveal { opacity: 0; transform: translateY(30px); }
-        .reveal.visible { animation: fade-in-up 0.8s ease-out forwards; }
+        /* Ensure 100% text visibility across all browsers */
+        .reveal {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
+        .reveal.visible {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
         
         .stagger-1 { animation-delay: 0.1s; }
         .stagger-2 { animation-delay: 0.2s; }
@@ -487,11 +496,37 @@
         /* ASCII animation elements */
         .ascii-anim {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: #71717a;
-            line-height: 1.1;
+            font-size: 0.8rem;
+            color: #c084fc;
+            line-height: 1.15;
             white-space: pre;
-            overflow: hidden;
+            overflow-x: auto;
+            text-align: center;
+            display: inline-block;
+            margin: 0 auto;
+            text-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
+        }
+        body.light .ascii-anim {
+            color: #7c3aed;
+            text-shadow: 0 0 12px rgba(124, 58, 237, 0.2);
+        }
+        .ascii-spinner {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            color: #c084fc;
+            margin-left: 6px;
+        }
+        body.light .ascii-spinner {
+            color: #7c3aed;
+        }
+        .ascii-music-bar {
+            font-family: 'JetBrains Mono', monospace;
+            color: #c084fc;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+        }
+        body.light .ascii-music-bar {
+            color: #7c3aed;
         }
         
         .ascii-frame { display: none; }
@@ -636,7 +671,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> cat ./dossier.identity</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// DOSSIER</h2>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// DOSSIER <span class="ascii-spinner">⠋</span></h2>
             </div>
             
             <div class="grid lg:grid-cols-2 gap-12 items-start">
@@ -685,7 +720,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> query --all systems</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// SYSTEMS & ARTIFACTS</h2>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// SYSTEMS & ARTIFACTS <span class="ascii-spinner">⠋</span></h2>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="systems-grid">
@@ -706,7 +741,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> fetch medium.com/@udiii</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// DISPATCHES & ANALYSIS</h2>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// DISPATCHES & ANALYSIS <span class="ascii-spinner">⠋</span></h2>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="dispatches-grid">
@@ -727,7 +762,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 reveal">
                 <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> darkroom.render --gallery</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// EXPOSURES</h2>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// EXPOSURES (64 PLATES) <span class="ascii-spinner">⠋</span></h2>
                 <p class="text-textSecondary mt-4 max-w-2xl mx-auto">All frames from the archive — landscapes, streets, night scenes, and quiet details. No categories, just the roll.</p>
             </div>
             
@@ -743,7 +778,8 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> spotify.play --curated</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// SOUNDTRACK</h2>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// SOUNDTRACK <span class="ascii-spinner">⠋</span></h2>
+            <div id="ascii-music-eq" class="ascii-music-bar text-center my-4"></div>
                 <p class="text-textSecondary mt-4 max-w-2xl mx-auto">Playlists that fuel the builds, the writes, and the long nights.</p>
             </div>
             
@@ -758,7 +794,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> ls -la ./honors/</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// HONORS & CERTIFICATIONS</h2>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// HONORS & CERTIFICATIONS <span class="ascii-spinner">⠋</span></h2>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="honors-grid">
@@ -772,7 +808,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> init --handshake</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// TRANSMIT</h2>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// TRANSMIT <span class="ascii-spinner">⠋</span></h2>
             </div>
             
             <div class="grid lg:grid-cols-2 gap-12">
@@ -1152,41 +1188,53 @@
             }
         }
         
-        // ============ ASCII ANIMATION ============
-        const ASCII_FRAMES = [
-`    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-    █ SYSTEM.INIT // SEQUENCE ACTIVE █
-    █ [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░] 87% █
-    █ MODULES: DOSIER | SYSTEMS | EXPOSURES █
-    █ STATUS: NOMINAL // SIGNAL: STRONG █
-    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`,
-`    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-    █ DATA.PIPELINE // STREAMING █
-    █ [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░] 94% █
-    █ BIGQUERY █ CLOUD RUN █ PUBSUB █ █
-    █ THROUGHPUT: 2.4M events/min █
-    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`,
-`    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-    █ QUANT.ENGINE // ALPHALENS ACTIVE █
-    █ [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100% █
-    █ FACTORS: VALUE | MOMENTUM | QUALITY █
-    █ REGIME: RISK-ON // EXECUTION: LIVE █
-    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`,
-`    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-    █ DARKROOM.RENDER // 16 PLATES █
-    █ [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░] 72% █
-    █ HIMALAYA | URBAN | NOCTURNE | FAUNA █
-    █ EXPOSURE: CORRECT // ARCHIVE: SYNC █
-    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`
-        ];
-        
-        let asciiFrameIndex = 0;
-        const asciiEl = document.getElementById('ascii-animation');
-        
-        function animateAscii() {
-            if (!asciiEl) return;
-            asciiEl.textContent = ASCII_FRAMES[asciiFrameIndex];
-            asciiFrameIndex = (asciiFrameIndex + 1) % ASCII_FRAMES.length;
+        // ============ REAL-TIME ASCII ENGINE ============
+        const WAVE_CHARS = " ·:-=+*#%@";
+        let waveT = 0;
+        function updateAsciiWave() {
+            const el = document.getElementById('ascii-animation');
+            if (!el) return;
+            const w = Math.min(window.innerWidth > 768 ? 62 : 38, 64);
+            const h = 7;
+            const rows = [];
+            for (let y = 0; y < h; y++) {
+                let row = "";
+                for (let x = 0; x < w; x++) {
+                    const v = Math.sin(x * 0.16 + waveT) * Math.cos(y * 0.42 + waveT * 0.65);
+                    const idx = Math.floor(((v + 1) / 2) * (WAVE_CHARS.length - 1));
+                    row += WAVE_CHARS[Math.max(0, Math.min(WAVE_CHARS.length - 1, idx))];
+                }
+                rows.push(row);
+            }
+            const bar = "═".repeat(w);
+            el.textContent = `╔${bar}╗\n║ ${( "SYSTEM.TELEMETRY // LIVE ASCII STREAM" ).padEnd(w, " ")}║\n` + 
+                             rows.map(r => `║${r}║`).join('\n') + 
+                             `\n╚${bar}╝`;
+            waveT += 0.08;
+        }
+
+        // ASCII Spinners
+        const SPINNER_FRAMES = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
+        let spinnerIdx = 0;
+        function updateSpinners() {
+            const glyph = SPINNER_FRAMES[spinnerIdx];
+            document.querySelectorAll('.ascii-spinner').forEach(el => el.textContent = glyph);
+            spinnerIdx = (spinnerIdx + 1) % SPINNER_FRAMES.length;
+        }
+
+        // ASCII Music Equalizer
+        const EQ_BARS = [' ', '▂', '▃', '▄', '▅', '▆', '▇', '█'];
+        let eqT = 0;
+        function updateAsciiEq() {
+            const el = document.getElementById('ascii-music-eq');
+            if (!el) return;
+            let str = "";
+            for (let i = 0; i < 32; i++) {
+                const val = Math.floor((Math.sin(i * 0.4 + eqT) + Math.cos(i * 0.7 + eqT * 1.3) + 2) / 4 * (EQ_BARS.length - 1));
+                str += EQ_BARS[Math.max(0, Math.min(EQ_BARS.length - 1, val))];
+            }
+            el.textContent = `[ ♬ EQUALIZER: ${str} ♬ ]`;
+            eqT += 0.25;
         }
         
         // ============ LIVE CLOCK ============
@@ -1567,8 +1615,10 @@
             setupSmoothScroll();
             
             // Start ASCII animation
-            animateAscii();
-            setInterval(animateAscii, 4000);
+            updateAsciiWave();
+            setInterval(updateAsciiWave, 80);
+            setInterval(updateSpinners, 90);
+            setInterval(updateAsciiEq, 100);
             
             // Start clock
             updateTelemetryClock();
