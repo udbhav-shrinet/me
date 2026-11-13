@@ -563,13 +563,24 @@
         .tech-logo {
             height: 28px;
             width: auto;
-            filter: grayscale(1) brightness(1.5);
-            transition: filter 0.3s ease, transform 0.3s ease;
-            opacity: 0.7;
+            filter: none;
+            opacity: 0.95;
+            transition: filter 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
         }
-        .tech-logo:hover { filter: grayscale(0) brightness(1); opacity: 1; transform: scale(1.1); }
-        body.light .tech-logo { filter: grayscale(1) brightness(0); opacity: 0.6; }
-        body.light .tech-logo:hover { filter: grayscale(0) brightness(1); opacity: 1; }
+        .tech-logo:hover {
+            filter: grayscale(1) brightness(1.2);
+            opacity: 0.65;
+            transform: scale(1.1);
+        }
+        body.light .tech-logo {
+            filter: none;
+            opacity: 0.95;
+        }
+        body.light .tech-logo:hover {
+            filter: grayscale(1);
+            opacity: 0.6;
+            transform: scale(1.1);
+        }
         
         /* Tech stack categories */
         .tech-category {
@@ -651,52 +662,9 @@
             background: rgba(192, 132, 252, 0.05);
         }
         
-        /* Spotify track listing */
-        .spotify-track {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.75rem;
-            border: 1px solid #1a1a1a;
-            border-radius: 0.5rem;
-            background: linear-gradient(145deg, #0a0a0a 0%, #050505 100%);
-            transition: border-color 0.2s ease, background 0.2s ease;
-        }
-        .spotify-track:hover {
-            border-color: #c084fc;
-            background: rgba(192, 132, 252, 0.03);
-        }
-        .spotify-track-play {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #c084fc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-        .spotify-track-play svg { width: 16px; height: 16px; color: #000; }
-        .spotify-track-info { flex: 1; min-width: 0; }
-        .spotify-track-title { font-weight: 500; color: #fafafa; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .spotify-track-artist { font-size: 0.8rem; color: #a1a1aa; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .spotify-track-duration { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #71717a; }
+
         
-        /* Timeline growth badge */
-        .growth-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            padding: 0.2rem 0.5rem;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 0.375rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: #22c55e;
-            margin-top: 0.5rem;
-        }
+
         
         /* Live badge for Pluc timer */
         .live-badge {
@@ -741,25 +709,28 @@
                 <a href="#soundtrack" class="nav-link text-sm tracking-wide font-mono whitespace-nowrap">// soundtrack</a>
             </div>
             
-            <!-- Social Links & Theme Toggle -->
-            <div class="flex items-center gap-3">
-                <a href="https://www.kaggle.com/udbhavshrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="Kaggle">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path><path d="M8 15l3 3 5-5"></path></svg>
-                </a>
+                        <!-- Theme Toggle & Social Links (All social to the right of toggle) -->
+            <div class="flex items-center gap-2 sm:gap-3">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
                     <span id="theme-icon">☀️</span>
                     <span id="theme-text">Light</span>
                 </button>
-                <a href="https://github.com/udbhav-shrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="GitHub">
+                <a href="https://www.kaggle.com/udbhavshrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="Kaggle" title="Kaggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.352c-.234 0-.351-.117-.351-.352V.352c0-.234.117-.351.351-.351h2.584c.234 0 .351.117.351.351v13.328l6.398-6.66c.141-.141.293-.211.457-.211h3.351c.141 0 .234.053.281.158.047.106.035.206-.035.299l-6.855 6.942 7.066 9.387c.07.094.082.193.035.299z"/></svg>
+                </a>
+                <a href="https://open.spotify.com/user/31xlrshv3eingjlzezabngu26xtq" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="Spotify" title="Spotify">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                </a>
+                <a href="https://github.com/udbhav-shrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="GitHub" title="GitHub">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
-                <a href="https://linkedin.com/in/udbhav-shrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="LinkedIn">
+                <a href="https://linkedin.com/in/udbhav-shrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="LinkedIn" title="LinkedIn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="Medium">
+                <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="Medium" title="Medium">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                 </a>
-                <a href="mailto:udbhav.singh.shrinet@gmail.com" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="Email">
+                <a href="mailto:udbhav.singh.shrinet@gmail.com" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="Email" title="Email">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                 </a>
             </div>
@@ -782,12 +753,12 @@
             <div id="ascii-animation" class="ascii-anim" aria-label="ASCII Animation"></div>
         </div>
         
-        <!-- Hero Name & Title -->
+        <!-- Hero Name & Title (Perfect middle alignment) -->
         <div class="relative z-10 px-6 text-center reveal stagger-1">
-            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-textPrimary mb-4">
-                Udbhav Shrinet
-                <span class="cursor" aria-hidden="true"></span>
-            </h1>
+            <div class="inline-block relative">
+                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-textPrimary mb-4 m-0 inline">Udbhav Shrinet</h1>
+                <span class="cursor absolute -right-3 sm:-right-4 md:-right-5 top-1/2 -translate-y-1/2" aria-hidden="true"></span>
+            </div>
         </div>
         
         <!-- Subtitle / Role - ONLY Data Scientist -->
@@ -1219,45 +1190,21 @@
         ];
         
         // Enhanced Spotify data with track listings
-        const SPOTIFY_PLAYLISTS = [
+                const SPOTIFY_PLAYLISTS = [
             {
                 id: "3QDLIZFTDXkqJevq7Gx2pj",
                 title: "Late Night Quant",
-                desc: "Deep focus for modeling sessions",
-                tracks: [
-                    { title: "Midnight Equations", artist: "Tycho", duration: "4:32" },
-                    { title: "Neural Pathways", artist: "Bonobo", duration: "5:18" },
-                    { title: "Data Stream", artist: "Jon Hopkins", duration: "6:41" },
-                    { title: "Gradient Descent", artist: "Rival Consoles", duration: "4:55" },
-                    { title: "Backpropagation", artist: "Kiasmos", duration: "5:27" },
-                    { title: "Loss Function", artist: "Nils Frahm", duration: "3:44" }
-                ]
+                desc: "Deep focus for modeling sessions"
             },
             {
                 id: "3tkD2qyNruxVBTcFpsDhF6",
                 title: "Synthwave Systems",
-                desc: "Retro-future vibes for building",
-                tracks: [
-                    { title: "Neon Horizon", artist: "The Midnight", duration: "4:28" },
-                    { title: "Cyberpunk Dreams", artist: "Gunship", duration: "5:03" },
-                    { title: "Digital Sunrise", artist: "FM-84", duration: "4:41" },
-                    { title: "Synthwave Rider", artist: "Timecop1983", duration: "5:22" },
-                    { title: "Retro Future", artist: "Waveshaper", duration: "4:15" },
-                    { title: "Arcade Nights", artist: "Dance with the Dead", duration: "4:38" }
-                ]
+                desc: "Retro-future vibes for building"
             },
             {
                 id: "4pv2NEuUXZ9f0v7LpUCQ6r",
                 title: "Ambient Architecture",
-                desc: "Minimal soundscapes for design",
-                tracks: [
-                    { title: "Space & Time", artist: "Brian Eno", duration: "6:12" },
-                    { title: "Minimal Drift", artist: "William Basinski", duration: "7:05" },
-                    { title: "Quiet Systems", artist: "Hiroshi Yoshimura", duration: "5:33" },
-                    { title: "Architecture of Silence", artist: "Ryuichi Sakamoto", duration: "4:58" },
-                    { title: "Empty Rooms", artist: "Stars of the Lid", duration: "8:21" },
-                    { title: "Slow Fade", artist: "Celer", duration: "6:47" }
-                ]
+                desc: "Minimal soundscapes for design"
             }
         ];
         
@@ -1294,7 +1241,7 @@
             }
         ];
         
-        // Enhanced Timeline with growth focus
+        // Experience Timeline
         const TIMELINE = [
             { date: "Nov 2026 – Present", org: "Pluc.tv", role: "Data Scientist", location: "New Delhi", items: [
                 "Architecting creator intelligence pipelines and predictive engagement models for digital storytelling platforms",
@@ -1343,7 +1290,7 @@
                     { name: "TensorFlow", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
                     { name: "Scikit-Learn", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" },
                     { name: "Pandas", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
-                    { name: "Polars", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/polars/polars-original.svg" },
+                    { name: "Polars", svg: "img/icons/polars.svg" },
                     { name: "DuckDB", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/duckdb/duckdb-original.svg" },
                     { name: "NumPy", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" }
                 ]
@@ -1351,17 +1298,17 @@
             {
                 title: "AGENTIC AI",
                 items: [
-                    { name: "Claude Code", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/anthropic/anthropic-original.svg" },
-                    { name: "OpenAI Codex", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg" },
-                    { name: "MCP", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/modelcontextprotocol/modelcontextprotocol-original.svg" },
-                    { name: "Agentic Workflows", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/langchain/langchain-original.svg" }
+                    { name: "Claude Code", svg: "img/icons/anthropic.svg" },
+                    { name: "OpenAI Codex", svg: "img/icons/openai.svg" },
+                    { name: "MCP", svg: "img/icons/mcp.svg" },
+                    { name: "Agentic Workflows", svg: "img/icons/langchain.svg" }
                 ]
             },
             {
                 title: "INFRA & DATABASES",
                 items: [
                     { name: "GCP", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
-                    { name: "AWS", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
+                    { name: "AWS", svg: "img/icons/aws.svg" },
                     { name: "PostgreSQL", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
                     { name: "MySQL", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
                     { name: "Git", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
@@ -1374,19 +1321,19 @@
             {
                 title: "GOOGLE & ANALYTICS ECOSYSTEM",
                 items: [
-                    { name: "Google Analytics 4", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googleanalytics/googleanalytics-original.svg" },
-                    { name: "Search Console", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlesearch/googlesearch-original.svg" },
-                    { name: "Firebase", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" },
-                    { name: "Google Ads", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googleads/googleads-original.svg" },
-                    { name: "Google Tag Manager", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googletagmanager/googletagmanager-original.svg" },
-                    { name: "Looker Studio", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/looker/looker-original.svg" }
+                    { name: "Google Analytics 4", svg: "img/icons/ga4.svg" },
+                    { name: "Search Console", svg: "img/icons/gsc.svg" },
+                    { name: "Firebase", svg: "img/icons/firebase.svg" },
+                    { name: "Google Ads", svg: "img/icons/googleads.svg" },
+                    { name: "Google Tag Manager", svg: "img/icons/gtm.svg" },
+                    { name: "Looker Studio", svg: "img/icons/looker.svg" }
                 ]
             },
             {
                 title: "DESIGN & PROTOTYPING",
                 items: [
                     { name: "Figma", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
-                    { name: "Framer", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/framer/framer-original.svg" },
+                    { name: "Framer", svg: "img/icons/framer.svg" },
                     { name: "Photoshop", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg" },
                     { name: "Canva", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" }
                 ]
@@ -1501,9 +1448,12 @@
                 rows.push(row);
             }
             const bar = "═".repeat(w);
-            el.textContent = `╔${bar}╗\n║ ${("WAVEFORM // LIVE ASCII STREAM").padEnd(w, " ")}║\n` + 
-                             rows.map(r => `║${r}║`).join('\n') + 
-                             `\n╚${bar}╝`;
+            el.textContent = `╔${bar}╗
+` + 
+                             rows.map(r => `║${r}║`).join('
+') + 
+                             `
+╚${bar}╝`;
             waveT += 0.08;
         }
         
@@ -1681,12 +1631,7 @@
                         <ul class="text-textSecondary text-sm space-y-1">
                             ${entry.items.map(item => `<li>• ${item}</li>`).join('')}
                         </ul>
-                        ${entry.org === 'Pluc.tv' || entry.org === 'ABP Network' ? `
-                            <span class="growth-badge">
-                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 9 18 4 13"></polyline></svg>
-                                Growth Focus
-                            </span>
-                        ` : ''}
+                        
                     </div>
                 </div>
             `).join('');
@@ -1749,7 +1694,7 @@
             `).join('');
         }
         
-        // ============ SPOTIFY ============
+                // ============ SPOTIFY ============
         function renderSpotify() {
             const container = document.getElementById('spotify-grid');
             if (!container) return;
@@ -1757,32 +1702,14 @@
             container.innerHTML = SPOTIFY_PLAYLISTS.map((p, i) => `
                 <div class="card p-6 reveal stagger-${Math.min(i + 1, 8)} spotify-embed">
                     <div class="flex items-center gap-3 mb-4">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-accent"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.35-.66.48-1.021.24-1.32-.96-2.82-1.44-4.5-1.44-1.68 0-3.18.48-4.5 1.44-.36.24-.78.12-1.021-.24-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.2-3.12c-.24-.24-.48-.36-.72-.36-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.08-9.6c-.6-.36-1.32-.48-2.16-.48-.84 0-1.56.12-2.16.48-.72.36-1.08 1.08-1.08 1.92s.36 1.56 1.08 1.92c.72.48 1.68.72 2.64.72 1.08 0 2.04-.36 2.76-1.08.84-.84 1.08-1.92 1.08-3.24 0-1.32-.36-2.52-1.08-3.24zm-.24 5.28c-1.2 1.2-2.88 1.8-4.8 1.8-2.04 0-3.84-.6-5.16-1.8-.96-.96-1.44-2.16-1.44-3.6 0-1.56.6-2.76 1.56-3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-accent"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.35-.66.48-1.021.24-1.32-.96-2.82-1.44-4.5-1.44-1.68 0-3.18.48-4.5 1.44-.36.24-.78.12-1.021-.24-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.2-3.12c-.24-.24-.48-.36-.72-.36-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.08-9.6c-.6-.36-1.32-.48-2.16-.48-.84 0-1.56.12-2.16.48-.72.36-1.08 1.08-1.08 1.92s.36 1.56 1.08 1.92c.72.48 1.68.72 2.64.72 1.08 0 2.04-.36 2.76-1.08.84-.84 1.08-1.92 1.08-3.24 0-1.32-.36-2.52-1.08-3.24zm-.24 5.28c-1.2 1.2-2.88 1.8-4.8 1.8-2.04 0-3.84-.6-5.16-1.8-.96-.96-1.44-2.16-1.44-3.6 0-1.56.6-2.76 1.56-3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72"/></svg>
                         <div>
                             <p class="font-mono text-xs text-accent">Playlist</p>
                             <p class="font-display text-sm text-textPrimary">${p.title}</p>
                         </div>
                     </div>
                     <p class="text-textSecondary text-sm mb-4">${p.desc}</p>
-                    
-                    <!-- Track Listing -->
-                    <div class="space-y-2 mb-4 max-h-64 overflow-y-auto">
-                        ${p.tracks.map((track, ti) => `
-                            <div class="spotify-track">
-                                <div class="spotify-track-play" title="Play">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
-                                </div>
-                                <div class="spotify-track-info">
-                                    <div class="spotify-track-title">${track.title}</div>
-                                    <div class="spotify-track-artist">${track.artist}</div>
-                                </div>
-                                <div class="spotify-track-duration">${track.duration}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                    
-                    <!-- Spotify Embed -->
-                    <iframe style="border-radius:8px;border:1px solid #1a1a1a;width:100%;height:152px" src="https://open.spotify.com/embed/playlist/${p.id}?utm_source=generator&theme=0" style="border-radius:12px;border:1px solid #1a1a1a;width:100%;height:380px;min-height:380px;" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px;border:1px solid #1a1a1a;width:100%;height:380px;min-height:380px;" src="https://open.spotify.com/embed/playlist/${p.id}?utm_source=generator&theme=0" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
             `).join('');
         }
