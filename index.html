@@ -277,16 +277,11 @@
         }
         .photo-item:hover .photo-overlay { opacity: 1; }
         
-        /* Nav link styles for stacked // layout */
         .nav-link {
             position: relative;
             color: #d4d4dc;
             font-weight: 500;
             transition: color 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            line-height: 1.1;
         }
         .nav-link::after {
             content: '';
@@ -300,8 +295,6 @@
         }
         .nav-link:hover, .nav-link.active { color: #ffffff; }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .nav-link .slash { font-size: 0.7em; color: #c084fc; }
-        .nav-link .label { font-size: 1em; }
         
         .btn-primary {
             background: transparent;
@@ -492,10 +485,6 @@
             transition: all 0.2s ease;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
         }
         .theme-toggle:hover {
             border-color: #c084fc;
@@ -545,147 +534,22 @@
         
         /* Spotify embed styling */
         .spotify-embed iframe {
-            border-radius: 12px;
+            border-radius: 8px;
             border: 1px solid #1a1a1a;
-            width: 100%;
-            height: 380px !important;
-            min-height: 380px;
         }
-        body.light .spotify-embed iframe {
-            border-radius: 12px;
-            border: 1px solid #1a1a1a;
-            width: 100%;
-            height: 380px !important;
-            min-height: 380px;
-        }
+        body.light .spotify-embed iframe { border-color: #e5e5e5; }
         
         /* Tech stack logos */
         .tech-logo {
             height: 28px;
             width: auto;
-            filter: none;
-            opacity: 0.95;
-            transition: filter 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-        }
-        .tech-logo:hover {
-            filter: grayscale(1) brightness(1.2);
-            opacity: 0.65;
-            transform: scale(1.1);
-        }
-        body.light .tech-logo {
-            filter: none;
-            opacity: 0.95;
-        }
-        body.light .tech-logo:hover {
-            filter: grayscale(1);
-            opacity: 0.6;
-            transform: scale(1.1);
-        }
-        
-        /* Tech stack categories */
-        .tech-category {
-            margin-bottom: 1.5rem;
-        }
-        .tech-category:last-child { margin-bottom: 0; }
-        .tech-category-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #c084fc;
-            margin-bottom: 0.5rem;
+            filter: grayscale(1) brightness(1.5);
+            transition: filter 0.3s ease, transform 0.3s ease;
             opacity: 0.7;
         }
-        .tech-category-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-        
-        /* GitHub streak cards */
-        .streak-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .streak-card {
-            background: linear-gradient(145deg, #0a0a0a 0%, #050505 100%);
-            border: 1px solid #1a1a1a;
-            border-radius: 0.75rem;
-            padding: 1.25rem;
-            text-align: center;
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-        .streak-card:hover {
-            border-color: #c084fc;
-            transform: translateY(-2px);
-        }
-        .streak-value {
-            font-family: 'Space Mono', monospace;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #c084fc;
-            line-height: 1;
-            margin-bottom: 0.25rem;
-        }
-        .streak-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #a1a1aa;
-        }
-        
-        /* GitHub action links */
-        .gh-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #1a1a1a;
-        }
-        .gh-link {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: #a1a1aa;
-            padding: 0.35rem 0.75rem;
-            border: 1px solid #1a1a1a;
-            border-radius: 0.375rem;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-        .gh-link:hover {
-            border-color: #c084fc;
-            color: #c084fc;
-            background: rgba(192, 132, 252, 0.05);
-        }
-        
-
-        
-
-        
-        /* Live badge for Pluc timer */
-        .live-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            padding: 0.2rem 0.5rem;
-            background: rgba(234, 179, 8, 0.1);
-            border: 1px solid rgba(234, 179, 8, 0.3);
-            border-radius: 0.375rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: #eab308;
-            margin-left: 0.5rem;
-        }
-        .live-badge .dot {
-            width: 6px; height: 6px; border-radius: 50%;
-            background: #eab308;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .tech-logo:hover { filter: grayscale(0) brightness(1); opacity: 1; transform: scale(1.1); }
+        body.light .tech-logo { filter: grayscale(1) brightness(0); opacity: 0.6; }
+        body.light .tech-logo:hover { filter: grayscale(0) brightness(1); opacity: 1; }
     </style>
 </head>
 <body class="scanlines">
@@ -698,39 +562,36 @@
                 <span class="text-dim hidden sm:inline">.sh</span>
             </a>
             
-                        <!-- Desktop Nav -->
-            <div class="hidden md:flex items-center gap-6">
-                <a href="#dossier" class="nav-link text-sm tracking-wide font-mono whitespace-nowrap">// dossier</a>
-                <a href="#systems" class="nav-link text-sm tracking-wide font-mono whitespace-nowrap">// systems</a>
-                <a href="#dispatches" class="nav-link text-sm tracking-wide font-mono whitespace-nowrap">// dispatches</a>
-                <a href="#honors" class="nav-link text-sm tracking-wide font-mono whitespace-nowrap">// honors</a>
-                <a href="#transmit" class="nav-link text-sm tracking-wide font-mono whitespace-nowrap">// transmit</a>
-                <a href="#exposures" class="nav-link text-sm tracking-wide font-mono whitespace-nowrap">// exposures</a>
-                <a href="#soundtrack" class="nav-link text-sm tracking-wide font-mono whitespace-nowrap">// soundtrack</a>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#dossier" class="nav-link text-sm tracking-wide font-mono">// dossier</a>
+                <a href="#systems" class="nav-link text-sm tracking-wide font-mono">// systems</a>
+                <a href="#dispatches" class="nav-link text-sm tracking-wide font-mono">// dispatches</a>
+                <a href="#exposures" class="nav-link text-sm tracking-wide font-mono">// exposures</a>
+                <a href="#soundtrack" class="nav-link text-sm tracking-wide font-mono">// soundtrack</a>
+                <a href="#honors" class="nav-link text-sm tracking-wide font-mono">// honors</a>
+                <a href="#transmit" class="nav-link text-sm tracking-wide font-mono">// transmit</a>
             </div>
             
-                        <!-- Theme Toggle & Social Links (All social to the right of toggle) -->
-            <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Social Links & Theme Toggle -->
+            <div class="flex items-center gap-3">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
                     <span id="theme-icon">☀️</span>
                     <span id="theme-text">Light</span>
                 </button>
-                <a href="https://www.kaggle.com/udbhavshrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="Kaggle" title="Kaggle">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.352c-.234 0-.351-.117-.351-.352V.352c0-.234.117-.351.351-.351h2.584c.234 0 .351.117.351.351v13.328l6.398-6.66c.141-.141.293-.211.457-.211h3.351c.141 0 .234.053.281.158.047.106.035.206-.035.299l-6.855 6.942 7.066 9.387c.07.094.082.193.035.299z"/></svg>
-                </a>
-                <a href="https://open.spotify.com/user/31xlrshv3eingjlzezabngu26xtq" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="Spotify" title="Spotify">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-                </a>
-                <a href="https://github.com/udbhav-shrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="GitHub" title="GitHub">
+                <a href="https://github.com/udbhav-shrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="GitHub">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
-                <a href="https://linkedin.com/in/udbhav-shrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="LinkedIn" title="LinkedIn">
+                <a href="https://linkedin.com/in/udbhav-shrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="LinkedIn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="Medium" title="Medium">
+                <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="Medium">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                 </a>
-                <a href="mailto:udbhav.singh.shrinet@gmail.com" class="nav-link p-2 hover:bg-voidCard rounded-lg text-textSecondary hover:text-accent transition-colors" aria-label="Email" title="Email">
+                <a href="https://open.spotify.com/user/31xlrshv3eingjlzezabngu26xtq" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="Spotify">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.35-.66.48-1.021.24-1.32-.96-2.82-1.44-4.5-1.44-1.68 0-3.18.48-4.5 1.44-.36.24-.78.12-1.021-.24-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.2-3.12c-.24-.24-.48-.36-.72-.36s-.48.12-.72.36c-2.4 2.28-5.28 3.72-8.46 3.72-3.18 0-6.06-1.44-8.46-3.72-.24-.24-.48-.36-.72-.36s-.48.12-.72.36c-.96 1.2-1.56 2.64-1.56 4.2 0 2.28 1.8 4.2 4.02 4.2 1.26 0 2.4-.48 3.24-1.32.12.12.24.12.36.12.12 0 .24-.12.24-.24V12c0-1.08.96-1.92 2.16-1.92 1.32 0 2.4.84 2.76 1.92.12-.12.12-.24.24-.24s.24.12.36.12c1.56.48 3.12 1.56 4.08 3.12zm-1.08-9.6c-.6-.36-1.32-.48-2.16-.48-.84 0-1.56.12-2.16.48-.72.36-1.08 1.08-1.08 1.92s.36 1.56 1.08 1.92c.72.48 1.68.72 2.64.72 1.08 0 2.04-.36 2.76-1.08.84-.84 1.08-1.92 1.08-3.24 0-1.32-.36-2.52-1.08-3.24zm-.24 5.28c-1.2 1.2-2.88 1.8-4.8 1.8-2.04 0-3.84-.6-5.16-1.8-.96-.96-1.44-2.16-1.44-3.6 0-1.56.6-2.76 1.56-3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76-1.44 3.72z"/></svg>
+                </a>
+                <a href="mailto:udbhav.singh.shrinet@gmail.com" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="Email">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                 </a>
             </div>
@@ -753,30 +614,29 @@
             <div id="ascii-animation" class="ascii-anim" aria-label="ASCII Animation"></div>
         </div>
         
-        <!-- Hero Name & Title (Perfect middle alignment) -->
+        <!-- Hero Name & Title -->
         <div class="relative z-10 px-6 text-center reveal stagger-1">
-            <div class="inline-block relative">
-                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-textPrimary mb-4 m-0 inline">Udbhav Shrinet</h1>
-                <span class="cursor absolute -right-3 sm:-right-4 md:-right-5 top-1/2 -translate-y-1/2" aria-hidden="true"></span>
-            </div>
+            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-textPrimary mb-4">
+                Udbhav Shrinet
+                <span class="cursor" aria-hidden="true"></span>
+            </h1>
         </div>
         
-        <!-- Subtitle / Role - ONLY Data Scientist -->
+        <!-- Subtitle / Role -->
         <div class="relative z-10 px-6 text-center reveal stagger-2">
             <p class="font-mono text-sm text-textMuted tracking-wider uppercase mb-2">> whoami</p>
             <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-normal tracking-tight text-textPrimary">
-                Data Scientist
+                Data Scientist <span class="text-accent">/</span> Quant Researcher <span class="text-accent">/</span> Builder
             </h2>
         </div>
         
-        <!-- Status Ticker with Pluc timer starting Nov 16, 2026 -->
+        <!-- Status Ticker -->
         <div class="relative z-10 mt-10 px-6 reveal stagger-3">
             <div class="max-w-3xl mx-auto p-4 rounded-lg border border-voidBorder bg-voidCard/60 backdrop-blur font-mono text-xs text-textSecondary flex flex-wrap items-center justify-between gap-3 text-left">
                 <div class="flex items-center gap-2">
                     <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span class="text-textPrimary font-semibold">STATUS:</span>
                     <span class="text-textSecondary">Data Scientist @ Pluc.tv</span>
-                    <span id="pluc-tenure" class="live-badge"><span class="dot"></span><span id="pluc-days">0</span> days</span>
                 </div>
                 <div class="flex items-center gap-4 text-textMuted">
                     <span id="live-ist-clock">--:--:-- IST</span>
@@ -827,10 +687,10 @@
                         </div>
                     </div>
                     
-                    <!-- Tech Stack - Categorized -->
+                    <!-- Tech Stack -->
                     <div class="card p-8">
                         <h3 class="font-display text-xl font-normal mb-6 text-textPrimary">Technical Arsenal</h3>
-                        <div id="tech-stack">
+                        <div class="flex flex-wrap gap-3" id="tech-stack">
                             <!-- Populated by JS -->
                         </div>
                     </div>
@@ -897,7 +757,39 @@
         </div>
     </section>
     
-    <!-- Honors Section - MOVED ABOVE EXPOSURES -->
+    <!-- Exposures Section -->
+    <section id="exposures" class="py-24 md:py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> darkroom.render --gallery</p>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// EXPOSURES (64 PLATES) <span class="ascii-spinner">⠋</span></h2>
+                <p class="text-textSecondary mt-4 max-w-2xl mx-auto">All frames from the archive — landscapes, streets, night scenes, and quiet details. No categories, just the roll.</p>
+            </div>
+            
+            <!-- Photo Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="photo-grid" role="list">
+                <!-- Photos rendered by JS -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Soundtrack Section -->
+    <section id="soundtrack" class="py-24 md:py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> spotify.play --curated</p>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// SOUNDTRACK <span class="ascii-spinner">⠋</span></h2>
+            <div id="ascii-music-eq" class="ascii-music-bar text-center my-4"></div>
+                <p class="text-textSecondary mt-4 max-w-2xl mx-auto">Playlists that fuel the builds, the writes, and the long nights.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6" id="spotify-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Honors Section -->
     <section id="honors" class="py-24 md:py-32 px-6 relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -1015,46 +907,6 @@
         </div>
     </section>
     
-    <!-- Exposures Section -->
-    <section id="exposures" class="py-24 md:py-32 px-6 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12 reveal">
-                <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> darkroom.render --gallery</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// EXPOSURES (64 PLATES) <span class="ascii-spinner">⠋</span></h2>
-                <p class="text-textSecondary mt-4 max-w-2xl mx-auto">All frames from the archive — landscapes, streets, night scenes, and quiet details. No categories, just the roll.</p>
-            </div>
-            
-            <!-- Photo Grid - Show 4 initially -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="photo-grid" role="list">
-                <!-- Photos rendered by JS -->
-            </div>
-            
-            <!-- Load More Button -->
-            <div class="text-center mt-10 reveal" id="load-more-container" style="display: none;">
-                <button id="load-more-btn" class="btn-ghost px-8 py-3 rounded-lg font-mono text-sm tracking-wide inline-flex items-center gap-2">
-                    Load More Photos
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"></path></svg>
-                </button>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Soundtrack Section -->
-    <section id="soundtrack" class="py-24 md:py-32 px-6 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> spotify.play --curated</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// SOUNDTRACK <span class="ascii-spinner">⠋</span></h2>
-            <div id="ascii-music-eq" class="ascii-music-bar text-center my-4"></div>
-                <p class="text-textSecondary mt-4 max-w-2xl mx-auto">Playlists that fuel the builds, the writes, and the long nights.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-6" id="spotify-grid">
-                <!-- Populated by JS -->
-            </div>
-        </div>
-    </section>
-    
     <!-- Footer -->
     <footer class="py-12 px-6 border-t border-voidBorder relative">
         <div class="max-w-7xl mx-auto">
@@ -1078,7 +930,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                     </a>
                     <a href="https://open.spotify.com/user/31xlrshv3eingjlzezabngu26xtq" target="_blank" rel="noopener" class="text-textMuted hover:text-accent transition-colors" aria-label="Spotify">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.35-.66.48-1.021.24-1.32-.96-2.82-1.44-4.5-1.44-1.68 0-3.18.48-4.5 1.44-.36.24-.78.12-1.021-.24-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.2-3.12c-.24-.24-.48-.36-.72-.36-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.08-9.6c-.6-.36-1.32-.48-2.16-.48-.84 0-1.56.12-2.16.48-.72.36-1.08 1.08-1.08 1.92s.36 1.56 1.08 1.92c.72.48 1.68.72 2.64.72 1.08 0 2.04-.36 2.76-1.08.84-.84 1.08-1.92 1.08-3.24 0-1.32-.36-2.52-1.08-3.24zm-.24 5.28c-1.2 1.2-2.88 1.8-4.8 1.8-2.04 0-3.84-.6-5.16-1.8-.96-.96-1.44-2.16-1.44-3.6 0-1.56.6-2.76 1.56-3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.35-.66.48-1.021.24-1.32-.96-2.82-1.44-4.5-1.44-1.68 0-3.18.48-4.5 1.44-.36.24-.78.12-1.021-.24-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.2-3.12c-.24-.24-.48-.36-.72-.36-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.08-9.6c-.6-.36-1.32-.48-2.16-.48-.84 0-1.56.12-2.16.48-.72.36-1.08 1.08-1.08 1.92s.36 1.56 1.08 1.92c.72.48 1.68.72 2.64.72 1.08 0 2.04-.36 2.76-1.08.84-.84 1.08-1.92 1.08-3.24 0-1.32-.36-2.52-1.08-3.24zm-.24 5.28c-1.2 1.2-2.88 1.8-4.8 1.8-2.04 0-3.84-.6-5.16-1.8-.96-.96-1.44-2.16-1.44-3.6 0-1.56.6-2.76 1.56-3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72"/></svg>
                     </a>
                 </div>
                 
@@ -1123,7 +975,6 @@
                 desc: "Institutional-grade quantitative research framework: cross-sectional factor screening, macro regime detection, and Alpaca execution pipeline.",
                 tech: "Python, Pandas, Polars, Alpaca API, PyTorch",
                 url: "https://github.com/udbhav-shrinet/Multi-Agent-Trading-Bot",
-                liveUrl: "https://udbhav-shrinet.github.io/Multi-Agent-Trading-Bot/",
                 badge: "Quant"
             },
             {
@@ -1131,7 +982,6 @@
                 desc: "Unified multi-product media intelligence and ingestion engine for YouTube metrics, sitemaps, and Reddit trends.",
                 tech: "Python, GCP (Cloud Run, BigQuery), TypeScript",
                 url: "https://github.com/udbhav-shrinet/Datara",
-                liveUrl: "https://udbhav-shrinet.github.io/Datara/",
                 badge: "Intelligence"
             },
             {
@@ -1139,7 +989,6 @@
                 desc: "AI-powered flight price monitoring and intelligent booking agent with real-time fare tracking and predictive alerts.",
                 tech: "Python, Selenium, FastAPI, PostgreSQL",
                 url: "https://github.com/udbhav-shrinet/Pac-Fly",
-                liveUrl: "https://udbhav-shrinet.github.io/Pac-Fly/",
                 badge: "Agent"
             },
             {
@@ -1147,15 +996,13 @@
                 desc: "Unified real-time multi-platform trend scraper and intelligence dashboard for Google Trends, Reddit, Hacker News, and Wikipedia.",
                 tech: "Python, Pandas, Plotly, AsyncIO",
                 url: "https://github.com/udbhav-shrinet/trends",
-                liveUrl: "https://udbhav-shrinet.github.io/trends/",
                 badge: "Dashboard"
             },
             {
                 name: "Timeline",
                 desc: "Visual life/career timeline builder with interactive milestones, media embeds, and exportable portfolio-ready chronicles.",
                 tech: "TypeScript, Next.js, Tailwind, Framer Motion",
-                url: "https://github.com/udbhav-shrinet/timeline",
-                liveUrl: "https://udbhav-shrinet.github.io/timeline/",
+                url: "https://github.com/udbhav-shrinet/Timeline",
                 badge: "Visualization"
             },
             {
@@ -1163,7 +1010,6 @@
                 desc: "Collaborative real-time audio/space web application with peer-to-peer mesh networking and spatial audio.",
                 tech: "JavaScript, WebRTC, Web Audio API, Socket.io",
                 url: "https://github.com/udbhav-shrinet/nextroom",
-                liveUrl: "https://udbhav-shrinet.github.io/nextroom/",
                 badge: "Real-time"
             }
         ];
@@ -1189,8 +1035,7 @@
             }
         ];
         
-        // Enhanced Spotify data with track listings
-                const SPOTIFY_PLAYLISTS = [
+        const SPOTIFY_PLAYLISTS = [
             {
                 id: "3QDLIZFTDXkqJevq7Gx2pj",
                 title: "Late Night Quant",
@@ -1211,7 +1056,7 @@
         const HONORS = [
             {
                 title: "Junior Diploma in Piano",
-                issuer: "Kala Niketan",
+                issuer: "Trinity College London",
                 year: "2018",
                 desc: "Demonstrated proficiency in classical music theory and performance."
             },
@@ -1241,28 +1086,25 @@
             }
         ];
         
-        // Experience Timeline
         const TIMELINE = [
             { date: "Nov 2026 – Present", org: "Pluc.tv", role: "Data Scientist", location: "New Delhi", items: [
-                "Architecting creator intelligence pipelines and predictive engagement models for digital storytelling platforms",
-                "Audience growth analytics and content recommendation clustering driving creator monetization",
-                "Built YouTube competitor analytics engine deployed on GCP (Cloud Run, BigQuery, Pub/Sub) — eliminated data outsourcing, achieving 85% cost efficiency vs third-party APIs",
-                "Real-time content velocity tracking across 50+ competitor channels with automated alerting"
+                "Architecting creator intelligence pipelines and predictive engagement models",
+                "Audience growth analytics and content recommendation clustering"
             ]},
             { date: "Aug 2025 – Aug 2026", org: "ABP Network", role: "Data Analyst", location: "Noida", items: [
-                "Competitor Intelligence Tool — automated sitemap extractors tracking article publishing velocity across 20+ news portals, steering editorial distribution strategy",
-                "Comscore Automation — streamlined demographic data cleaning workflows reducing manual processing by 90%, enabling real-time executive audience insights",
-                "Demographic & Viewer Analysis — uncovered key age, gender, and regional cohort shifts across digital platforms informing strategic programming decisions",
-                "SEO Optimization with Blended Data — merged Google Trends with Search Console pipelines to pinpoint breakout queries, boosting organic discoverability by 40%"
+                "Competitor Intelligence Tool — automated sitemap extractors tracking article velocity",
+                "Comscore Automation — streamlined demographic cleaning for real-time insights",
+                "Demographic & Viewer Analysis — age, gender, regional cohort shifts",
+                "SEO Optimization — blended Google Trends + Search Console pipelines"
             ]},
             { date: "May 2024 – Jul 2024", org: "ABP Network", role: "Data Analyst Intern", location: "Noida", items: [
-                "Automated data validation and normalization with custom Excel VBA macros, reducing dataset inconsistencies by 85%",
-                "Engineered interactive Looker Studio dashboards for real-time editorial tracking and market trend visualization",
-                "Built serverless cloud workflows on GCP (Cloud Run, BigQuery, Pub/Sub, Scheduler) for continuous data ingestion"
+                "Automated data validation with Excel VBA macros",
+                "Looker Studio dashboards for editorial tracking",
+                "GCP serverless workflows (Cloud Run, BigQuery, Pub/Sub, Scheduler)"
             ]},
             { date: "May 2022 – Jul 2022", org: "Max Life Insurance", role: "Research Intern", location: "Gurugram", items: [
-                "Analyzed institutional claims data to identify loss trends and supported strategic underwriting risk mitigation initiatives",
-                "Built reporting automations and conducted analytical training to promote data-informed operational decision making"
+                "Institutional claims analysis for loss trend identification",
+                "Risk mitigation insights and reporting automation"
             ]},
             { date: "Aug 2022 – Jun 2025", org: "Christ University", role: "B.E. Computer Science & Engineering", location: "Bengaluru", items: [
                 "CGPA: 7.55/10",
@@ -1270,115 +1112,34 @@
             ]}
         ];
         
-        // Categorized Tech Stack
-        const TECH_STACK_CATEGORIES = [
-            {
-                title: "LANGUAGES",
-                items: [
-                    { name: "Python", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-                    { name: "TypeScript", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-                    { name: "JavaScript", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-                    { name: "SQL", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-                    { name: "R", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" },
-                    { name: "Bash", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" }
-                ]
-            },
-            {
-                title: "DATA & ML",
-                items: [
-                    { name: "PyTorch", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
-                    { name: "TensorFlow", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
-                    { name: "Scikit-Learn", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" },
-                    { name: "Pandas", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
-                    { name: "Polars", svg: "img/icons/polars.svg" },
-                    { name: "DuckDB", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/duckdb/duckdb-original.svg" },
-                    { name: "NumPy", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" }
-                ]
-            },
-            {
-                title: "AGENTIC AI",
-                items: [
-                    { name: "Claude Code", svg: "img/icons/anthropic.svg" },
-                    { name: "OpenAI Codex", svg: "img/icons/openai.svg" },
-                    { name: "MCP", svg: "img/icons/mcp.svg" },
-                    { name: "Agentic Workflows", svg: "img/icons/langchain.svg" }
-                ]
-            },
-            {
-                title: "INFRA & DATABASES",
-                items: [
-                    { name: "GCP", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
-                    { name: "AWS", svg: "img/icons/aws.svg" },
-                    { name: "PostgreSQL", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-                    { name: "MySQL", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-                    { name: "Git", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-                    { name: "GitHub", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
-                    { name: "Replit", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/replit/replit-original.svg" },
-                    { name: "Vercel", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
-                    { name: "Netlify", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg" }
-                ]
-            },
-            {
-                title: "GOOGLE & ANALYTICS ECOSYSTEM",
-                items: [
-                    { name: "Google Analytics 4", svg: "img/icons/ga4.svg" },
-                    { name: "Search Console", svg: "img/icons/gsc.svg" },
-                    { name: "Firebase", svg: "img/icons/firebase.svg" },
-                    { name: "Google Ads", svg: "img/icons/googleads.svg" },
-                    { name: "Google Tag Manager", svg: "img/icons/gtm.svg" },
-                    { name: "Looker Studio", svg: "img/icons/looker.svg" }
-                ]
-            },
-            {
-                title: "DESIGN & PROTOTYPING",
-                items: [
-                    { name: "Figma", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
-                    { name: "Framer", svg: "img/icons/framer.svg" },
-                    { name: "Photoshop", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg" },
-                    { name: "Canva", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" }
-                ]
-            }
-        ];
-        
-        const OSS_MERGED = [
-            { repo: "google-research/timesfm", pr: "#539", stars: "35.1k", desc: "fix(deps): split jax[cuda] into cpu and cuda extras to support CPU-only installs", date: "2026-11-13", url: "https://github.com/google-research/timesfm/pull/539" },
-            { repo: "modelcontextprotocol/servers", pr: "#5145", stars: "92.0k", desc: "fix(git): prefix git_show diff headers with a/ and b/ (unblocking git apply)", date: "2026-10-13", url: "https://github.com/modelcontextprotocol/servers/pull/5145" },
-            { repo: "confident-ai/deepeval", pr: "#3431", stars: "19.5k", desc: "fix(litellm): omit default temperature to prevent failures on reasoning models", date: "2026-11-02", url: "https://github.com/confident-ai/deepeval/pull/3431" },
-            { repo: "ddotta/awesome-polars", pr: "#643", stars: "1.1k", desc: "Add ds-agent-playbook to Tools Built with Polars", date: "2026-10-12", url: "https://github.com/ddotta/awesome-polars/pull/643" },
-            { repo: "davidgasquez/awesome-duckdb", pr: "#372", stars: "2.5k", desc: "Add ds-agent-playbook to Libraries Powered by DuckDB", date: "2026-10-12", url: "https://github.com/davidgasquez/awesome-duckdb/pull/372" }
-        ];
-        
-        const UPSTREAM_SOLUTIONS = [
-            { project: "Model Context Protocol (MCP)", stars: "92k", quote: "The fix is the one @udbhav-shrinet proposed on the issue.", author: "Cliff Hall (Core Maintainer)", url: "https://github.com/modelcontextprotocol/servers/issues/5107" },
-            { project: "Stanford NLP DSPy", stars: "22k+", quote: "Isolated BootstrapFewShot metric_threshold=0.0 falsy flaw", author: "DSPy Core Optimizer", url: "https://github.com/stanfordnlp/dspy/pull/10606" },
-            { project: "Hugging Face Smolagents", stars: "30k+", quote: "Architected extended-precision & NumPy scalar serialization", author: "Smolagents SafeSerializer", url: "https://github.com/huggingface/smolagents/issues/2961" }
+        const TECH_STACK = [
+            { name: "Python", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { name: "TypeScript", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+            { name: "JavaScript", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+            { name: "SQL", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+            { name: "R", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" },
+            { name: "PyTorch", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
+            { name: "Pandas", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+            { name: "Polars", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/polars/polars-original.svg" },
+            { name: "DuckDB", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/duckdb/duckdb-original.svg" },
+            { name: "BigQuery", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
+            { name: "Docker", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+            { name: "Git", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+            { name: "GitHub", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+            { name: "Vercel", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+            { name: "Figma", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+            { name: "Photoshop", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg" },
+            { name: "Canva", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" }
         ];
         
         // ============ INITIALIZATION ============
-        let PHOTOS = [
-            {"file": "img/pics/20230408_180109.jpg", "thumb": "img/pics/thumb_20230408_180109.jpg", "title": "Himalayan Camp", "description": "Alpine meadow camp at golden hour — orange tent against snow-capped peaks", "category": "landscape", "date": "2023-04-08"},
-            {"file": "img/pics/img_20230407_wa0007.jpg", "thumb": "img/pics/thumb_img_20230407_wa0007.jpg", "title": "Mountain Vista", "description": "Wide valley view with layered ridges fading into mist", "category": "landscape", "date": "2023-04-07"},
-            {"file": "img/pics/20230409_120027.jpg", "thumb": "img/pics/thumb_20230409_120027.jpg", "title": "Rock Cave & Stream", "description": "Natural rock shelter with cascading mountain stream, early spring", "category": "landscape", "date": "2023-04-09"},
-            {"file": "img/pics/20230218_151102.jpg", "thumb": "img/pics/thumb_20230218_151102.jpg", "title": "Campus Architecture", "description": "Modern university complex with bronze skybridge and jali screens, overcast day", "category": "architecture", "date": "2023-02-18"},
-            {"file": "img/pics/20221108_163730.jpg", "thumb": "img/pics/thumb_20221108_163730.jpg", "title": "Cafe Backstage", "description": "Behind the counter at a bubble tea shop — syrup bottles, blenders, prep station", "category": "urban", "date": "2022-11-08"},
-            {"file": "img/pics/20230218_205708.jpg", "thumb": "img/pics/thumb_20230218_205708.jpg", "title": "Campus Dog at Night", "description": "Stray dog on amphitheater steps at DTU, yellow security barriers, floodlights", "category": "street", "date": "2023-02-18"},
-            {"file": "img/pics/20231126_160408.jpg", "thumb": "img/pics/thumb_20231126_160408.jpg", "title": "Fountain Through Foliage", "description": "Water jets arcing across pond viewed through foreground branches, overcast", "category": "abstract", "date": "2023-11-26"},
-            {"file": "img/pics/img_20240222_062520567.jpg", "thumb": "img/pics/thumb_img_20240222_062520567.jpg", "title": "Lonely Lamppost", "description": "Single streetlamp illuminating path and shrubs at night, building silhouette", "category": "night", "date": "2024-02-22"},
-            {"file": "img/pics/20251028_164508.jpg", "thumb": "img/pics/thumb_20251028_164508.jpg", "title": "Kitten Huddle", "description": "Three tiny kittens curled together — brown tabby, ginger, and grey sibling", "category": "animals", "date": "2025-10-28"},
-            {"file": "img/pics/img_20240215_192520198_hdr.jpg", "thumb": "img/pics/thumb_img_20240215_192520198_hdr.jpg", "title": "Sunset Silhouette", "description": "Trees and power lines against dramatic orange-red sunset sky", "category": "sky", "date": "2024-02-15"},
-            {"file": "img/pics/snapchat_1607269524.jpg", "thumb": "img/pics/thumb_snapchat_1607269524.jpg", "title": "City Lights", "description": "Night cityscape with illuminated buildings and reflections", "category": "night", "date": "2020-12-07"},
-            {"file": "img/pics/img_20230407_wa0007.jpg", "thumb": "img/pics/thumb_img_20230407_wa0007.jpg", "title": "Mountain Vista", "description": "Wide valley view with layered ridges fading into mist", "category": "landscape", "date": "2023-04-07"},
-            {"file": "img/pics/img_20240126_142942067.jpg", "thumb": "img/pics/thumb_img_20240126_142942067.jpg", "title": "Road Perspective", "description": "Empty road stretching toward mountains, power lines framing", "category": "road", "date": "2024-01-26"},
-            {"file": "img/pics/img_0100.jpg", "thumb": "img/pics/thumb_img_0100.jpg", "title": "Nocturnal Walkway", "description": "Quiet outdoor pathway bathed in warm amber lamppost glow", "category": "night", "date": "2021-10-14"},
-            {"file": "img/pics/20251123_193714.jpg", "thumb": "img/pics/thumb_20251123_193714.jpg", "title": "Twilight Horizon", "description": "Dusk falling over urban textures with subtle ambient light", "category": "night", "date": "2025-11-23"},
-            {"file": "img/pics/snapchat_1541689392.jpg", "thumb": "img/pics/thumb_snapchat_1541689392.jpg", "title": "Golden Hour Drift", "description": "Warm light cast across evening atmosphere", "category": "abstract", "date": "2022-09-15"}
-        ];
+        let PHOTOS = [{"file": "img/pics/20221108_163730.jpg", "thumb": "img/pics/thumb_20221108_163730.jpg", "rawName": "20221108_163730.jpg"}, {"file": "img/pics/20230218_151102.jpg", "thumb": "img/pics/thumb_20230218_151102.jpg", "rawName": "20230218_151102.jpg"}, {"file": "img/pics/20230218_205708.jpg", "thumb": "img/pics/thumb_20230218_205708.jpg", "rawName": "20230218_205708.jpg"}, {"file": "img/pics/20230218_211251.jpg", "thumb": "img/pics/thumb_20230218_211251.jpg", "rawName": "20230218_211251.jpg"}, {"file": "img/pics/20230220_143432.jpg", "thumb": "img/pics/thumb_20230220_143432.jpg", "rawName": "20230220_143432.jpg"}, {"file": "img/pics/20230408_134652.jpg", "thumb": "img/pics/thumb_20230408_134652.jpg", "rawName": "20230408_134652.jpg"}, {"file": "img/pics/20230408_151308.jpg", "thumb": "img/pics/thumb_20230408_151308.jpg", "rawName": "20230408_151308.jpg"}, {"file": "img/pics/20230408_180109.jpg", "thumb": "img/pics/thumb_20230408_180109.jpg", "rawName": "20230408_180109.jpg"}, {"file": "img/pics/20230409_115249.jpg", "thumb": "img/pics/thumb_20230409_115249.jpg", "rawName": "20230409_115249.jpg"}, {"file": "img/pics/20230409_120027.jpg", "thumb": "img/pics/thumb_20230409_120027.jpg", "rawName": "20230409_120027.jpg"}, {"file": "img/pics/20230409_121854.jpg", "thumb": "img/pics/thumb_20230409_121854.jpg", "rawName": "20230409_121854.jpg"}, {"file": "img/pics/20230409_142210.jpg", "thumb": "img/pics/thumb_20230409_142210.jpg", "rawName": "20230409_142210.jpg"}, {"file": "img/pics/20231117_165634.jpg", "thumb": "img/pics/thumb_20231117_165634.jpg", "rawName": "20231117_165634.jpg"}, {"file": "img/pics/20231126_160408.jpg", "thumb": "img/pics/thumb_20231126_160408.jpg", "rawName": "20231126_160408.jpg"}, {"file": "img/pics/20231126_165045.jpg", "thumb": "img/pics/thumb_20231126_165045.jpg", "rawName": "20231126_165045.jpg"}, {"file": "img/pics/20251028_130930.jpg", "thumb": "img/pics/thumb_20251028_130930.jpg", "rawName": "20251028_130930.jpg"}, {"file": "img/pics/20251028_164508.jpg", "thumb": "img/pics/thumb_20251028_164508.jpg", "rawName": "20251028_164508.jpg"}, {"file": "img/pics/20251116_201621.jpg", "thumb": "img/pics/thumb_20251116_201621.jpg", "rawName": "20251116_201621.jpg"}, {"file": "img/pics/20251119_222358.jpg", "thumb": "img/pics/thumb_20251119_222358.jpg", "rawName": "20251119_222358.jpg"}, {"file": "img/pics/20251123_193714.jpg", "thumb": "img/pics/thumb_20251123_193714.jpg", "rawName": "20251123_193714.jpg"}, {"file": "img/pics/img_20201212_wa0021.jpg", "thumb": "img/pics/thumb_img_20201212_wa0021.jpg", "rawName": "IMG-20201212-WA0021.jpg"}, {"file": "img/pics/img_20211114_wa0014.jpg", "thumb": "img/pics/thumb_img_20211114_wa0014.jpg", "rawName": "IMG-20211114-WA0014.jpg"}, {"file": "img/pics/img_20220829_wa0026.jpg", "thumb": "img/pics/thumb_img_20220829_wa0026.jpg", "rawName": "IMG-20220829-WA0026.jpg"}, {"file": "img/pics/img_20220829_wa0030.jpg", "thumb": "img/pics/thumb_img_20220829_wa0030.jpg", "rawName": "IMG-20220829-WA0030.jpg"}, {"file": "img/pics/img_20221208_wa0048.jpg", "thumb": "img/pics/thumb_img_20221208_wa0048.jpg", "rawName": "IMG-20221208-WA0048.jpg"}, {"file": "img/pics/img_20221208_wa0049.jpg", "thumb": "img/pics/thumb_img_20221208_wa0049.jpg", "rawName": "IMG-20221208-WA0049.jpg"}, {"file": "img/pics/img_20230224_wa0001.jpg", "thumb": "img/pics/thumb_img_20230224_wa0001.jpg", "rawName": "IMG-20230224-WA0001.jpg"}, {"file": "img/pics/img_20230407_wa0007.jpg", "thumb": "img/pics/thumb_img_20230407_wa0007.jpg", "rawName": "IMG-20230407-WA0007.jpeg"}, {"file": "img/pics/img_20230407_wa0009.jpg", "thumb": "img/pics/thumb_img_20230407_wa0009.jpg", "rawName": "IMG-20230407-WA0009.jpeg"}, {"file": "img/pics/img_20230407_wa0015.jpg", "thumb": "img/pics/thumb_img_20230407_wa0015.jpg", "rawName": "IMG-20230407-WA0015.jpeg"}, {"file": "img/pics/img_20230407_wa0019.jpg", "thumb": "img/pics/thumb_img_20230407_wa0019.jpg", "rawName": "IMG-20230407-WA0019.jpeg"}, {"file": "img/pics/img_20230817_wa0000.jpg", "thumb": "img/pics/thumb_img_20230817_wa0000.jpg", "rawName": "IMG-20230817-WA0000.jpg"}, {"file": "img/pics/img_20231020_wa0177.jpg", "thumb": "img/pics/thumb_img_20231020_wa0177.jpg", "rawName": "IMG-20231020-WA0177.jpg"}, {"file": "img/pics/img_20231020_wa0179.jpg", "thumb": "img/pics/thumb_img_20231020_wa0179.jpg", "rawName": "IMG-20231020-WA0179.jpg"}, {"file": "img/pics/img_20231125_wa0012.jpg", "thumb": "img/pics/thumb_img_20231125_wa0012.jpg", "rawName": "IMG-20231125-WA0012.jpg"}, {"file": "img/pics/img_20240109_wa0036.jpg", "thumb": "img/pics/thumb_img_20240109_wa0036.jpg", "rawName": "IMG-20240109-WA0036.jpg"}, {"file": "img/pics/img_20240126_wa0005.jpg", "thumb": "img/pics/thumb_img_20240126_wa0005.jpg", "rawName": "IMG-20240126-WA0005.jpeg"}, {"file": "img/pics/img_20240204_wa0025.jpg", "thumb": "img/pics/thumb_img_20240204_wa0025.jpg", "rawName": "IMG-20240204-WA0025.jpg"}, {"file": "img/pics/img_20251107_wa0020.jpg", "thumb": "img/pics/thumb_img_20251107_wa0020.jpg", "rawName": "IMG-20251107-WA0020.jpeg"}, {"file": "img/pics/img_20260524_wa0009.jpg", "thumb": "img/pics/thumb_img_20260524_wa0009.jpg", "rawName": "IMG-20260524-WA0009.jpg"}, {"file": "img/pics/img_0100.jpg", "thumb": "img/pics/thumb_img_0100.jpg", "rawName": "IMG_0100.JPG"}, {"file": "img/pics/img_20240126_142942067.jpg", "thumb": "img/pics/thumb_img_20240126_142942067.jpg", "rawName": "IMG_20240126_142942067.jpg"}, {"file": "img/pics/img_20240127_151736331.jpg", "thumb": "img/pics/thumb_img_20240127_151736331.jpg", "rawName": "IMG_20240127_151736331.jpg"}, {"file": "img/pics/img_20240215_192520198_hdr.jpg", "thumb": "img/pics/thumb_img_20240215_192520198_hdr.jpg", "rawName": "IMG_20240215_192520198_HDR.jpg"}, {"file": "img/pics/img_20240222_062520567.jpg", "thumb": "img/pics/thumb_img_20240222_062520567.jpg", "rawName": "IMG_20240222_062520567.jpg"}, {"file": "img/pics/img_20240302_222826535_hdr.jpg", "thumb": "img/pics/thumb_img_20240302_222826535_hdr.jpg", "rawName": "IMG_20240302_222826535_HDR.jpg"}, {"file": "img/pics/img_20240302_222840573_hdr.jpg", "thumb": "img/pics/thumb_img_20240302_222840573_hdr.jpg", "rawName": "IMG_20240302_222840573_HDR.jpg"}, {"file": "img/pics/img_4266.jpg", "thumb": "img/pics/thumb_img_4266.jpg", "rawName": "IMG_4266.jpg"}, {"file": "img/pics/img_4334.jpg", "thumb": "img/pics/thumb_img_4334.jpg", "rawName": "IMG_4334.JPG"}, {"file": "img/pics/img_4337.jpg", "thumb": "img/pics/thumb_img_4337.jpg", "rawName": "IMG_4337.JPG"}, {"file": "img/pics/img_4339.jpg", "thumb": "img/pics/thumb_img_4339.jpg", "rawName": "IMG_4339.JPG"}, {"file": "img/pics/img_4340.jpg", "thumb": "img/pics/thumb_img_4340.jpg", "rawName": "IMG_4340.JPG"}, {"file": "img/pics/screenshot_20231215_025149_photos.jpg", "thumb": "img/pics/thumb_screenshot_20231215_025149_photos.jpg", "rawName": "Screenshot_20231215-025149_Photos.jpg"}, {"file": "img/pics/screenshot_20231215_025308_photos.jpg", "thumb": "img/pics/thumb_screenshot_20231215_025308_photos.jpg", "rawName": "Screenshot_20231215-025308_Photos.jpg"}, {"file": "img/pics/screenshot_20231215_025409_photos.jpg", "thumb": "img/pics/thumb_screenshot_20231215_025409_photos.jpg", "rawName": "Screenshot_20231215-025409_Photos.jpg"}, {"file": "img/pics/screenshot_20240308_153629.jpg", "thumb": "img/pics/thumb_screenshot_20240308_153629.jpg", "rawName": "Screenshot_20240308-153629.png"}, {"file": "img/pics/screenshot_20240308_153649.jpg", "thumb": "img/pics/thumb_screenshot_20240308_153649.jpg", "rawName": "Screenshot_20240308-153649.png"}, {"file": "img/pics/screenshot_20240308_153712.jpg", "thumb": "img/pics/thumb_screenshot_20240308_153712.jpg", "rawName": "Screenshot_20240308-153712.png"}, {"file": "img/pics/screenshot_20240308_153731.jpg", "thumb": "img/pics/thumb_screenshot_20240308_153731.jpg", "rawName": "Screenshot_20240308-153731.png"}, {"file": "img/pics/screenshot_20240308_154155.jpg", "thumb": "img/pics/thumb_screenshot_20240308_154155.jpg", "rawName": "Screenshot_20240308-154155.png"}, {"file": "img/pics/snapchat_1539038941.jpg", "thumb": "img/pics/thumb_snapchat_1539038941.jpg", "rawName": "Snapchat-1539038941.jpg"}, {"file": "img/pics/snapchat_1541689392.jpg", "thumb": "img/pics/thumb_snapchat_1541689392.jpg", "rawName": "Snapchat-1541689392.jpg"}, {"file": "img/pics/snapchat_1607269524.jpg", "thumb": "img/pics/thumb_snapchat_1607269524.jpg", "rawName": "Snapchat-1607269524.jpg"}, {"file": "img/pics/snapchat_1814419928.jpg", "thumb": "img/pics/thumb_snapchat_1814419928.jpg", "rawName": "Snapchat-1814419928.jpg"}];
         let filteredPhotos = PHOTOS;
         let currentFilter = 'all';
         let currentPage = 1;
         let lightboxIndex = 0;
         
-        const PHOTOS_PER_PAGE = 4; // Show 4 initially
+        const PHOTOS_PER_PAGE = 100;
         
         // DOM Elements
         const grid = document.getElementById('photo-grid');
@@ -1388,8 +1149,6 @@
         const lightboxPrev = document.getElementById('lightbox-prev');
         const lightboxNext = document.getElementById('lightbox-next');
         const lightboxClose = document.getElementById('lightbox-close');
-        const loadMoreBtn = document.getElementById('load-more-btn');
-        const loadMoreContainer = document.getElementById('load-more-container');
         
         // ============ UTILITIES ============
         function isInViewport(el) {
@@ -1448,15 +1207,12 @@
                 rows.push(row);
             }
             const bar = "═".repeat(w);
-            el.textContent = `╔${bar}╗
-` + 
-                             rows.map(r => `║${r}║`).join('
-') + 
-                             `
-╚${bar}╝`;
+            el.textContent = `╔${bar}╗\n║ ${( "SYSTEM.TELEMETRY // LIVE ASCII STREAM" ).padEnd(w, " ")}║\n` + 
+                             rows.map(r => `║${r}║`).join('\n') + 
+                             `\n╚${bar}╝`;
             waveT += 0.08;
         }
-        
+
         // ASCII Spinners
         const SPINNER_FRAMES = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
         let spinnerIdx = 0;
@@ -1465,7 +1221,7 @@
             document.querySelectorAll('.ascii-spinner').forEach(el => el.textContent = glyph);
             spinnerIdx = (spinnerIdx + 1) % SPINNER_FRAMES.length;
         }
-        
+
         // ASCII Music Equalizer
         const EQ_BARS = [' ', '▂', '▃', '▄', '▅', '▆', '▇', '█'];
         let eqT = 0;
@@ -1488,71 +1244,67 @@
             const timeStr = new Intl.DateTimeFormat('en-GB', options).format(now) + ' IST';
             const clockEl = document.getElementById('live-ist-clock');
             if (clockEl) clockEl.textContent = timeStr;
-            
+
             const startOfYear = new Date(now.getFullYear(), 0, 1);
             const endOfYear = new Date(now.getFullYear() + 1, 0, 1);
             const progress = ((now - startOfYear) / (endOfYear - startOfYear)) * 100;
             const dayOfYear = Math.floor((now - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
             const progEl = document.getElementById('live-year-progress');
             if (progEl) progEl.textContent = `DAY ${dayOfYear}/365 · ${progress.toFixed(1)}% OF ${now.getFullYear()}`;
-            
-                        // Pluc tenure timer: starts from Nov 16, 2026. Kept zero until position commences.
-            const plucStart = new Date('2026-11-16T00:00:00+05:30');
-            const plucDaysEl = document.getElementById('pluc-days');
-            if (plucDaysEl) {
-                if (now >= plucStart) {
-                    const diffMs = now - plucStart;
-                    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-                    const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-                    const diffSecs = Math.floor((diffMs % (1000 * 60)) / 1000);
-                    plucDaysEl.textContent = `${diffDays}d ${diffHours}h ${diffMins}m ${diffSecs}s`;
-                } else {
-                    plucDaysEl.textContent = '0d 0h 0m 0s';
-                }
-            }
         }
         
-        // ============ TECH STACK (CATEGORIZED) ============
+        // ============ TECH STACK ============
         function renderTechStack() {
             const container = document.getElementById('tech-stack');
             if (!container) return;
             
-            container.innerHTML = TECH_STACK_CATEGORIES.map((cat, catIdx) => `
-                <div class="tech-category" style="animation-delay: ${catIdx * 0.05}s;">
-                    <div class="tech-category-title">${cat.title}</div>
-                    <div class="tech-category-grid">
-                        ${cat.items.map((tech, i) => `
-                            <img src="${tech.svg}" alt="${tech.name}" title="${tech.name}" class="tech-logo" style="animation-delay: ${(catIdx * 5 + i) * 0.03}s;" loading="lazy">
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('');
+            TECH_STACK.forEach((tech, i) => {
+                const img = document.createElement('img');
+                img.src = tech.svg;
+                img.alt = tech.name;
+                img.title = tech.name;
+                img.className = 'tech-logo';
+                img.style.animationDelay = `${i * 0.03}s`;
+                img.loading = 'lazy';
+                container.appendChild(img);
+            });
         }
         
         // ============ GITHUB ACTIVITY & OPEN SOURCE ============
-        function renderGitHubContent(public_repos = 38) {
+        const OSS_MERGED = [
+            { repo: "google-research/timesfm", pr: "#539", stars: "35.1k", desc: "fix(deps): split jax[cuda] into cpu and cuda extras to support CPU-only installs", date: "2026-11-13", url: "https://github.com/google-research/timesfm/pull/539" },
+            { repo: "modelcontextprotocol/servers", pr: "#5145", stars: "92.0k", desc: "fix(git): prefix git_show diff headers with a/ and b/ (unblocking git apply)", date: "2026-10-13", url: "https://github.com/modelcontextprotocol/servers/pull/5145" },
+            { repo: "confident-ai/deepeval", pr: "#3431", stars: "19.5k", desc: "fix(litellm): omit default temperature to prevent failures on reasoning models", date: "2026-11-02", url: "https://github.com/confident-ai/deepeval/pull/3431" },
+            { repo: "ddotta/awesome-polars", pr: "#643", stars: "1.1k", desc: "Add ds-agent-playbook to Tools Built with Polars", date: "2026-10-12", url: "https://github.com/ddotta/awesome-polars/pull/643" },
+            { repo: "davidgasquez/awesome-duckdb", pr: "#372", stars: "2.5k", desc: "Add ds-agent-playbook to Libraries Powered by DuckDB", date: "2026-10-12", url: "https://github.com/davidgasquez/awesome-duckdb/pull/372" }
+        ];
+
+        const UPSTREAM_SOLUTIONS = [
+            { project: "Model Context Protocol (MCP)", stars: "92k", quote: "The fix is the one @udbhav-shrinet proposed on the issue.", author: "Cliff Hall (Core Maintainer)", url: "https://github.com/modelcontextprotocol/servers/issues/5107" },
+            { project: "Stanford NLP DSPy", stars: "22k+", quote: "Isolated BootstrapFewShot metric_threshold=0.0 falsy flaw", author: "DSPy Core Optimizer", url: "https://github.com/stanfordnlp/dspy/pull/10606" },
+            { project: "Hugging Face Smolagents", stars: "30k+", quote: "Architected extended-precision & NumPy scalar serialization", author: "Smolagents SafeSerializer", url: "https://github.com/huggingface/smolagents/issues/2961" }
+        ];
+
+        function renderGitHubContent(public_repos = 38, followers = 10, following = 27) {
             const container = document.getElementById('github-stats');
             if (!container) return;
             
             container.innerHTML = `
-                <!-- Streak Cards -->
-                <div class="streak-grid mb-6">
-                    <div class="streak-card">
-                        <div class="streak-value" id="streak-current">2</div>
-                        <div class="streak-label">Commit Streak</div>
+                <div class="grid grid-cols-3 gap-3 mb-6">
+                    <div class="card p-3 text-center">
+                        <div class="font-display text-xl text-accent stat-value">${public_repos}</div>
+                        <div class="text-textMuted text-[11px] font-mono">Repositories</div>
                     </div>
-                    <div class="streak-card">
-                        <div class="streak-value" id="streak-longest">66</div>
-                        <div class="streak-label">Longest Streak</div>
+                    <div class="card p-3 text-center">
+                        <div class="font-display text-xl text-accent stat-value">${followers}</div>
+                        <div class="text-textMuted text-[11px] font-mono">Followers</div>
                     </div>
-                    <div class="streak-card">
-                        <div class="streak-value" id="streak-total">3,757</div>
-                        <div class="streak-label">Total Contributions</div>
+                    <div class="card p-3 text-center">
+                        <div class="font-display text-xl text-accent stat-value">${following}</div>
+                        <div class="text-textMuted text-[11px] font-mono">Following</div>
                     </div>
                 </div>
-                
-                <!-- Merged PRs -->
+
                 <div class="mb-6">
                     <div class="flex items-center justify-between mb-3">
                         <span class="font-mono text-xs text-accent">▎ MERGED PULL REQUESTS</span>
@@ -1570,9 +1322,8 @@
                         `).join('')}
                     </div>
                 </div>
-                
-                <!-- Attributed Architecture -->
-                <div class="mb-6">
+
+                <div>
                     <div class="flex items-center justify-between mb-3">
                         <span class="font-mono text-xs text-accent">▎ ATTRIBUTED ARCHITECTURE</span>
                         <span class="text-textDim text-[11px] font-mono">Core Maintainers</span>
@@ -1589,24 +1340,16 @@
                         `).join('')}
                     </div>
                 </div>
-                
-                <!-- GitHub Action Links -->
-                <div class="gh-links">
-                    <a href="https://github.com/search?q=is%3Apr+is%3Amerged+author%3A%40me+-user%3Audbhav-shrinet&type=pullrequests" target="_blank" rel="noopener" class="gh-link">All Merged PRs</a>
-                    <a href="https://github.com/search?q=is%3Aissue+involves%3A%40me+-user%3Audbhav-shrinet&type=pullrequests" target="_blank" rel="noopener" class="gh-link">All Issues</a>
-                    <a href="https://github.com/search?q=is%3Apr+is%3Aopen+involves%3A%40me+-user%3Audbhav-shrinet&type=pullrequests" target="_blank" rel="noopener" class="gh-link">Open PRs & Issues</a>
-                    <a href="https://github.com/udbhav-shrinet" target="_blank" rel="noopener" class="gh-link">View Profile</a>
-                </div>
             `;
         }
-        
+
         async function fetchGitHubActivity() {
             renderGitHubContent(); // Initial render with real curated data
             try {
                 const userRes = await fetch('https://api.github.com/users/udbhav-shrinet');
                 if (userRes.ok) {
                     const user = await userRes.json();
-                    renderGitHubContent(user.public_repos);
+                    renderGitHubContent(user.public_repos, user.followers, user.following);
                 }
             } catch (err) {
                 console.warn('GitHub live fetch failed, using curated data:', err);
@@ -1631,7 +1374,6 @@
                         <ul class="text-textSecondary text-sm space-y-1">
                             ${entry.items.map(item => `<li>• ${item}</li>`).join('')}
                         </ul>
-                        
                     </div>
                 </div>
             `).join('');
@@ -1643,31 +1385,17 @@
             if (!container) return;
             
             container.innerHTML = SYSTEMS.map((sys, i) => `
-                <article class="card p-6 reveal stagger-${Math.min(i + 1, 8)} group flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-start justify-between mb-4">
-                            <span class="font-mono text-xs text-accent">${sys.badge}</span>
-                            <a href="${sys.url}" target="_blank" rel="noopener" class="text-textMuted hover:text-accent transition-colors" aria-label="GitHub">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            </a>
-                        </div>
-                        <h3 class="text-xl font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">${sys.name}</h3>
-                        <p class="text-textSecondary text-sm mb-4 leading-relaxed">${sys.desc}</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            ${sys.tech.split(', ').map(t => `<span class="tag px-3 py-1 rounded text-xs font-mono">${t}</span>`).join('')}
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3 pt-4 border-t border-voidBorder/60">
-                        ${sys.liveUrl ? `
-                            <a href="${sys.liveUrl}" target="_blank" rel="noopener" class="btn-primary px-3.5 py-1.5 rounded-lg text-xs font-mono inline-flex items-center gap-1.5 transition-all">
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                                Live Site
-                            </a>
-                        ` : ''}
-                        <a href="${sys.url}" target="_blank" rel="noopener" class="btn-ghost px-3.5 py-1.5 rounded-lg text-xs font-mono inline-flex items-center gap-1.5 transition-all">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            Source
+                <article class="card p-6 reveal stagger-${Math.min(i + 1, 8)} group">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="font-mono text-xs text-accent">${sys.badge}</span>
+                        <a href="${sys.url}" target="_blank" rel="noopener" class="text-textMuted hover:text-accent transition-colors" aria-label="GitHub">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                         </a>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">${sys.name}</h3>
+                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">${sys.desc}</p>
+                    <div class="flex flex-wrap gap-2">
+                        ${sys.tech.split(', ').map(t => `<span class="tag px-3 py-1 rounded text-xs">${t}</span>`).join('')}
                     </div>
                 </article>
             `).join('');
@@ -1694,7 +1422,7 @@
             `).join('');
         }
         
-                // ============ SPOTIFY ============
+        // ============ SPOTIFY ============
         function renderSpotify() {
             const container = document.getElementById('spotify-grid');
             if (!container) return;
@@ -1702,14 +1430,14 @@
             container.innerHTML = SPOTIFY_PLAYLISTS.map((p, i) => `
                 <div class="card p-6 reveal stagger-${Math.min(i + 1, 8)} spotify-embed">
                     <div class="flex items-center gap-3 mb-4">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-accent"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.35-.66.48-1.021.24-1.32-.96-2.82-1.44-4.5-1.44-1.68 0-3.18.48-4.5 1.44-.36.24-.78.12-1.021-.24-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.2-3.12c-.24-.24-.48-.36-.72-.36-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.08-9.6c-.6-.36-1.32-.48-2.16-.48-.84 0-1.56.12-2.16.48-.72.36-1.08 1.08-1.08 1.92s.36 1.56 1.08 1.92c.72.48 1.68.72 2.64.72 1.08 0 2.04-.36 2.76-1.08.84-.84 1.08-1.92 1.08-3.24 0-1.32-.36-2.52-1.08-3.24zm-.24 5.28c-1.2 1.2-2.88 1.8-4.8 1.8-2.04 0-3.84-.6-5.16-1.8-.96-.96-1.44-2.16-1.44-3.6 0-1.56.6-2.76 1.56-3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-accent"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.35-.66.48-1.021.24-1.32-.96-2.82-1.44-4.5-1.44-1.68 0-3.18.48-4.5 1.44-.36.24-.78.12-1.021-.24-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.2-3.12c-.24-.24-.48-.36-.72-.36-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.08-9.6c-.6-.36-1.32-.48-2.16-.48-.84 0-1.56.12-2.16.48-.72.36-1.08 1.08-1.08 1.92s.36 1.56 1.08 1.92c.72.48 1.68.72 2.64.72 1.08 0 2.04-.36 2.76-1.08.84-.84 1.08-1.92 1.08-3.24 0-1.32-.36-2.52-1.08-3.24zm-.24 5.28c-1.2 1.2-2.88 1.8-4.8 1.8-2.04 0-3.84-.6-5.16-1.8-.96-.96-1.44-2.16-1.44-3.6 0-1.56.6-2.76 1.56-3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72"/></svg>
                         <div>
                             <p class="font-mono text-xs text-accent">Playlist</p>
                             <p class="font-display text-sm text-textPrimary">${p.title}</p>
                         </div>
                     </div>
                     <p class="text-textSecondary text-sm mb-4">${p.desc}</p>
-                    <iframe style="border-radius:12px;border:1px solid #1a1a1a;width:100%;height:380px;min-height:380px;" src="https://open.spotify.com/embed/playlist/${p.id}?utm_source=generator&theme=0" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:8px;border:1px solid #1a1a1a;width:100%;height:152px" src="https://open.spotify.com/embed/playlist/${p.id}?utm_source=generator" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
             `).join('');
         }
@@ -1739,10 +1467,7 @@
                 if (response.ok) {
                     const data = await response.json();
                     if (data && data.length > 0) {
-                        // Keep our top curated professional photos first, append the rest
-                        const topFiles = new Set(PHOTOS.map(p => p.file));
-                        const additional = data.filter(p => !topFiles.has(p.file));
-                        PHOTOS = [...PHOTOS, ...additional];
+                        PHOTOS = data;
                         filteredPhotos = PHOTOS;
                         renderPhotos();
                     }
@@ -1756,7 +1481,6 @@
             const start = 0;
             const end = currentPage * PHOTOS_PER_PAGE;
             const photosToShow = filteredPhotos.slice(start, end);
-            const hasMore = end < filteredPhotos.length;
             
             if (currentPage === 1) {
                 grid.innerHTML = '';
@@ -1770,15 +1494,11 @@
                 item.setAttribute('role', 'listitem');
                 item.setAttribute('tabindex', '0');
                 
-                const title = photo.title || photo.rawName;
-                const desc = photo.description || photo.rawName;
-                
                 item.innerHTML = `
-                    <img src="${photo.thumb}" alt="${title}" loading="lazy" decoding="async">
+                    <img src="${photo.thumb}" alt="${photo.rawName}" loading="lazy" decoding="async">
                     <div class="photo-overlay">
-                        <h4 class="font-display text-sm font-normal text-textPrimary">${title}</h4>
-                        <p class="text-textSecondary text-xs mt-1">${desc}</p>
-                        <span class="font-mono text-xs text-textMuted mt-2 inline-block">${photo.category || 'photo'}</span>
+                        <h4 class="font-display text-sm font-normal text-textPrimary">${photo.rawName}</h4>
+                        <span class="font-mono text-xs text-textMuted mt-2 inline-block">${photo.rawName}</span>
                     </div>
                 `;
                 
@@ -1792,11 +1512,6 @@
                 
                 grid.appendChild(item);
             });
-            
-            // Show/hide load more button
-            if (loadMoreContainer) {
-                loadMoreContainer.style.display = hasMore ? 'block' : 'none';
-            }
             
             requestAnimationFrame(() => {
                 document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
@@ -1822,8 +1537,8 @@
             const photo = PHOTOS[lightboxIndex];
             const src = photo.file;
             lightboxImg.src = src;
-            lightboxImg.alt = photo.title || photo.rawName;
-            lightboxTitle.textContent = photo.title || photo.rawName;
+            lightboxImg.alt = photo.rawName;
+            lightboxTitle.textContent = photo.rawName;
         }
         
         function navigateLightbox(dir) {
@@ -1842,16 +1557,6 @@
                 if (e.key === 'ArrowLeft') navigateLightbox(-1);
                 if (e.key === 'ArrowRight') navigateLightbox(1);
             });
-        }
-        
-        // ============ LOAD MORE PHOTOS ============
-        function setupLoadMore() {
-            if (loadMoreBtn) {
-                loadMoreBtn.addEventListener('click', () => {
-                    currentPage++;
-                    renderPhotos();
-                });
-            }
         }
         
         // ============ SCROLL REVEAL ============
@@ -1905,7 +1610,6 @@
             renderHonors();
             await loadPhotos();
             setupLightbox();
-            setupLoadMore();
             setupScrollReveal();
             setupFooterDate();
             setupSmoothScroll();
