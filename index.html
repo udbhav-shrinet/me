@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Udbhav Shrinet — Data Analyst, Economist, Builder. Distributed systems, quantitative research, and visual storytelling.">
+    <meta name="description" content="Udbhav Shrinet — Data Scientist, Quant Researcher, Builder. Pipelines, models, and visual systems.">
     <meta name="theme-color" content="#000000">
     <title>Udbhav Shrinet</title>
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -23,7 +22,7 @@
                         voidCard: '#0a0a0a',
                         voidBorder: '#1a1a1a',
                         voidBorderHover: '#2a2a2a',
-                        accent: '#e8d5ff',
+                        accent: '#c084fc',
                         accentDim: '#9b87a8',
                         accentMuted: '#6b5b78',
                         textPrimary: '#fafafa',
@@ -41,7 +40,11 @@
                         'glitch': 'glitch 3s ease-in-out infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s ease-in-out infinite',
-                        'reveal': 'reveal 0.8s ease-out forwards',
+                        'blink': 'blink 1s step-end infinite',
+                        'typewriter': 'typewriter 2s steps(40) 1s forwards',
+                        'cursor-blink': 'cursor-blink 0.5s step-end infinite',
+                        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+                        'slide-left': 'slide-left 1s ease-out forwards',
                     },
                     keyframes: {
                         scan: {
@@ -59,9 +62,25 @@
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
                         },
-                        reveal: {
+                        blink: {
+                            '0%, 50%': { opacity: '1' },
+                            '51%, 100%': { opacity: '0' },
+                        },
+                        typewriter: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' },
+                        },
+                        'cursor-blink': {
+                            '0%, 50%': { opacity: '1' },
+                            '51%, 100%': { opacity: '0' },
+                        },
+                        'fade-in-up': {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'slide-left': {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
                         },
                     },
                 }
@@ -79,25 +98,87 @@
             }
         }
         
-        body {
-            background: #000000;
-            color: #fafafa;
+        body:not(.light) {
+            background-color: #000000 !important;
+            color: #fafafa !important;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
-        ::selection { background: #e8d5ff; color: #000000; }
-        ::-webkit-selection { background: #e8d5ff; color: #000000; }
+        body.light {
+            background-color: #fafafa !important;
+            color: #111111 !important;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        body.light nav {
+            background: rgba(250, 250, 250, 0.9) !important;
+            border-bottom-color: #e5e5e5 !important;
+        }
+        body.light .text-textPrimary { color: #111111 !important; }
+        body.light .text-textSecondary { color: #52525b !important; }
+        body.light .text-textMuted { color: #71717a !important; }
+        body.light .text-textDim { color: #a1a1aa !important; }
+        body.light .border-voidBorder { border-color: #e5e5e5 !important; }
+        body.light .bg-voidCard { background-color: #ffffff !important; }
+        body.light .bg-void { background-color: #f4f4f5 !important; }
+        body.light .card { background: #ffffff !important; border-color: #e5e5e5 !important; }
+        body.light .card:hover { border-color: #d4d4d8 !important; }
+        body.light .nav-link { color: #52525b; }
+        body.light .nav-link:hover, body.light .nav-link.active { color: #7c3aed; }
+        body.light .nav-link:hover::after, body.light .nav-link.active::after { background: #7c3aed; }
+        body.light .btn-primary { border-color: #7c3aed; color: #7c3aed; }
+        body.light .btn-primary:hover { background: #7c3aed; color: #fff; }
+        body.light .btn-ghost { border-color: #e5e5e5; color: #52525b; }
+        body.light .btn-ghost:hover { border-color: #7c3aed; color: #7c3aed; }
+        body.light .tag { border-color: #e5e5e5; color: #52525b; }
+        body.light .tag:hover { border-color: #7c3aed; color: #7c3aed; }
+        body.light .skill-item { background: #f4f4f5; border-color: #e5e5e5; }
+        body.light .project-card { background: #ffffff; border-color: #e5e5e5; }
+        body.light .project-card:hover { border-color: #7c3aed; }
+        body.light .photo-overlay { background: linear-gradient(180deg, transparent 40%, rgba(255,255,255,0.95) 100%); }
+        body.light .photo-overlay h4 { color: #111; }
+        body.light .photo-overlay p { color: #444; }
+        body.light .photo-overlay span { color: #71717a; }
+        body.light .lightbox { background: rgba(250,250,250,0.98); }
+        body.light .lightbox-close, body.light .lightbox-nav { background: #fff; border-color: #e5e5e5; color: #52525b; }
+        body.light .lightbox-close:hover, body.light .lightbox-nav:hover { border-color: #7c3aed; color: #7c3aed; }
+        body.light .ascii-banner { color: #7c3aed; text-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
+        body.light .ascii-banner .dim { color: #a1a1aa; }
+        body.light .ascii-banner .accent { color: #7c3aed; text-shadow: 0 0 12px rgba(124, 58, 237, 0.6); }
+        body.light .ascii-banner .muted { color: #9f67ff; }
+        body.light input, body.light textarea, body.light select { background: #fff; border-color: #e5e5e5; color: #111; }
+        body.light input:focus, body.light textarea:focus, body.light select:focus { border-color: #7c3aed; }
+        body.light ::selection { background: #7c3aed; color: #fff; }
+        body.light .scanlines::before { background: repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(0,0,0,0.02) 1px, rgba(0,0,0,0.02) 2px); }
+        body.light footer { border-color: #e5e5e5; }
+        body.light .divider { background: linear-gradient(90deg, transparent, #e5e5e5, transparent); }
+        body.light .timeline::before { background: linear-gradient(180deg, #7c3aed, transparent); }
+        body.light .timeline-dot { border-color: #e5e5e5; background: #fff; }
+        body.light .timeline-item:hover .timeline-dot { border-color: #7c3aed; box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1); }
+        body.light .skill-bar { background: #e5e5e5; }
+        body.light .skill-bar-fill { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+        body.light .stat-value { color: #7c3aed; }
+        body.light .terminal-prompt { color: #a1a1aa; }
+        body.light .scroll-indicator { color: #71717a; }
         
-        /* Scrollbar */
+        ::selection { background: #c084fc; color: #000; }
+        ::-webkit-selection { background: #c084fc; color: #000; }
+        
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #000000; }
         ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #2a2a2a; }
+        body.light ::-webkit-scrollbar-track { background: #fafafa; }
+        body.light ::-webkit-scrollbar-thumb { background: #e5e5e5; }
+        body.light ::-webkit-scrollbar-thumb:hover { background: #d4d4d8; }
         
-        /* Scanline overlay */
         .scanlines::before {
             content: '';
             position: fixed;
@@ -118,35 +199,36 @@
             .scanlines::before { display: none; }
         }
         
-        /* ASCII Banner */
         .ascii-banner {
             font-family: 'JetBrains Mono', monospace;
             font-size: clamp(6px, 1.2vw, 9px);
             line-height: 1.15;
             letter-spacing: 0;
             white-space: pre;
-            color: #e8d5ff;
-            text-shadow: 0 0 20px rgba(232, 213, 255, 0.3);
+            color: #c084fc;
+            text-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
             overflow-x: auto;
         }
         
-        .ascii-banner .dim { color: #8a8a9a; }
-        .ascii-banner .accent { color: #ffffff; font-weight: 700; text-shadow: 0 0 12px rgba(232, 213, 255, 0.6); }
+        .ascii-banner .dim { color: #71717a; }
+        .ascii-banner .accent { color: #ffffff; font-weight: 700; text-shadow: 0 0 12px rgba(192, 132, 252, 0.6); }
         .ascii-banner .muted { color: #e4d4ff; font-weight: 500; }
         
-        /* Terminal cursor */
         .cursor {
             display: inline-block;
             width: 8px;
             height: 1.1em;
-            background: #e8d5ff;
-            animation: blink 1s step-end infinite;
+            background: #c084fc;
+            animation: cursor-blink 0.5s step-end infinite;
             vertical-align: text-bottom;
             margin-left: 2px;
         }
-        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
         
-        /* Cards */
+        @keyframes cursor-blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
         .card {
             background: linear-gradient(145deg, #0a0a0a 0%, #050505 100%);
             border: 1px solid #1a1a1a;
@@ -155,10 +237,9 @@
         .card:hover {
             border-color: #2a2a2a;
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px -20px rgba(232, 213, 255, 0.08);
+            box-shadow: 0 20px 40px -20px rgba(192, 132, 252, 0.08);
         }
         
-        /* Photo grid items */
         .photo-item {
             position: relative;
             aspect-ratio: 4/5;
@@ -168,7 +249,7 @@
             transition: border-color 0.4s ease, transform 0.4s ease;
         }
         .photo-item:hover {
-            border-color: #e8d5ff;
+            border-color: #c084fc;
             transform: scale(1.02);
             z-index: 10;
         }
@@ -196,7 +277,6 @@
         }
         .photo-item:hover .photo-overlay { opacity: 1; }
         
-        /* Nav link */
         .nav-link {
             position: relative;
             color: #d4d4dc;
@@ -210,95 +290,67 @@
             left: 0;
             width: 0;
             height: 1px;
-            background: #e8d5ff;
+            background: #c084fc;
             transition: width 0.3s ease;
         }
         .nav-link:hover, .nav-link.active { color: #ffffff; }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
         
-        /* Button styles */
         .btn-primary {
             background: transparent;
-            border: 1px solid #e8d5ff;
-            color: #e8d5ff;
+            border: 1px solid #c084fc;
+            color: #c084fc;
             transition: all 0.2s ease;
         }
         .btn-primary:hover {
-            background: #e8d5ff;
+            background: #c084fc;
             color: #000000;
-            box-shadow: 0 0 30px rgba(232, 213, 255, 0.2);
+            box-shadow: 0 0 30px rgba(192, 132, 252, 0.2);
         }
         .btn-ghost {
             background: transparent;
             border: 1px solid #1a1a1a;
-            color: #a0a0a0;
+            color: #a1a1aa;
             transition: all 0.2s ease;
         }
         .btn-ghost:hover {
-            border-color: #e8d5ff;
-            color: #e8d5ff;
+            border-color: #c084fc;
+            color: #c084fc;
         }
         
-        /* Section reveal - fully visible by default */
-        @keyframes revealFade {
-            from {
-                opacity: 0.2;
-                transform: translateY(12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .reveal {
-            opacity: 1 !important;
-            transform: none !important;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        .reveal.visible {
-            opacity: 1 !important;
-            transform: none !important;
-        }
+        .reveal { opacity: 0; transform: translateY(30px); }
+        .reveal.visible { animation: fade-in-up 0.8s ease-out forwards; }
         
-        /* Stagger delays */
         .stagger-1 { animation-delay: 0.1s; }
         .stagger-2 { animation-delay: 0.2s; }
         .stagger-3 { animation-delay: 0.3s; }
         .stagger-4 { animation-delay: 0.4s; }
         .stagger-5 { animation-delay: 0.5s; }
         .stagger-6 { animation-delay: 0.6s; }
+        .stagger-7 { animation-delay: 0.7s; }
+        .stagger-8 { animation-delay: 0.8s; }
         
-        /* Focus visible */
-        :focus-visible {
-            outline: 2px solid #e8d5ff;
-            outline-offset: 2px;
-        }
-        
-        /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
             .reveal { opacity: 1; transform: none; }
             .photo-item:hover img { transform: none; }
             .card:hover { transform: none; }
         }
         
-        /* Tag pills */
         .tag {
             border: 1px solid #1a1a1a;
-            color: #606060;
+            color: #a1a1aa;
             transition: all 0.2s ease;
         }
         .tag:hover {
-            border-color: #e8d5ff;
-            color: #e8d5ff;
+            border-color: #c084fc;
+            color: #c084fc;
         }
         
-        /* Divider */
         .divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, #1a1a1a, transparent);
         }
         
-        /* Photo lightbox */
         .lightbox {
             position: fixed;
             inset: 0;
@@ -328,7 +380,7 @@
             height: 48px;
             border: 1px solid #1a1a1a;
             background: #0a0a0a;
-            color: #606060;
+            color: #a1a1aa;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -336,7 +388,7 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .lightbox-close:hover { border-color: #e8d5ff; color: #e8d5ff; }
+        .lightbox-close:hover { border-color: #c084fc; color: #c084fc; }
         .lightbox-nav {
             position: absolute;
             top: 50%;
@@ -345,7 +397,7 @@
             height: 60px;
             border: 1px solid #1a1a1a;
             background: #0a0a0a;
-            color: #606060;
+            color: #a1a1aa;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -353,7 +405,7 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .lightbox-nav:hover { border-color: #e8d5ff; color: #e8d5ff; }
+        .lightbox-nav:hover { border-color: #c084fc; color: #c084fc; }
         .lightbox-nav.prev { left: 2rem; }
         .lightbox-nav.next { right: 2rem; }
         .lightbox-caption {
@@ -365,16 +417,13 @@
             max-width: 80%;
         }
         
-        /* ASCII decorations */
         .corner-bracket::before { content: '┌'; }
         .corner-bracket::after { content: '┐'; }
         .corner-bracket-bottom::before { content: '└'; }
         .corner-bracket-bottom::after { content: '┘'; }
         
-        /* Typing effect */
-        .typing { overflow: hidden; white-space: nowrap; border-right: 2px solid #e8d5ff; }
+        .typing { overflow: hidden; white-space: nowrap; border-right: 2px solid #c084fc; }
         
-        /* Skill bars */
         .skill-bar {
             height: 2px;
             background: #1a1a1a;
@@ -383,7 +432,7 @@
         }
         .skill-bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, #e8d5ff, #9b87a8);
+            background: linear-gradient(90deg, #c084fc, #9b87a8);
             border-radius: 1px;
             transform-origin: left;
             transform: scaleX(0);
@@ -391,7 +440,6 @@
         }
         @keyframes fillBar { to { transform: scaleX(1); } }
         
-        /* Timeline */
         .timeline::before {
             content: '';
             position: absolute;
@@ -399,7 +447,7 @@
             top: 0;
             bottom: 0;
             width: 1px;
-            background: linear-gradient(180deg, #e8d5ff, transparent);
+            background: linear-gradient(180deg, #c084fc, transparent);
         }
         .timeline-dot {
             position: relative;
@@ -411,14 +459,67 @@
             transition: all 0.3s ease;
         }
         .timeline-item:hover .timeline-dot {
-            border-color: #e8d5ff;
-            box-shadow: 0 0 0 4px rgba(232, 213, 255, 0.1);
+            border-color: #c084fc;
+            box-shadow: 0 0 0 4px rgba(192, 132, 252, 0.1);
         }
+        
+        .terminal-prompt { color: #a1a1aa; }
+        .scroll-indicator { color: #71717a; }
+        
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid #1a1a1a;
+            color: #a1a1aa;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+        .theme-toggle:hover {
+            border-color: #c084fc;
+            color: #c084fc;
+        }
+        body.light .theme-toggle { border-color: #e5e5e5; color: #52525b; }
+        body.light .theme-toggle:hover { border-color: #7c3aed; color: #7c3aed; }
+        
+        /* ASCII animation elements */
+        .ascii-anim {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #71717a;
+            line-height: 1.1;
+            white-space: pre;
+            overflow: hidden;
+        }
+        
+        .ascii-frame { display: none; }
+        .ascii-frame.active { display: block; }
+        
+        /* Spotify embed styling */
+        .spotify-embed iframe {
+            border-radius: 8px;
+            border: 1px solid #1a1a1a;
+        }
+        body.light .spotify-embed iframe { border-color: #e5e5e5; }
+        
+        /* Tech stack logos */
+        .tech-logo {
+            height: 28px;
+            width: auto;
+            filter: grayscale(1) brightness(1.5);
+            transition: filter 0.3s ease, transform 0.3s ease;
+            opacity: 0.7;
+        }
+        .tech-logo:hover { filter: grayscale(0) brightness(1); opacity: 1; transform: scale(1.1); }
+        body.light .tech-logo { filter: grayscale(1) brightness(0); opacity: 0.6; }
+        body.light .tech-logo:hover { filter: grayscale(0) brightness(1); opacity: 1; }
     </style>
 </head>
 <body class="scanlines">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav" style="background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid #1a1a1a;">
+    <nav class="fixed top-0 left-0 right-0 z-50" style="background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid #1a1a1a;">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <!-- Logo -->
             <a href="#" class="flex items-center gap-3 nav-link" aria-label="Home">
@@ -426,22 +527,23 @@
                 <span class="text-dim hidden sm:inline">.sh</span>
             </a>
             
-            <!-- Desktop Nav (Differentiated Pages) -->
-            <div class="hidden md:flex items-center gap-6 lg:gap-8">
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8">
                 <a href="#dossier" class="nav-link text-sm tracking-wide font-mono">// dossier</a>
                 <a href="#systems" class="nav-link text-sm tracking-wide font-mono">// systems</a>
                 <a href="#dispatches" class="nav-link text-sm tracking-wide font-mono">// dispatches</a>
                 <a href="#exposures" class="nav-link text-sm tracking-wide font-mono">// exposures</a>
-                <a href="#telemetry" class="nav-link text-sm tracking-wide font-mono">// telemetry</a>
+                <a href="#soundtrack" class="nav-link text-sm tracking-wide font-mono">// soundtrack</a>
+                <a href="#honors" class="nav-link text-sm tracking-wide font-mono">// honors</a>
                 <a href="#transmit" class="nav-link text-sm tracking-wide font-mono">// transmit</a>
             </div>
             
-            <!-- Quick Actions & Links -->
+            <!-- Social Links & Theme Toggle -->
             <div class="flex items-center gap-3">
-                <a href="docs/Udbhav_Shrinet_Resume.pdf" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded border border-accent/40 bg-accent/10 hover:bg-accent/20 text-accent font-mono text-xs transition-all">
-                    <span>RESUME.pdf</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                </a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+                    <span id="theme-icon">☀️</span>
+                    <span id="theme-text">Light</span>
+                </button>
                 <a href="https://github.com/udbhav-shrinet" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="GitHub">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
@@ -450,6 +552,9 @@
                 </a>
                 <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="Medium">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                </a>
+                <a href="https://open.spotify.com/user/31xlrshv3eingjlzezabngu26xtq" target="_blank" rel="noopener" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="Spotify">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.35-.66.48-1.021.24-1.32-.96-2.82-1.44-4.5-1.44-1.68 0-3.18.48-4.5 1.44-.36.24-.78.12-1.021-.24-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.2-3.12c-.24-.24-.48-.36-.72-.36s-.48.12-.72.36c-2.4 2.28-5.28 3.72-8.46 3.72-3.18 0-6.06-1.44-8.46-3.72-.24-.24-.48-.36-.72-.36s-.48.12-.72.36c-.96 1.2-1.56 2.64-1.56 4.2 0 2.28 1.8 4.2 4.02 4.2 1.26 0 2.4-.48 3.24-1.32.12.12.24.12.36.12.12 0 .24-.12.24-.24V12c0-1.08.96-1.92 2.16-1.92 1.32 0 2.4.84 2.76 1.92.12-.12.12-.24.24-.24s.24.12.36.12c1.56.48 3.12 1.56 4.08 3.12zm-1.08-9.6c-.6-.36-1.32-.48-2.16-.48-.84 0-1.56.12-2.16.48-.72.36-1.08 1.08-1.08 1.92s.36 1.56 1.08 1.92c.72.48 1.68.72 2.64.72 1.08 0 2.04-.36 2.76-1.08.84-.84 1.08-1.92 1.08-3.24 0-1.32-.36-2.52-1.08-3.24zm-.24 5.28c-1.2 1.2-2.88 1.8-4.8 1.8-2.04 0-3.84-.6-5.16-1.8-.96-.96-1.44-2.16-1.44-3.6 0-1.56.6-2.76 1.56-3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76-1.44 3.72z"/></svg>
                 </a>
                 <a href="mailto:udbhav.singh.shrinet@gmail.com" class="nav-link p-2 hover:bg-voidCard rounded-lg" aria-label="Email">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
@@ -463,88 +568,50 @@
         <!-- Background grid -->
         <div class="absolute inset-0 opacity-5" aria-hidden="true">
             <div class="absolute inset-0" style="background-image: 
-                linear-gradient(rgba(232,213,255,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(232,213,255,0.1) 1px, transparent 1px);
+                linear-gradient(rgba(192,132,252,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(192,132,252,0.1) 1px, transparent 1px);
                 background-size: 60px 60px;">
             </div>
         </div>
         
-        <!-- ASCII Banner -->
-        <div class="relative z-10 px-6 text-center">
-            <pre class="ascii-banner reveal stagger-1" aria-label="ASCII Art Banner"><span class="dim">                                                    .:;;:'.                                                   
-                                               .;cxk0KKKKKKKK0kxc;.                                            
-                                          .;ok0KKKKKKKKKKKKKKKKKKKK0ko:.                                        
-                                     .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.                                    
-                                .;ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.                              
-                          .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.                         
-                     .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.                     
-               .;ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.               
-          .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.           
-     .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.        
-.ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko.
-
-            <span class="accent">        U D B H A V   S H R I N E T</span>
-            <span class="muted">   Data Analyst • Economist • Systems Builder</span>
-     <span class="dim">Distributed Systems • Quantitative Research • Visual Storytelling</span>
-
-.k0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko.
-     .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.        
-          .;ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.               
-               .;ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.                     
-                     .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.                     
-                          .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.                         
-                                .;ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.                              
-                                     .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.                                    
-                                          .;ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.                                        
-                                               .;cxk0KKKKKKKK0kxc;.                                            
-                                                    .:;;:'.                                                    </pre>
+        <!-- ASCII Animation Frame -->
+        <div class="relative z-10 px-6 text-center mb-8">
+            <div id="ascii-animation" class="ascii-anim" aria-label="ASCII Animation"></div>
         </div>
         
-        <!-- Tagline -->
-        <div class="relative z-10 mt-8 px-6 text-center reveal stagger-2">
-            <p class="font-mono text-sm text-textMuted tracking-wider uppercase mb-4">> whoami</p>
-            <h2 class="font-display text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight text-textPrimary">
-                Data Analyst <span class="text-accent">/</span> Economist <span class="text-accent">/</span> Builder
+        <!-- Hero Name & Title -->
+        <div class="relative z-10 px-6 text-center reveal stagger-1">
+            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-textPrimary mb-4">
+                Udbhav Shrinet
+                <span class="cursor" aria-hidden="true"></span>
+            </h1>
+        </div>
+        
+        <!-- Subtitle / Role -->
+        <div class="relative z-10 px-6 text-center reveal stagger-2">
+            <p class="font-mono text-sm text-textMuted tracking-wider uppercase mb-2">> whoami</p>
+            <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-normal tracking-tight text-textPrimary">
+                Data Scientist <span class="text-accent">/</span> Quant Researcher <span class="text-accent">/</span> Builder
             </h2>
         </div>
         
-        <!-- Stats Bar -->
-        <div class="relative z-10 mt-16 px-6 reveal stagger-3">
-            <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="card p-6 text-center">
-                    <div class="font-display text-3xl md:text-4xl text-accent">3+</div>
-                    <div class="text-textMuted text-sm mt-1 tracking-wide">Years Experience</div>
-                </div>
-                <div class="card p-6 text-center">
-                    <div class="font-display text-3xl md:text-4xl text-accent">15+</div>
-                    <div class="text-textMuted text-sm mt-1 tracking-wide">Projects Shipped</div>
-                </div>
-                <div class="card p-6 text-center">
-                    <div class="font-display text-3xl md:text-4xl text-accent">12+</div>
-                    <div class="text-textMuted text-sm mt-1 tracking-wide">Articles Published</div>
-                </div>
-                <div class="card p-6 text-center">
-                    <div class="font-display text-3xl md:text-4xl text-accent">50+</div>
-                    <div class="text-textMuted text-sm mt-1 tracking-wide">Photos Curated</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- CTA -->
-        <div class="relative z-10 mt-16 px-6 reveal stagger-4">
-            <!-- Dynamic Telemetry Ticker -->
-            <div class="max-w-3xl mx-auto mb-8 p-3 rounded-lg border border-voidBorder bg-voidCard/60 backdrop-blur font-mono text-xs text-textSecondary flex flex-wrap items-center justify-between gap-3 text-left">
+        <!-- Status Ticker -->
+        <div class="relative z-10 mt-10 px-6 reveal stagger-3">
+            <div class="max-w-3xl mx-auto p-4 rounded-lg border border-voidBorder bg-voidCard/60 backdrop-blur font-mono text-xs text-textSecondary flex flex-wrap items-center justify-between gap-3 text-left">
                 <div class="flex items-center gap-2">
                     <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span class="text-textPrimary font-semibold">STATUS:</span>
-                    <span class="text-textMuted">Data Analyst @ ABP Network</span>
+                    <span class="text-textSecondary">Data Scientist @ Pluc.tv</span>
                 </div>
                 <div class="flex items-center gap-4 text-textMuted">
                     <span id="live-ist-clock">--:--:-- IST</span>
                     <span id="live-year-progress" class="text-accent">YEAR PROGRESS: --%</span>
                 </div>
             </div>
-
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div class="relative z-10 mt-10 px-6 reveal stagger-4">
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="#systems" class="btn-primary px-8 py-3 rounded-lg font-mono text-sm tracking-wide transition-all">// EXPLORE SYSTEMS</a>
                 <a href="#exposures" class="btn-ghost px-8 py-3 rounded-lg font-mono text-sm tracking-wide transition-all">// CURATED EXPOSURES</a>
@@ -556,18 +623,17 @@
         </div>
         
         <!-- Scroll indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 reveal stagger-5 animate-float">
-            <div class="flex flex-col items-center gap-2 text-textDim">
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 reveal stagger-5 animate-float scroll-indicator">
+            <div class="flex flex-col items-center gap-2">
                 <span class="font-mono text-xs tracking-widest">scroll</span>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"></path></svg>
             </div>
         </div>
     </section>
     
-    <!-- About Section -->
+    <!-- Dossier Section -->
     <section id="dossier" class="py-24 md:py-32 px-6 relative">
         <div class="max-w-7xl mx-auto">
-            <!-- Section Header -->
             <div class="text-center mb-16 reveal">
                 <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> cat ./dossier.identity</p>
                 <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// DOSSIER</h2>
@@ -579,97 +645,26 @@
                     <div class="card p-8">
                         <h3 class="font-display text-xl font-normal mb-4 text-textPrimary">Hello, I'm Udbhav.</h3>
                         <div class="prose prose-invert max-w-none text-textSecondary leading-relaxed space-y-4">
-                            <p>Data Analyst at <strong class="text-textPrimary">ABP Network</strong>, building competitor intelligence tools, automating Comscore workflows, and merging Google Trends with Search Console data to drive editorial strategy.</p>
+                            <p>Data Scientist at <strong class="text-textPrimary">Pluc.tv</strong> (since Nov 16, 2026), architecting creator intelligence pipelines, predictive engagement models, and audience growth analytics for digital storytelling platforms.</p>
+                            <p>Former Data Analyst at <strong class="text-textPrimary">ABP Network</strong> (Aug 17, 2025 – Aug 7, 2026), building competitor intelligence tools, automating Comscore workflows, and merging Google Trends with Search Console data to drive editorial strategy.</p>
                             <p>Background in Computer Science & Economics (Christ University, CGPA 7.55/10) with coursework spanning Econometrics, Time Series Analysis, Game Theory, and Financial Accounting. This interdisciplinary lens lets me approach data problems from both statistical rigor and business impact perspectives.</p>
                             <p>Previously: Research Intern at Max Life Insurance (claims analytics, risk mitigation), Data Analyst Intern at ABP Network (GCP pipelines, Looker Studio dashboards, real-time API integrations).</p>
                         </div>
                     </div>
                     
-                    <!-- Skills -->
+                    <!-- Tech Stack -->
                     <div class="card p-8">
-                        <h3 class="font-display text-xl font-normal mb-6 text-textPrimary">Technical Stack</h3>
-                        <div class="space-y-6">
-                            <div>
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span class="text-textPrimary">Python & Data</span>
-                                    <span class="text-textMuted">Advanced</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay: 0.1s; --width: 95%;"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span class="text-textPrimary">SQL & Databases</span>
-                                    <span class="text-textMuted">Advanced</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay: 0.2s; --width: 90%;"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span class="text-textPrimary">Cloud (GCP, AWS)</span>
-                                    <span class="text-textMuted">Intermediate</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay: 0.3s; --width: 80%;"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span class="text-textPrimary">Visualization (Tableau, PowerBI, Looker)</span>
-                                    <span class="text-textMuted">Advanced</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay: 0.4s; --width: 90%;"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span class="text-textPrimary">Statistical Modeling (R, Stata, SPSS)</span>
-                                    <span class="text-textMuted">Intermediate</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay: 0.5s; --width: 75%;"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span class="text-textPrimary">Web (HTML, CSS, JS, Next.js)</span>
-                                    <span class="text-textMuted">Intermediate</span>
-                                </div>
-                                <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay: 0.6s; --width: 70%;"></div></div>
-                            </div>
+                        <h3 class="font-display text-xl font-normal mb-6 text-textPrimary">Technical Arsenal</h3>
+                        <div class="flex flex-wrap gap-3" id="tech-stack">
+                            <!-- Populated by JS -->
                         </div>
                     </div>
                     
-                    <!-- Tags -->
+                    <!-- GitHub Activity -->
                     <div class="card p-8">
-                    <!-- Piano Easter Egg Card -->
-                    <div class="card p-6 border-accent/30 bg-voidCard/80">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-2">
-                                <span class="font-mono text-xs text-accent">♪ PIANO DIPLOMA CREDENTIAL</span>
-                                <span class="text-textDim text-xs">• Junior Diploma (Performance & Theory)</span>
-                            </div>
-                            <span class="font-mono text-xs text-textDim">[Keys 1-8]</span>
-                        </div>
-                        <p class="text-textSecondary text-xs mb-4">Click or press keys 1–8 to play synthesized pure acoustic notes via Web Audio API.</p>
-                        
-                        <div class="flex items-center justify-center gap-1.5 p-3 bg-void rounded border border-voidBorder overflow-x-auto" id="ascii-piano">
-                            <button class="piano-key px-3 py-4 rounded bg-voidBorder/40 hover:bg-accent hover:text-void border border-voidBorder font-mono text-xs transition-colors" data-note="261.63" data-name="C4">C<br><span class="text-[10px] opacity-60">1</span></button>
-                            <button class="piano-key px-3 py-4 rounded bg-voidBorder/40 hover:bg-accent hover:text-void border border-voidBorder font-mono text-xs transition-colors" data-note="293.66" data-name="D4">D<br><span class="text-[10px] opacity-60">2</span></button>
-                            <button class="piano-key px-3 py-4 rounded bg-voidBorder/40 hover:bg-accent hover:text-void border border-voidBorder font-mono text-xs transition-colors" data-note="329.63" data-name="E4">E<br><span class="text-[10px] opacity-60">3</span></button>
-                            <button class="piano-key px-3 py-4 rounded bg-voidBorder/40 hover:bg-accent hover:text-void border border-voidBorder font-mono text-xs transition-colors" data-note="349.23" data-name="F4">F<br><span class="text-[10px] opacity-60">4</span></button>
-                            <button class="piano-key px-3 py-4 rounded bg-voidBorder/40 hover:bg-accent hover:text-void border border-voidBorder font-mono text-xs transition-colors" data-note="392.00" data-name="G4">G<br><span class="text-[10px] opacity-60">5</span></button>
-                            <button class="piano-key px-3 py-4 rounded bg-voidBorder/40 hover:bg-accent hover:text-void border border-voidBorder font-mono text-xs transition-colors" data-note="440.00" data-name="A4">A<br><span class="text-[10px] opacity-60">6</span></button>
-                            <button class="piano-key px-3 py-4 rounded bg-voidBorder/40 hover:bg-accent hover:text-void border border-voidBorder font-mono text-xs transition-colors" data-note="493.88" data-name="B4">B<br><span class="text-[10px] opacity-60">7</span></button>
-                            <button class="piano-key px-3 py-4 rounded bg-voidBorder/40 hover:bg-accent hover:text-void border border-voidBorder font-mono text-xs transition-colors" data-note="523.25" data-name="C5">C'<br><span class="text-[10px] opacity-60">8</span></button>
-                        </div>
-                    </div>
-
-
-                        <h3 class="font-display text-xl font-normal mb-4 text-textPrimary">Focus Areas</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="tag px-4 py-2 rounded-lg text-sm font-mono">Competitor Intelligence</span>
-                            <span class="tag px-4 py-2 rounded-lg text-sm font-mono">SEO Automation</span>
-                            <span class="tag px-4 py-2 rounded-lg text-sm font-mono">Audience Analytics</span>
-                            <span class="tag px-4 py-2 rounded-lg text-sm font-mono">Quantitative Research</span>
-                            <span class="tag px-4 py-2 rounded-lg text-sm font-mono">Data Pipelines</span>
-                            <span class="tag px-4 py-2 rounded-lg text-sm font-mono">Algorithmic Trading</span>
-                            <span class="tag px-4 py-2 rounded-lg text-sm font-mono">Multi-Agent Systems</span>
-                            <span class="tag px-4 py-2 rounded-lg text-sm font-mono">Photography</span>
+                        <h3 class="font-display text-xl font-normal mb-6 text-textPrimary">GitHub Activity</h3>
+                        <div id="github-stats" class="space-y-4 text-sm">
+                            <!-- Populated by JS -->
                         </div>
                     </div>
                 </div>
@@ -677,79 +672,15 @@
                 <!-- Right: Timeline -->
                 <div class="relative pl-8 reveal stagger-2">
                     <h3 class="font-display text-xl font-normal mb-8 text-textPrimary">Timeline</h3>
-                    <div class="timeline space-y-8">
-                        <!-- Current -->
-                        <div class="timeline-item relative pl-8">
-                            <div class="absolute left-0 top-1 w-6 h-6 timeline-dot bg-accent border-accent"></div>
-                            <div class="card p-6">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="font-mono text-xs text-accent">2025 — Present</span>
-                                    <span class="text-textMuted text-sm">ABP Network</span>
-                                </div>
-                                <h4 class="text-textPrimary font-medium mb-2">Data Analyst</h4>
-                                <ul class="text-textSecondary text-sm space-y-1">
-                                    <li>• Competitor Intelligence Tool — sitemap extractor tracking article publishing patterns</li>
-                                    <li>• Comscore Automation — cut processing time, enabled timely audience insights</li>
-                                    <li>• Demographic Analysis — age, gender, location-based viewer trends</li>
-                                    <li>• SEO Optimization — merged Google Trends + Search Console for organic reach</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Intern -->
-                        <div class="timeline-item relative pl-8">
-                            <div class="absolute left-0 top-1 w-6 h-6 timeline-dot"></div>
-                            <div class="card p-6">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="font-mono text-xs text-accent">2024</span>
-                                    <span class="text-textMuted text-sm">ABP Network</span>
-                                </div>
-                                <h4 class="text-textPrimary font-medium mb-2">Data Analyst Intern</h4>
-                                <ul class="text-textSecondary text-sm space-y-1">
-                                    <li>• Automated data cleaning with Excel macros</li>
-                                    <li>• Interactive Looker Studio dashboards for audience metrics</li>
-                                    <li>• Real-time API pipelines (Python + JS) for continuous data</li>
-                                    <li>• Serverless GCP workflows (Cloud Run, BigQuery, Scheduler, Pub/Sub)</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Max Life -->
-                        <div class="timeline-item relative pl-8">
-                            <div class="absolute left-0 top-1 w-6 h-6 timeline-dot"></div>
-                            <div class="card p-6">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="font-mono text-xs text-accent">2022</span>
-                                    <span class="text-textMuted text-sm">Max Life Insurance</span>
-                                </div>
-                                <h4 class="text-textPrimary font-medium mb-2">Research Intern</h4>
-                                <ul class="text-textSecondary text-sm space-y-1">
-                                    <li>• Large-scale claims data analysis for strategic planning</li>
-                                    <li>• Risk mitigation insights and reporting automation</li>
-                                    <li>• Training programs for data-driven decision making</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- Education -->
-                        <div class="timeline-item relative pl-8">
-                            <div class="absolute left-0 top-1 w-6 h-6 timeline-dot"></div>
-                            <div class="card p-6">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="font-mono text-xs text-accent">2022 — 2025</span>
-                                    <span class="text-textMuted text-sm">Christ University</span>
-                                </div>
-                                <h4 class="text-textPrimary font-medium mb-2">B.E. Computer Science & Engineering</h4>
-                                <p class="text-textSecondary text-sm">CGPA: 7.55/10 • Econometrics, Time Series, Game Theory, Financial Accounting, Data Visualization</p>
-                            </div>
-                        </div>
+                    <div class="timeline space-y-8" id="timeline">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Work Section -->
+    <!-- Systems Section -->
     <section id="systems" class="py-24 md:py-32 px-6 relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -757,104 +688,10 @@
                 <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// SYSTEMS & ARTIFACTS</h2>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Project Cards -->
-                <article class="card p-6 reveal stagger-1 group">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="font-mono text-xs text-accent">Python</span>
-                        <a href="https://github.com/udbhav-shrinet/trends" target="_blank" rel="noopener" class="text-textMuted hover:text-accent transition-colors" aria-label="GitHub">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">trends</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">Unified real-time multi-platform trend scraper and intelligence dashboard for Google Trends, Reddit, Hacker News, and Wikipedia.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag px-3 py-1 rounded text-xs">Real-time</span>
-                        <span class="tag px-3 py-1 rounded text-xs">Dashboard</span>
-                        <span class="tag px-3 py-1 rounded text-xs">Multi-platform</span>
-                    </div>
-                </article>
-                
-                <article class="card p-6 reveal stagger-2 group">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="font-mono text-xs text-accent">Multi-Agent</span>
-                        <a href="https://github.com/udbhav-shrinet/GrayMatter" target="_blank" rel="noopener" class="text-textMuted hover:text-accent transition-colors" aria-label="GitHub">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">GrayMatter</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">Autonomous Multi-Agent Deep Research Platform — coordinated agents for comprehensive research synthesis.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag px-3 py-1 rounded text-xs">Autonomous</span>
-                        <span class="tag px-3 py-1 rounded text-xs">Research</span>
-                        <span class="tag px-3 py-1 rounded text-xs">Agents</span>
-                    </div>
-                </article>
-                
-                <article class="card p-6 reveal stagger-3 group">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="font-mono text-xs text-accent">Next.js</span>
-                        <a href="https://github.com/udbhav-shrinet/NEXID" target="_blank" rel="noopener" class="text-textMuted hover:text-accent transition-colors" aria-label="GitHub">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">NEXID</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">Sleek crypto dashboard with Next.js 14, Tailwind CSS, and TypeScript — real-time market data visualization.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag px-3 py-1 rounded text-xs">Crypto</span>
-                        <span class="tag px-3 py-1 rounded text-xs">Dashboard</span>
-                        <span class="tag px-3 py-1 rounded text-xs">TypeScript</span>
-                    </div>
-                </article>
-                
-                <article class="card p-6 reveal stagger-4 group">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="font-mono text-xs text-accent">Quant</span>
-                        <a href="https://github.com/udbhav-shrinet/Multi-Agent-Trading-Bot" target="_blank" rel="noopener" class="text-textMuted hover:text-accent transition-colors" aria-label="GitHub">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">AlphaLens</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">Institutional-grade quantitative research: cross-sectional factor screening, macro regime detection, Alpaca execution pipeline.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag px-3 py-1 rounded text-xs">Quant</span>
-                        <span class="tag px-3 py-1 rounded text-xs">Alpaca</span>
-                        <span class="tag px-3 py-1 rounded text-xs">Factors</span>
-                    </div>
-                </article>
-                
-                <article class="card p-6 reveal stagger-5 group">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="font-mono text-xs text-accent">Python</span>
-                        <a href="https://github.com/udbhav-shrinet/youtube-auto-uploader" target="_blank" rel="noopener" class="text-textMuted hover:text-accent transition-colors" aria-label="GitHub">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">youtube-auto-uploader</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">CLI script for automated YouTube uploads via Data API v3 — metadata, thumbnails, scheduling, batch processing.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag px-3 py-1 rounded text-xs">Automation</span>
-                        <span class="tag px-3 py-1 rounded text-xs">YouTube API</span>
-                        <span class="tag px-3 py-1 rounded text-xs">CLI</span>
-                    </div>
-                </article>
-                
-                <article class="card p-6 reveal stagger-6 group">
-                    <div class="flex items-start justify-between mb-4">
-                        <span class="font-mono text-xs text-accent">Research</span>
-                        <span class="text-textMuted">Ongoing</span>
-                    </div>
-                    <h3 class="text-xl font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">Sitemap Intelligence</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">Python tool extracting sitemap data from competitor news sites — parsing & visualizing publishing trends for content/SEO strategy.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag px-3 py-1 rounded text-xs">SEO</span>
-                        <span class="tag px-3 py-1 rounded text-xs">Visualization</span>
-                        <span class="tag px-3 py-1 rounded text-xs">News</span>
-                    </div>
-                </article>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="systems-grid">
+                <!-- Populated by JS -->
             </div>
             
-            <!-- More projects link -->
             <div class="text-center mt-12 reveal">
                 <a href="https://github.com/udbhav-shrinet" target="_blank" rel="noopener" class="btn-ghost px-8 py-3 rounded-lg font-mono text-sm tracking-wide inline-flex items-center gap-2">
                     View All on GitHub
@@ -864,7 +701,7 @@
         </div>
     </section>
     
-    <!-- Writing Section -->
+    <!-- Dispatches Section -->
     <section id="dispatches" class="py-24 md:py-32 px-6 relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -872,85 +709,8 @@
                 <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// DISPATCHES & ANALYSIS</h2>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Medium Articles -->
-                <article class="card p-6 reveal stagger-1 group">
-                    <div class="flex items-center gap-2 mb-4">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span class="font-mono text-xs text-accent">Medium</span>
-                    </div>
-                    <h3 class="text-lg font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">OpenAI's Q* Dilemma: A Deep Dive into AI's Next Frontier</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">Exploring the implications of Q* on reasoning capabilities, AGI timelines, and the paradigm shift in model architecture.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="font-mono text-xs text-textMuted">2024</span>
-                        <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="btn-ghost px-3 py-1 rounded text-xs font-mono">Read</a>
-                    </div>
-                </article>
-                
-                <article class="card p-6 reveal stagger-2 group">
-                    <div class="flex items-center gap-2 mb-4">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span class="font-mono text-xs text-accent">Medium</span>
-                    </div>
-                    <h3 class="text-lg font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">Analyzing India's Interim Budget 2024: A Comprehensive Overview</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">Deep dive into fiscal allocations, sectoral impacts, and macroeconomic implications of the interim budget.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="font-mono text-xs text-textMuted">2024</span>
-                        <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="btn-ghost px-3 py-1 rounded text-xs font-mono">Read</a>
-                    </div>
-                </article>
-                
-                <article class="card p-6 reveal stagger-3 group">
-                    <div class="flex items-center gap-2 mb-4">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span class="font-mono text-xs text-accent">Medium</span>
-                    </div>
-                    <h3 class="text-lg font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">The Hallyu Effect: South Korea's Cultural Triumph</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">Analyzing the economic and soft power dynamics behind the global Korean wave phenomenon.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="font-mono text-xs text-textMuted">2023</span>
-                        <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="btn-ghost px-3 py-1 rounded text-xs font-mono">Read</a>
-                    </div>
-                </article>
-                
-                <article class="card p-6 reveal stagger-4 group">
-                    <div class="flex items-center gap-2 mb-4">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span class="font-mono text-xs text-accent">Medium</span>
-                    </div>
-                    <h3 class="text-lg font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">Coldplay: The Harmonic Storytellers</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">Deconstructing the band's evolution, lyrical themes, and their unique connection with global audiences.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="font-mono text-xs text-textMuted">2023</span>
-                        <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="btn-ghost px-3 py-1 rounded text-xs font-mono">Read</a>
-                    </div>
-                </article>
-                
-                <article class="card p-6 reveal stagger-5 group">
-                    <div class="flex items-center gap-2 mb-4">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span class="font-mono text-xs text-accent">Medium</span>
-                    </div>
-                    <h3 class="text-lg font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">Blockchain in Banking Sector</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">Examining distributed ledger adoption in traditional finance — use cases, regulatory hurdles, and future trajectory.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="font-mono text-xs text-textMuted">2023</span>
-                        <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="btn-ghost px-3 py-1 rounded text-xs font-mono">Read</a>
-                    </div>
-                </article>
-                
-                <article class="card p-6 reveal stagger-6 group">
-                    <div class="flex items-center gap-2 mb-4">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        <span class="font-mono text-xs text-accent">Medium</span>
-                    </div>
-                    <h3 class="text-lg font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">Dunki's Tale: Reality of Indian Immigration Struggles</h3>
-                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">A socio-economic analysis of migration patterns through the lens of contemporary cinema.</p>
-                    <div class="flex items-center justify-between">
-                        <span class="font-mono text-xs text-textMuted">2023</span>
-                        <a href="https://medium.com/@udiii" target="_blank" rel="noopener" class="btn-ghost px-3 py-1 rounded text-xs font-mono">Read</a>
-                    </div>
-                </article>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="dispatches-grid">
+                <!-- Populated by JS -->
             </div>
             
             <div class="text-center mt-12 reveal">
@@ -962,108 +722,52 @@
         </div>
     </section>
     
-    <!-- Photography Section -->
+    <!-- Exposures Section -->
     <section id="exposures" class="py-24 md:py-32 px-6 relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 reveal">
                 <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> darkroom.render --gallery</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// EXPOSURES (16 PLATES)</h2>
-                <p class="text-textSecondary mt-4 max-w-2xl mx-auto">A curated collection of moments — landscapes, streets, night scenes, and quiet details. Shot across the Himalayas, campuses, cities, and everyday life.</p>
-            </div>
-            
-            <!-- Filter Tabs -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12 reveal stagger-1" role="tablist" aria-label="Photo categories">
-                <button class="filter-btn active px-4 py-2 rounded-lg font-mono text-sm text-accent border border-accent" data-filter="all" role="tab" aria-selected="true">All</button>
-                <button class="filter-btn px-4 py-2 rounded-lg font-mono text-sm text-textMuted border border-voidBorder hover:border-voidBorderHover hover:text-textSecondary" data-filter="landscape" role="tab" aria-selected="false">Landscape</button>
-                <button class="filter-btn px-4 py-2 rounded-lg font-mono text-sm text-textMuted border border-voidBorder hover:border-voidBorderHover hover:text-textSecondary" data-filter="architecture" role="tab" aria-selected="false">Architecture</button>
-                <button class="filter-btn px-4 py-2 rounded-lg font-mono text-sm text-textMuted border border-voidBorder hover:border-voidBorderHover hover:text-textSecondary" data-filter="street" role="tab" aria-selected="false">Street</button>
-                <button class="filter-btn px-4 py-2 rounded-lg font-mono text-sm text-textMuted border border-voidBorder hover:border-voidBorderHover hover:text-textSecondary" data-filter="night" role="tab" aria-selected="false">Night</button>
-                <button class="filter-btn px-4 py-2 rounded-lg font-mono text-sm text-textMuted border border-voidBorder hover:border-voidBorderHover hover:text-textSecondary" data-filter="animals" role="tab" aria-selected="false">Animals</button>
-                <button class="filter-btn px-4 py-2 rounded-lg font-mono text-sm text-textMuted border border-voidBorder hover:border-voidBorderHover hover:text-textSecondary" data-filter="abstract" role="tab" aria-selected="false">Abstract</button>
-                <button class="filter-btn px-4 py-2 rounded-lg font-mono text-sm text-textMuted border border-voidBorder hover:border-voidBorderHover hover:text-textSecondary" data-filter="sky" role="tab" aria-selected="false">Sky</button>
-                <button class="filter-btn px-4 py-2 rounded-lg font-mono text-sm text-textMuted border border-voidBorder hover:border-voidBorderHover hover:text-textSecondary" data-filter="road" role="tab" aria-selected="false">Road</button>
-                <button class="filter-btn px-4 py-2 rounded-lg font-mono text-sm text-textMuted border border-voidBorder hover:border-voidBorderHover hover:text-textSecondary" data-filter="urban" role="tab" aria-selected="false">Urban</button>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// EXPOSURES</h2>
+                <p class="text-textSecondary mt-4 max-w-2xl mx-auto">All frames from the archive — landscapes, streets, night scenes, and quiet details. No categories, just the roll.</p>
             </div>
             
             <!-- Photo Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="photo-grid" role="list">
-                <!-- Photos will be rendered by JS -->
-            </div>
-            
-            <!-- Load More -->
-            <div class="text-center mt-12 reveal">
-                <button id="load-more" class="btn-ghost px-8 py-3 rounded-lg font-mono text-sm tracking-wide hidden">Load More</button>
+                <!-- Photos rendered by JS -->
             </div>
         </div>
     </section>
     
-    <!-- Contact Section -->
-    
-    <!-- Telemetry Section (Tech Arsenal) -->
-    <section id="telemetry" class="py-24 md:py-32 px-6 relative">
+    <!-- Soundtrack Section -->
+    <section id="soundtrack" class="py-24 md:py-32 px-6 relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
-                <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> system.inspect --telemetry</p>
-                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// TELEMETRY & ARSENAL</h2>
-                <p class="text-textSecondary mt-4 max-w-2xl mx-auto font-mono text-xs">Production data pipelines, statistical modeling environments, and visual synthesis tools.</p>
+                <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> spotify.play --curated</p>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// SOUNDTRACK</h2>
+                <p class="text-textSecondary mt-4 max-w-2xl mx-auto">Playlists that fuel the builds, the writes, and the long nights.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card p-6">
-                    <div class="font-mono text-xs text-accent mb-3 flex items-center gap-2">
-                        <span>▎ DATA & ALGORITHMS</span>
-                    </div>
-                    <ul class="font-mono text-xs text-textSecondary space-y-2">
-                        <li>• Python (pandas, numpy, polars)</li>
-                        <li>• SQL / Complex CTEs & Windowing</li>
-                        <li>• BigQuery & Cloud Run Data Pipelines</li>
-                        <li>• R, Stata, SPSS Econometrics</li>
-                        <li>• Appscript Automation</li>
-                    </ul>
-                </div>
-                
-                <div class="card p-6">
-                    <div class="font-mono text-xs text-accent mb-3 flex items-center gap-2">
-                        <span>▎ INTELLIGENCE & SEO</span>
-                    </div>
-                    <ul class="font-mono text-xs text-textSecondary space-y-2">
-                        <li>• Competitor Sitemap Harvesters</li>
-                        <li>• Comscore Data Pipeline Automation</li>
-                        <li>• Google Trends + Search Console</li>
-                        <li>• Audience Clustering & Demographics</li>
-                        <li>• Multi-Agent Deep Research (GrayMatter)</li>
-                    </ul>
-                </div>
-
-                <div class="card p-6">
-                    <div class="font-mono text-xs text-accent mb-3 flex items-center gap-2">
-                        <span>▎ VISUALIZATION ENGINES</span>
-                    </div>
-                    <ul class="font-mono text-xs text-textSecondary space-y-2">
-                        <li>• Looker Studio Production BI</li>
-                        <li>• Tableau & PowerBI Dashboards</li>
-                        <li>• Advanced Excel & VBA Macro Automation</li>
-                        <li>• Factor Screening Charts (AlphaLens)</li>
-                        <li>• Custom WebGL / Canvas Explorations</li>
-                    </ul>
-                </div>
-
-                <div class="card p-6">
-                    <div class="font-mono text-xs text-accent mb-3 flex items-center gap-2">
-                        <span>▎ CREATIVE & PROTOTYPING</span>
-                    </div>
-                    <ul class="font-mono text-xs text-textSecondary space-y-2">
-                        <li>• Classical Piano (Junior Diploma)</li>
-                        <li>• Street & Alpine Photography</li>
-                        <li>• Figma, Framer, Canva UI/UX</li>
-                        <li>• Adobe Photoshop & Digital Darkroom</li>
-                        <li>• Tailwind CSS & JetBrains Mono Aesthetics</li>
-                    </ul>
-                </div>
+            <div class="grid md:grid-cols-3 gap-6" id="spotify-grid">
+                <!-- Populated by JS -->
             </div>
         </div>
     </section>
-
+    
+    <!-- Honors Section -->
+    <section id="honors" class="py-24 md:py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="font-mono text-xs text-textMuted tracking-widest uppercase mb-4">> ls -la ./honors/</p>
+                <h2 class="font-display text-4xl md:text-5xl font-normal tracking-tight">// HONORS & CERTIFICATIONS</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="honors-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Transmit Section -->
     <section id="transmit" class="py-24 md:py-32 px-6 relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -1076,7 +780,7 @@
                 <div class="reveal stagger-1">
                     <div class="card p-8 mb-6">
                         <h3 class="font-display text-xl font-normal mb-6 text-textPrimary">Let's Collaborate</h3>
-                        <p class="text-textSecondary leading-relaxed mb-6">Open to freelance projects, research collaborations, and interesting conversations about data, economics, photography, or building things.</p>
+                        <p class="text-textSecondary leading-relaxed mb-6">Open to research collaborations, quant discussions, and interesting conversations about data, systems, photography, or building things.</p>
                         <div class="space-y-4">
                             <a href="mailto:udbhav.singh.shrinet@gmail.com" class="flex items-center gap-4 p-4 card group hover:border-voidBorderHover transition-colors">
                                 <div class="w-12 h-12 rounded-lg bg-voidBorder flex items-center justify-center group-hover:bg-accent group-hover:text-void transition-colors">
@@ -1119,23 +823,23 @@
                     
                     <!-- Resume Download -->
                     <div class="card p-8">
-                        <h3 class="font-display text-xl font-normal mb-4 text-textPrimary">Resume</h3>
-                        <p class="text-textSecondary mb-6">Download my complete resume (PDF) with detailed experience, projects, and education.</p>
-                        <a href="/mnt/d/Windows_Backup/Personal_Docs/PDFs/RESUME MAIN.pdf" class="btn-primary px-6 py-3 rounded-lg font-mono text-sm tracking-wide inline-flex items-center gap-2" download>
+                        <h3 class="font-display text-xl font-normal mb-4 text-textPrimary">Dossier</h3>
+                        <p class="text-textSecondary mb-6">Download my complete resume with detailed experience, projects, and credentials.</p>
+                        <a href="docs/Udbhav_Shrinet_Resume.pdf" class="btn-primary px-6 py-3 rounded-lg font-mono text-sm tracking-wide inline-flex items-center gap-2" download>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
                             Download Resume
                         </a>
                     </div>
                 </div>
                 
-                <!-- Contact Form / Terminal -->
+                <!-- Contact Form -->
                 <div class="reveal stagger-2">
                     <div class="card p-6">
                         <div class="font-mono text-xs text-textMuted mb-4 flex items-center gap-2">
                             <span class="w-3 h-3 rounded-full bg-red-500"></span>
                             <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
                             <span class="w-3 h-3 rounded-full bg-green-500"></span>
-                            <span class="ml-2">contact.sh</span>
+                            <span class="ml-2">transmit.sh</span>
                         </div>
                         <form id="contact-form" class="space-y-4" action="https://formspree.io/f/xaybqgwn" method="POST">
                             <div>
@@ -1149,10 +853,9 @@
                             <div>
                                 <label for="subject" class="block font-mono text-xs text-textMuted mb-2">$ subject</label>
                                 <select id="subject" name="subject" class="w-full bg-void border border-voidBorder rounded-lg px-4 py-3 text-textPrimary focus:border-accent focus:outline-none transition-colors font-mono text-sm">
-                                    <option value="Freelance Inquiry">Freelance Inquiry</option>
                                     <option value="Collaboration">Collaboration</option>
                                     <option value="Research">Research Discussion</option>
-                                    <option value="Photography">Photography</option>
+                                    <option value="Quant">Quantitative Strategy</option>
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
@@ -1160,7 +863,7 @@
                                 <label for="message" class="block font-mono text-xs text-textMuted mb-2">$ message</label>
                                 <textarea id="message" name="message" rows="5" required class="w-full bg-void border border-voidBorder rounded-lg px-4 py-3 text-textPrimary placeholder-textDim focus:border-accent focus:outline-none transition-colors font-mono text-sm resize-none" placeholder="Type your message here..."></textarea>
                             </div>
-                            <button type="submit" class="btn-primary w-full py-3 rounded-lg font-mono text-sm tracking-wide">Send Message</button>
+                            <button type="submit" class="btn-primary w-full py-3 rounded-lg font-mono text-sm tracking-wide">Transmit</button>
                         </form>
                     </div>
                 </div>
@@ -1174,7 +877,7 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="text-center md:text-left">
                     <p class="font-display text-xl tracking-wider">udbhav<span class="text-accent">.sh</span></p>
-                    <p class="text-textMuted text-sm mt-1">Data Analyst • Economist • Builder</p>
+                    <p class="text-textMuted text-sm mt-1">Data Scientist • Quant Researcher • Builder</p>
                 </div>
                 
                 <div class="flex items-center gap-6">
@@ -1189,6 +892,9 @@
                     </a>
                     <a href="mailto:udbhav.singh.shrinet@gmail.com" class="text-textMuted hover:text-accent transition-colors" aria-label="Email">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                    </a>
+                    <a href="https://open.spotify.com/user/31xlrshv3eingjlzezabngu26xtq" target="_blank" rel="noopener" class="text-textMuted hover:text-accent transition-colors" aria-label="Spotify">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.35-.66.48-1.021.24-1.32-.96-2.82-1.44-4.5-1.44-1.68 0-3.18.48-4.5 1.44-.36.24-.78.12-1.021-.24-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.2-3.12c-.24-.24-.48-.36-.72-.36-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.08-9.6c-.6-.36-1.32-.48-2.16-.48-.84 0-1.56.12-2.16.48-.72.36-1.08 1.08-1.08 1.92s.36 1.56 1.08 1.92c.72.48 1.68.72 2.64.72 1.08 0 2.04-.36 2.76-1.08.84-.84 1.08-1.92 1.08-3.24 0-1.32-.36-2.52-1.08-3.24zm-.24 5.28c-1.2 1.2-2.88 1.8-4.8 1.8-2.04 0-3.84-.6-5.16-1.8-.96-.96-1.44-2.16-1.44-3.6 0-1.56.6-2.76 1.56-3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72"/></svg>
                     </a>
                 </div>
                 
@@ -1221,165 +927,269 @@
         <img id="lightbox-img" src="" alt="">
         <div class="lightbox-caption">
             <h4 id="lightbox-title" class="font-display text-lg font-normal text-textPrimary"></h4>
-            <p id="lightbox-desc" class="text-textSecondary text-sm mt-1"></p>
         </div>
     </div>
     
-        <!-- Photo Data -->
+    <!-- Data & Logic -->
     <script>
-        // Embedded Photo Registry
-        let PHOTOS = [
-        {
-                "file": "img/pics/20230408_180109.jpg",
-                "thumb": "img/pics/thumb_20230408_180109.jpg",
-                "title": "Himalayan Camp",
-                "description": "Alpine meadow camp at golden hour \u2014 orange tent against snow-capped peaks",
-                "category": "landscape",
-                "date": "2023-04-08"
-        },
-        {
-                "file": "img/pics/20230409_120027.jpg",
-                "thumb": "img/pics/thumb_20230409_120027.jpg",
-                "title": "Rock Cave & Stream",
-                "description": "Natural rock shelter with cascading mountain stream, early spring",
-                "category": "landscape",
-                "date": "2023-04-09"
-        },
-        {
-                "file": "img/pics/20221108_163730.jpg",
-                "thumb": "img/pics/thumb_20221108_163730.jpg",
-                "title": "Cafe Backstage",
-                "description": "Behind the counter at a bubble tea shop \u2014 syrup bottles, blenders, prep station",
-                "category": "urban",
-                "date": "2022-11-08"
-        },
-        {
-                "file": "img/pics/20230218_151102.jpg",
-                "thumb": "img/pics/thumb_20230218_151102.jpg",
-                "title": "Campus Architecture",
-                "description": "Modern university complex with bronze skybridge and jali screens, overcast day",
-                "category": "architecture",
-                "date": "2023-02-18"
-        },
-        {
-                "file": "img/pics/20230218_205708.jpg",
-                "thumb": "img/pics/thumb_20230218_205708.jpg",
-                "title": "Campus Dog at Night",
-                "description": "Stray dog on amphitheater steps at DTU, yellow security barriers, floodlights",
-                "category": "street",
-                "date": "2023-02-18"
-        },
-        {
-                "file": "img/pics/20231126_160408.jpg",
-                "thumb": "img/pics/thumb_20231126_160408.jpg",
-                "title": "Fountain Through Foliage",
-                "description": "Water jets arcing across pond viewed through foreground branches, overcast",
-                "category": "abstract",
-                "date": "2023-11-26"
-        },
-        {
-                "file": "img/pics/img_20240222_062520567.jpg",
-                "thumb": "img/pics/thumb_img_20240222_062520567.jpg",
-                "title": "Lonely Lamppost",
-                "description": "Single streetlamp illuminating path and shrubs at night, building silhouette",
-                "category": "night",
-                "date": "2024-02-22"
-        },
-        {
-                "file": "img/pics/20251028_164508.jpg",
-                "thumb": "img/pics/thumb_20251028_164508.jpg",
-                "title": "Kitten Huddle",
-                "description": "Three tiny kittens curled together \u2014 brown tabby, ginger, and grey sibling",
-                "category": "animals",
-                "date": "2025-10-28"
-        },
-        {
-                "file": "img/pics/img_20240215_192520198_hdr.jpg",
-                "thumb": "img/pics/thumb_img_20240215_192520198_hdr.jpg",
-                "title": "Sunset Silhouette",
-                "description": "Trees and power lines against dramatic orange-red sunset sky",
-                "category": "sky",
-                "date": "2024-02-15"
-        },
-        {
-                "file": "img/pics/snapchat_1607269524.jpg",
-                "thumb": "img/pics/thumb_snapchat_1607269524.jpg",
-                "title": "City Lights",
-                "description": "Night cityscape with illuminated buildings and reflections",
-                "category": "night",
-                "date": "2020-12-07"
-        },
-        {
-                "file": "img/pics/img_20230407_wa0007.jpg",
-                "thumb": "img/pics/thumb_img_20230407_wa0007.jpg",
-                "title": "Mountain Vista",
-                "description": "Wide valley view with layered ridges fading into mist",
-                "category": "landscape",
-                "date": "2023-04-07"
-        },
-        {
-                "file": "img/pics/img_20240126_142942067.jpg",
-                "thumb": "img/pics/thumb_img_20240126_142942067.jpg",
-                "title": "Road Perspective",
-                "description": "Empty road stretching toward mountains, power lines framing",
-                "category": "road",
-                "date": "2024-01-26"
-        },
-        {
-                "file": "img/pics/img_0100.jpg",
-                "thumb": "img/pics/thumb_img_0100.jpg",
-                "title": "Nocturnal Walkway",
-                "description": "Quiet outdoor pathway bathed in warm amber lamppost glow",
-                "category": "night",
-                "date": "2021-10-14"
-        },
-        {
-                "file": "img/pics/20230409_115249.jpg",
-                "thumb": "img/pics/thumb_20230409_115249.jpg",
-                "title": "Glacial Runoff",
-                "description": "Himalayan boulders and crystal clear glacial mountain water",
-                "category": "landscape",
-                "date": "2023-04-09"
-        },
-        {
-                "file": "img/pics/20251123_193714.jpg",
-                "thumb": "img/pics/thumb_20251123_193714.jpg",
-                "title": "Twilight Horizon",
-                "description": "Dusk falling over urban textures with subtle ambient light",
-                "category": "night",
-                "date": "2025-11-23"
-        },
-        {
-                "file": "img/pics/snapchat_1541689392.jpg",
-                "thumb": "img/pics/thumb_snapchat_1541689392.jpg",
-                "title": "Golden Hour Drift",
-                "description": "Warm light cast across evening atmosphere",
-                "category": "abstract",
-                "date": "2022-09-15"
-        }
-];
+        // ============ DATA ============
+        const SYSTEMS = [
+            {
+                name: "Multi-Agent Trading Bot (AlphaLens)",
+                desc: "Institutional-grade quantitative research framework: cross-sectional factor screening, macro regime detection, and Alpaca execution pipeline.",
+                tech: "Python, Pandas, Polars, Alpaca API, PyTorch",
+                url: "https://github.com/udbhav-shrinet/Multi-Agent-Trading-Bot",
+                badge: "Quant"
+            },
+            {
+                name: "Datara",
+                desc: "Unified multi-product media intelligence and ingestion engine for YouTube metrics, sitemaps, and Reddit trends.",
+                tech: "Python, GCP (Cloud Run, BigQuery), TypeScript",
+                url: "https://github.com/udbhav-shrinet/Datara",
+                badge: "Intelligence"
+            },
+            {
+                name: "Pac-Fly",
+                desc: "AI-powered flight price monitoring and intelligent booking agent with real-time fare tracking and predictive alerts.",
+                tech: "Python, Selenium, FastAPI, PostgreSQL",
+                url: "https://github.com/udbhav-shrinet/Pac-Fly",
+                badge: "Agent"
+            },
+            {
+                name: "trends",
+                desc: "Unified real-time multi-platform trend scraper and intelligence dashboard for Google Trends, Reddit, Hacker News, and Wikipedia.",
+                tech: "Python, Pandas, Plotly, AsyncIO",
+                url: "https://github.com/udbhav-shrinet/trends",
+                badge: "Dashboard"
+            },
+            {
+                name: "Timeline",
+                desc: "Visual life/career timeline builder with interactive milestones, media embeds, and exportable portfolio-ready chronicles.",
+                tech: "TypeScript, Next.js, Tailwind, Framer Motion",
+                url: "https://github.com/udbhav-shrinet/Timeline",
+                badge: "Visualization"
+            },
+            {
+                name: "nextroom",
+                desc: "Collaborative real-time audio/space web application with peer-to-peer mesh networking and spatial audio.",
+                tech: "JavaScript, WebRTC, Web Audio API, Socket.io",
+                url: "https://github.com/udbhav-shrinet/nextroom",
+                badge: "Real-time"
+            }
+        ];
         
-        // Config
-        const PHOTOS_PER_PAGE = 12;
+        const DISPATCHES = [
+            {
+                title: "OpenAI's Q* Dilemma: A Deep Dive into AI's Next Frontier",
+                desc: "Exploring the implications of Q* on reasoning capabilities, AGI timelines, and the paradigm shift in model architecture.",
+                year: "2024",
+                url: "https://medium.com/@udiii"
+            },
+            {
+                title: "Analyzing India's Interim Budget 2024: A Comprehensive Overview",
+                desc: "Deep dive into fiscal allocations, sectoral impacts, and macroeconomic implications of the interim budget.",
+                year: "2024",
+                url: "https://medium.com/@udiii"
+            },
+            {
+                title: "Blockchain in Banking Sector",
+                desc: "Examining distributed ledger adoption in traditional finance — use cases, regulatory hurdles, and future trajectory.",
+                year: "2023",
+                url: "https://medium.com/@udiii"
+            }
+        ];
+        
+        const SPOTIFY_PLAYLISTS = [
+            {
+                id: "3QDLIZFTDXkqJevq7Gx2pj",
+                title: "Late Night Quant",
+                desc: "Deep focus for modeling sessions"
+            },
+            {
+                id: "3tkD2qyNruxVBTcFpsDhF6",
+                title: "Synthwave Systems",
+                desc: "Retro-future vibes for building"
+            },
+            {
+                id: "4pv2NEuUXZ9f0v7LpUCQ6r",
+                title: "Ambient Architecture",
+                desc: "Minimal soundscapes for design"
+            }
+        ];
+        
+        const HONORS = [
+            {
+                title: "Junior Diploma in Piano",
+                issuer: "Trinity College London",
+                year: "2018",
+                desc: "Demonstrated proficiency in classical music theory and performance."
+            },
+            {
+                title: "Statistics Course",
+                issuer: "Stanford University (Coursera)",
+                year: "2022",
+                desc: "Completed with honors — statistical inference, regression, and probability."
+            },
+            {
+                title: "Google Data Science Specialization",
+                issuer: "Google / Coursera",
+                year: "2023",
+                desc: "Professional certification in data analytics, cloud databases, and statistical pipelines."
+            },
+            {
+                title: "Top 10 Finalist — Cryptic Hunt",
+                issuer: "VIT Chennai",
+                year: "2023",
+                desc: "High-stakes algorithmic reasoning, cryptography, and logic puzzles."
+            },
+            {
+                title: "Introduction to Psychology",
+                issuer: "Swayam (Ministry of Education)",
+                year: "2022",
+                desc: "Academic coursework in human cognition and behavioral patterns."
+            }
+        ];
+        
+        const TIMELINE = [
+            { date: "Nov 2026 – Present", org: "Pluc.tv", role: "Data Scientist", location: "New Delhi", items: [
+                "Architecting creator intelligence pipelines and predictive engagement models",
+                "Audience growth analytics and content recommendation clustering"
+            ]},
+            { date: "Aug 2025 – Aug 2026", org: "ABP Network", role: "Data Analyst", location: "Noida", items: [
+                "Competitor Intelligence Tool — automated sitemap extractors tracking article velocity",
+                "Comscore Automation — streamlined demographic cleaning for real-time insights",
+                "Demographic & Viewer Analysis — age, gender, regional cohort shifts",
+                "SEO Optimization — blended Google Trends + Search Console pipelines"
+            ]},
+            { date: "May 2024 – Jul 2024", org: "ABP Network", role: "Data Analyst Intern", location: "Noida", items: [
+                "Automated data validation with Excel VBA macros",
+                "Looker Studio dashboards for editorial tracking",
+                "GCP serverless workflows (Cloud Run, BigQuery, Pub/Sub, Scheduler)"
+            ]},
+            { date: "May 2022 – Jul 2022", org: "Max Life Insurance", role: "Research Intern", location: "Gurugram", items: [
+                "Institutional claims analysis for loss trend identification",
+                "Risk mitigation insights and reporting automation"
+            ]},
+            { date: "Aug 2022 – Jun 2025", org: "Christ University", role: "B.E. Computer Science & Engineering", location: "Bengaluru", items: [
+                "CGPA: 7.55/10",
+                "Econometrics, Time Series, Game Theory, Financial Accounting, Data Visualization"
+            ]}
+        ];
+        
+        const TECH_STACK = [
+            { name: "Python", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { name: "TypeScript", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+            { name: "JavaScript", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+            { name: "SQL", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+            { name: "R", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" },
+            { name: "PyTorch", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
+            { name: "Pandas", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+            { name: "Polars", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/polars/polars-original.svg" },
+            { name: "DuckDB", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/duckdb/duckdb-original.svg" },
+            { name: "BigQuery", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
+            { name: "Docker", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+            { name: "Git", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+            { name: "GitHub", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+            { name: "Vercel", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+            { name: "Figma", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+            { name: "Photoshop", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg" },
+            { name: "Canva", svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" }
+        ];
+        
+        // ============ INITIALIZATION ============
+        let PHOTOS = [{"file": "img/pics/20221108_163730.jpg", "thumb": "img/pics/thumb_20221108_163730.jpg", "rawName": "20221108_163730.jpg"}, {"file": "img/pics/20230218_151102.jpg", "thumb": "img/pics/thumb_20230218_151102.jpg", "rawName": "20230218_151102.jpg"}, {"file": "img/pics/20230218_205708.jpg", "thumb": "img/pics/thumb_20230218_205708.jpg", "rawName": "20230218_205708.jpg"}, {"file": "img/pics/20230218_211251.jpg", "thumb": "img/pics/thumb_20230218_211251.jpg", "rawName": "20230218_211251.jpg"}, {"file": "img/pics/20230220_143432.jpg", "thumb": "img/pics/thumb_20230220_143432.jpg", "rawName": "20230220_143432.jpg"}, {"file": "img/pics/20230408_134652.jpg", "thumb": "img/pics/thumb_20230408_134652.jpg", "rawName": "20230408_134652.jpg"}, {"file": "img/pics/20230408_151308.jpg", "thumb": "img/pics/thumb_20230408_151308.jpg", "rawName": "20230408_151308.jpg"}, {"file": "img/pics/20230408_180109.jpg", "thumb": "img/pics/thumb_20230408_180109.jpg", "rawName": "20230408_180109.jpg"}, {"file": "img/pics/20230409_115249.jpg", "thumb": "img/pics/thumb_20230409_115249.jpg", "rawName": "20230409_115249.jpg"}, {"file": "img/pics/20230409_120027.jpg", "thumb": "img/pics/thumb_20230409_120027.jpg", "rawName": "20230409_120027.jpg"}, {"file": "img/pics/20230409_121854.jpg", "thumb": "img/pics/thumb_20230409_121854.jpg", "rawName": "20230409_121854.jpg"}, {"file": "img/pics/20230409_142210.jpg", "thumb": "img/pics/thumb_20230409_142210.jpg", "rawName": "20230409_142210.jpg"}, {"file": "img/pics/20231117_165634.jpg", "thumb": "img/pics/thumb_20231117_165634.jpg", "rawName": "20231117_165634.jpg"}, {"file": "img/pics/20231126_160408.jpg", "thumb": "img/pics/thumb_20231126_160408.jpg", "rawName": "20231126_160408.jpg"}, {"file": "img/pics/20231126_165045.jpg", "thumb": "img/pics/thumb_20231126_165045.jpg", "rawName": "20231126_165045.jpg"}, {"file": "img/pics/20251028_130930.jpg", "thumb": "img/pics/thumb_20251028_130930.jpg", "rawName": "20251028_130930.jpg"}, {"file": "img/pics/20251028_164508.jpg", "thumb": "img/pics/thumb_20251028_164508.jpg", "rawName": "20251028_164508.jpg"}, {"file": "img/pics/20251116_201621.jpg", "thumb": "img/pics/thumb_20251116_201621.jpg", "rawName": "20251116_201621.jpg"}, {"file": "img/pics/20251119_222358.jpg", "thumb": "img/pics/thumb_20251119_222358.jpg", "rawName": "20251119_222358.jpg"}, {"file": "img/pics/20251123_193714.jpg", "thumb": "img/pics/thumb_20251123_193714.jpg", "rawName": "20251123_193714.jpg"}, {"file": "img/pics/img_20201212_wa0021.jpg", "thumb": "img/pics/thumb_img_20201212_wa0021.jpg", "rawName": "IMG-20201212-WA0021.jpg"}, {"file": "img/pics/img_20211114_wa0014.jpg", "thumb": "img/pics/thumb_img_20211114_wa0014.jpg", "rawName": "IMG-20211114-WA0014.jpg"}, {"file": "img/pics/img_20220829_wa0026.jpg", "thumb": "img/pics/thumb_img_20220829_wa0026.jpg", "rawName": "IMG-20220829-WA0026.jpg"}, {"file": "img/pics/img_20220829_wa0030.jpg", "thumb": "img/pics/thumb_img_20220829_wa0030.jpg", "rawName": "IMG-20220829-WA0030.jpg"}, {"file": "img/pics/img_20221208_wa0048.jpg", "thumb": "img/pics/thumb_img_20221208_wa0048.jpg", "rawName": "IMG-20221208-WA0048.jpg"}, {"file": "img/pics/img_20221208_wa0049.jpg", "thumb": "img/pics/thumb_img_20221208_wa0049.jpg", "rawName": "IMG-20221208-WA0049.jpg"}, {"file": "img/pics/img_20230224_wa0001.jpg", "thumb": "img/pics/thumb_img_20230224_wa0001.jpg", "rawName": "IMG-20230224-WA0001.jpg"}, {"file": "img/pics/img_20230407_wa0007.jpg", "thumb": "img/pics/thumb_img_20230407_wa0007.jpg", "rawName": "IMG-20230407-WA0007.jpeg"}, {"file": "img/pics/img_20230407_wa0009.jpg", "thumb": "img/pics/thumb_img_20230407_wa0009.jpg", "rawName": "IMG-20230407-WA0009.jpeg"}, {"file": "img/pics/img_20230407_wa0015.jpg", "thumb": "img/pics/thumb_img_20230407_wa0015.jpg", "rawName": "IMG-20230407-WA0015.jpeg"}, {"file": "img/pics/img_20230407_wa0019.jpg", "thumb": "img/pics/thumb_img_20230407_wa0019.jpg", "rawName": "IMG-20230407-WA0019.jpeg"}, {"file": "img/pics/img_20230817_wa0000.jpg", "thumb": "img/pics/thumb_img_20230817_wa0000.jpg", "rawName": "IMG-20230817-WA0000.jpg"}, {"file": "img/pics/img_20231020_wa0177.jpg", "thumb": "img/pics/thumb_img_20231020_wa0177.jpg", "rawName": "IMG-20231020-WA0177.jpg"}, {"file": "img/pics/img_20231020_wa0179.jpg", "thumb": "img/pics/thumb_img_20231020_wa0179.jpg", "rawName": "IMG-20231020-WA0179.jpg"}, {"file": "img/pics/img_20231125_wa0012.jpg", "thumb": "img/pics/thumb_img_20231125_wa0012.jpg", "rawName": "IMG-20231125-WA0012.jpg"}, {"file": "img/pics/img_20240109_wa0036.jpg", "thumb": "img/pics/thumb_img_20240109_wa0036.jpg", "rawName": "IMG-20240109-WA0036.jpg"}, {"file": "img/pics/img_20240126_wa0005.jpg", "thumb": "img/pics/thumb_img_20240126_wa0005.jpg", "rawName": "IMG-20240126-WA0005.jpeg"}, {"file": "img/pics/img_20240204_wa0025.jpg", "thumb": "img/pics/thumb_img_20240204_wa0025.jpg", "rawName": "IMG-20240204-WA0025.jpg"}, {"file": "img/pics/img_20251107_wa0020.jpg", "thumb": "img/pics/thumb_img_20251107_wa0020.jpg", "rawName": "IMG-20251107-WA0020.jpeg"}, {"file": "img/pics/img_20260524_wa0009.jpg", "thumb": "img/pics/thumb_img_20260524_wa0009.jpg", "rawName": "IMG-20260524-WA0009.jpg"}, {"file": "img/pics/img_0100.jpg", "thumb": "img/pics/thumb_img_0100.jpg", "rawName": "IMG_0100.JPG"}, {"file": "img/pics/img_20240126_142942067.jpg", "thumb": "img/pics/thumb_img_20240126_142942067.jpg", "rawName": "IMG_20240126_142942067.jpg"}, {"file": "img/pics/img_20240127_151736331.jpg", "thumb": "img/pics/thumb_img_20240127_151736331.jpg", "rawName": "IMG_20240127_151736331.jpg"}, {"file": "img/pics/img_20240215_192520198_hdr.jpg", "thumb": "img/pics/thumb_img_20240215_192520198_hdr.jpg", "rawName": "IMG_20240215_192520198_HDR.jpg"}, {"file": "img/pics/img_20240222_062520567.jpg", "thumb": "img/pics/thumb_img_20240222_062520567.jpg", "rawName": "IMG_20240222_062520567.jpg"}, {"file": "img/pics/img_20240302_222826535_hdr.jpg", "thumb": "img/pics/thumb_img_20240302_222826535_hdr.jpg", "rawName": "IMG_20240302_222826535_HDR.jpg"}, {"file": "img/pics/img_20240302_222840573_hdr.jpg", "thumb": "img/pics/thumb_img_20240302_222840573_hdr.jpg", "rawName": "IMG_20240302_222840573_HDR.jpg"}, {"file": "img/pics/img_4266.jpg", "thumb": "img/pics/thumb_img_4266.jpg", "rawName": "IMG_4266.jpg"}, {"file": "img/pics/img_4334.jpg", "thumb": "img/pics/thumb_img_4334.jpg", "rawName": "IMG_4334.JPG"}, {"file": "img/pics/img_4337.jpg", "thumb": "img/pics/thumb_img_4337.jpg", "rawName": "IMG_4337.JPG"}, {"file": "img/pics/img_4339.jpg", "thumb": "img/pics/thumb_img_4339.jpg", "rawName": "IMG_4339.JPG"}, {"file": "img/pics/img_4340.jpg", "thumb": "img/pics/thumb_img_4340.jpg", "rawName": "IMG_4340.JPG"}, {"file": "img/pics/screenshot_20231215_025149_photos.jpg", "thumb": "img/pics/thumb_screenshot_20231215_025149_photos.jpg", "rawName": "Screenshot_20231215-025149_Photos.jpg"}, {"file": "img/pics/screenshot_20231215_025308_photos.jpg", "thumb": "img/pics/thumb_screenshot_20231215_025308_photos.jpg", "rawName": "Screenshot_20231215-025308_Photos.jpg"}, {"file": "img/pics/screenshot_20231215_025409_photos.jpg", "thumb": "img/pics/thumb_screenshot_20231215_025409_photos.jpg", "rawName": "Screenshot_20231215-025409_Photos.jpg"}, {"file": "img/pics/screenshot_20240308_153629.jpg", "thumb": "img/pics/thumb_screenshot_20240308_153629.jpg", "rawName": "Screenshot_20240308-153629.png"}, {"file": "img/pics/screenshot_20240308_153649.jpg", "thumb": "img/pics/thumb_screenshot_20240308_153649.jpg", "rawName": "Screenshot_20240308-153649.png"}, {"file": "img/pics/screenshot_20240308_153712.jpg", "thumb": "img/pics/thumb_screenshot_20240308_153712.jpg", "rawName": "Screenshot_20240308-153712.png"}, {"file": "img/pics/screenshot_20240308_153731.jpg", "thumb": "img/pics/thumb_screenshot_20240308_153731.jpg", "rawName": "Screenshot_20240308-153731.png"}, {"file": "img/pics/screenshot_20240308_154155.jpg", "thumb": "img/pics/thumb_screenshot_20240308_154155.jpg", "rawName": "Screenshot_20240308-154155.png"}, {"file": "img/pics/snapchat_1539038941.jpg", "thumb": "img/pics/thumb_snapchat_1539038941.jpg", "rawName": "Snapchat-1539038941.jpg"}, {"file": "img/pics/snapchat_1541689392.jpg", "thumb": "img/pics/thumb_snapchat_1541689392.jpg", "rawName": "Snapchat-1541689392.jpg"}, {"file": "img/pics/snapchat_1607269524.jpg", "thumb": "img/pics/thumb_snapchat_1607269524.jpg", "rawName": "Snapchat-1607269524.jpg"}, {"file": "img/pics/snapchat_1814419928.jpg", "thumb": "img/pics/thumb_snapchat_1814419928.jpg", "rawName": "Snapchat-1814419928.jpg"}];
+        let filteredPhotos = PHOTOS;
         let currentFilter = 'all';
         let currentPage = 1;
         let lightboxIndex = 0;
-        let filteredPhotos = PHOTOS;
+        
+        const PHOTOS_PER_PAGE = 100;
         
         // DOM Elements
         const grid = document.getElementById('photo-grid');
-        const loadMoreBtn = document.getElementById('load-more');
-        const filterBtns = document.querySelectorAll('.filter-btn');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxTitle = document.getElementById('lightbox-title');
-        const lightboxDesc = document.getElementById('lightbox-desc');
         const lightboxPrev = document.getElementById('lightbox-prev');
         const lightboxNext = document.getElementById('lightbox-next');
         const lightboxClose = document.getElementById('lightbox-close');
         
+        // ============ UTILITIES ============
+        function isInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return rect.top < window.innerHeight && rect.bottom > 0;
+        }
         
-        // Live IST Clock and Year Progress
+        // ============ THEME TOGGLE ============
+        function initThemeToggle() {
+            const toggle = document.getElementById('theme-toggle');
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            
+            // Check saved preference - DEFAULT TO DARK
+            const savedTheme = localStorage.getItem('theme');
+            const isDark = savedTheme !== 'light';
+            
+            document.body.classList.toggle('light', !isDark);
+            updateToggleUI(isDark);
+            
+            toggle.addEventListener('click', () => {
+                const isLight = document.body.classList.toggle('light');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+                updateToggleUI(!isLight);
+            });
+        }
+        
+        function updateToggleUI(isDark) {
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            if (isDark) {
+                icon.textContent = '☀️';
+                text.textContent = 'Light';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Dark';
+            }
+        }
+        
+        // ============ ASCII ANIMATION ============
+        const ASCII_FRAMES = [
+`    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+    █ SYSTEM.INIT // SEQUENCE ACTIVE █
+    █ [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░] 87% █
+    █ MODULES: DOSIER | SYSTEMS | EXPOSURES █
+    █ STATUS: NOMINAL // SIGNAL: STRONG █
+    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`,
+`    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+    █ DATA.PIPELINE // STREAMING █
+    █ [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░] 94% █
+    █ BIGQUERY █ CLOUD RUN █ PUBSUB █ █
+    █ THROUGHPUT: 2.4M events/min █
+    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`,
+`    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+    █ QUANT.ENGINE // ALPHALENS ACTIVE █
+    █ [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100% █
+    █ FACTORS: VALUE | MOMENTUM | QUALITY █
+    █ REGIME: RISK-ON // EXECUTION: LIVE █
+    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`,
+`    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+    █ DARKROOM.RENDER // 16 PLATES █
+    █ [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░] 72% █
+    █ HIMALAYA | URBAN | NOCTURNE | FAUNA █
+    █ EXPOSURE: CORRECT // ARCHIVE: SYNC █
+    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`
+        ];
+        
+        let asciiFrameIndex = 0;
+        const asciiEl = document.getElementById('ascii-animation');
+        
+        function animateAscii() {
+            if (!asciiEl) return;
+            asciiEl.textContent = ASCII_FRAMES[asciiFrameIndex];
+            asciiFrameIndex = (asciiFrameIndex + 1) % ASCII_FRAMES.length;
+        }
+        
+        // ============ LIVE CLOCK ============
         function updateTelemetryClock() {
             const now = new Date();
             const options = { timeZone: 'Asia/Kolkata', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -1394,117 +1204,239 @@
             const progEl = document.getElementById('live-year-progress');
             if (progEl) progEl.textContent = `DAY ${dayOfYear}/365 · ${progress.toFixed(1)}% OF ${now.getFullYear()}`;
         }
-        setInterval(updateTelemetryClock, 1000);
-        updateTelemetryClock();
-
-        // Web Audio Synthesizer for Piano
-        let audioCtx = null;
-        function playTone(freq) {
-            try {
-                if (!audioCtx) {
-                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                }
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 1.2);
-            } catch(e) {
-                console.warn('Audio not available:', e);
-            }
-        }
-
-        // Bind Piano Keys
-        document.addEventListener('click', (e) => {
-            const keyBtn = e.target.closest('.piano-key');
-            if (keyBtn) {
-                const note = parseFloat(keyBtn.dataset.note);
-                if (note) playTone(note);
-            }
-        });
-
-        // Keyboard shortcuts for piano keys 1-8
-        const KEY_NOTES = {
-            '1': 261.63, '2': 293.66, '3': 329.63, '4': 349.23,
-            '5': 392.00, '6': 440.00, '7': 493.88, '8': 523.25
-        };
-        document.addEventListener('keydown', (e) => {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-            if (KEY_NOTES[e.key]) {
-                playTone(KEY_NOTES[e.key]);
-                const btn = document.querySelector(`.piano-key[data-note="${KEY_NOTES[e.key].toFixed(2)}"]`);
-                if (btn) {
-                    btn.classList.add('bg-accent', 'text-void');
-                    setTimeout(() => btn.classList.remove('bg-accent', 'text-void'), 200);
-                }
-            }
-        });
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                const response = await fetch('img/pics/photos.json');
-                PHOTOS = await response.json();
-            } catch (e) {
-                console.error('Failed to load photos:', e);
-                PHOTOS = [];
-            }
-            // Initialize filteredPhotos after loading
-            filteredPhotos = PHOTOS;
-            renderPhotos();
-            setupFilters();
-            setupLightbox();
-            setupScrollReveal();
-            setupFooterDate();
-            setupSmoothScroll();
-        });
         
-        // Filter logic
-        function setupFilters() {
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const filter = btn.dataset.filter;
-                    if (filter === currentFilter) return;
-                    
-                    currentFilter = filter;
-                    currentPage = 1;
-                    
-                    // Update active state
-                    filterBtns.forEach(b => {
-                        b.classList.toggle('active', b.dataset.filter === filter);
-                        b.classList.toggle('border-accent', b.dataset.filter === filter);
-                        b.classList.toggle('text-accent', b.dataset.filter === filter);
-                        b.classList.toggle('border-voidBorder', b.dataset.filter !== filter);
-                        b.classList.toggle('text-textMuted', b.dataset.filter !== filter);
-                        b.setAttribute('aria-selected', b.dataset.filter === filter);
-                    });
-                    
-                    filteredPhotos = filter === 'all' 
-                        ? PHOTOS 
-                        : PHOTOS.filter(p => p.category === filter);
-                    
-                    renderPhotos();
-                });
+        // ============ TECH STACK ============
+        function renderTechStack() {
+            const container = document.getElementById('tech-stack');
+            if (!container) return;
+            
+            TECH_STACK.forEach((tech, i) => {
+                const img = document.createElement('img');
+                img.src = tech.svg;
+                img.alt = tech.name;
+                img.title = tech.name;
+                img.className = 'tech-logo';
+                img.style.animationDelay = `${i * 0.03}s`;
+                img.loading = 'lazy';
+                container.appendChild(img);
             });
         }
         
-        // Render photo grid
+        // ============ GITHUB ACTIVITY & OPEN SOURCE ============
+        const OSS_MERGED = [
+            { repo: "google-research/timesfm", pr: "#539", stars: "35.1k", desc: "fix(deps): split jax[cuda] into cpu and cuda extras to support CPU-only installs", date: "2026-11-13", url: "https://github.com/google-research/timesfm/pull/539" },
+            { repo: "modelcontextprotocol/servers", pr: "#5145", stars: "92.0k", desc: "fix(git): prefix git_show diff headers with a/ and b/ (unblocking git apply)", date: "2026-10-13", url: "https://github.com/modelcontextprotocol/servers/pull/5145" },
+            { repo: "confident-ai/deepeval", pr: "#3431", stars: "19.5k", desc: "fix(litellm): omit default temperature to prevent failures on reasoning models", date: "2026-11-02", url: "https://github.com/confident-ai/deepeval/pull/3431" },
+            { repo: "ddotta/awesome-polars", pr: "#643", stars: "1.1k", desc: "Add ds-agent-playbook to Tools Built with Polars", date: "2026-10-12", url: "https://github.com/ddotta/awesome-polars/pull/643" },
+            { repo: "davidgasquez/awesome-duckdb", pr: "#372", stars: "2.5k", desc: "Add ds-agent-playbook to Libraries Powered by DuckDB", date: "2026-10-12", url: "https://github.com/davidgasquez/awesome-duckdb/pull/372" }
+        ];
+
+        const UPSTREAM_SOLUTIONS = [
+            { project: "Model Context Protocol (MCP)", stars: "92k", quote: "The fix is the one @udbhav-shrinet proposed on the issue.", author: "Cliff Hall (Core Maintainer)", url: "https://github.com/modelcontextprotocol/servers/issues/5107" },
+            { project: "Stanford NLP DSPy", stars: "22k+", quote: "Isolated BootstrapFewShot metric_threshold=0.0 falsy flaw", author: "DSPy Core Optimizer", url: "https://github.com/stanfordnlp/dspy/pull/10606" },
+            { project: "Hugging Face Smolagents", stars: "30k+", quote: "Architected extended-precision & NumPy scalar serialization", author: "Smolagents SafeSerializer", url: "https://github.com/huggingface/smolagents/issues/2961" }
+        ];
+
+        function renderGitHubContent(public_repos = 38, followers = 10, following = 27) {
+            const container = document.getElementById('github-stats');
+            if (!container) return;
+            
+            container.innerHTML = `
+                <div class="grid grid-cols-3 gap-3 mb-6">
+                    <div class="card p-3 text-center">
+                        <div class="font-display text-xl text-accent stat-value">${public_repos}</div>
+                        <div class="text-textMuted text-[11px] font-mono">Repositories</div>
+                    </div>
+                    <div class="card p-3 text-center">
+                        <div class="font-display text-xl text-accent stat-value">${followers}</div>
+                        <div class="text-textMuted text-[11px] font-mono">Followers</div>
+                    </div>
+                    <div class="card p-3 text-center">
+                        <div class="font-display text-xl text-accent stat-value">${following}</div>
+                        <div class="text-textMuted text-[11px] font-mono">Following</div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="font-mono text-xs text-accent">▎ MERGED PULL REQUESTS</span>
+                        <span class="text-textDim text-[11px] font-mono">Upstream OSS</span>
+                    </div>
+                    <div class="space-y-2.5">
+                        ${OSS_MERGED.map(m => `
+                            <a href="${m.url}" target="_blank" rel="noopener" class="block p-2.5 rounded border border-voidBorder bg-void hover:border-accent/50 transition-colors">
+                                <div class="flex items-center justify-between text-xs mb-1">
+                                    <span class="font-mono text-accent font-semibold">${m.repo} <span class="text-textMuted font-normal">${m.pr}</span></span>
+                                    <span class="font-mono text-[10px] text-textDim">⭐ ${m.stars}</span>
+                                </div>
+                                <p class="text-textSecondary text-xs leading-snug">${m.desc}</p>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="font-mono text-xs text-accent">▎ ATTRIBUTED ARCHITECTURE</span>
+                        <span class="text-textDim text-[11px] font-mono">Core Maintainers</span>
+                    </div>
+                    <div class="space-y-2">
+                        ${UPSTREAM_SOLUTIONS.map(s => `
+                            <a href="${s.url}" target="_blank" rel="noopener" class="block p-2.5 rounded border border-voidBorder bg-void hover:border-accent/50 transition-colors">
+                                <div class="flex items-center justify-between text-xs mb-0.5">
+                                    <span class="font-mono text-textPrimary font-medium">${s.project}</span>
+                                    <span class="font-mono text-[10px] text-textDim">⭐ ${s.stars}</span>
+                                </div>
+                                <p class="text-textMuted text-xs italic">"${s.quote}" — <span class="text-textSecondary">${s.author}</span></p>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        async function fetchGitHubActivity() {
+            renderGitHubContent(); // Initial render with real curated data
+            try {
+                const userRes = await fetch('https://api.github.com/users/udbhav-shrinet');
+                if (userRes.ok) {
+                    const user = await userRes.json();
+                    renderGitHubContent(user.public_repos, user.followers, user.following);
+                }
+            } catch (err) {
+                console.warn('GitHub live fetch failed, using curated data:', err);
+            }
+        }
+        
+        // ============ TIMELINE ============
+        function renderTimeline() {
+            const container = document.getElementById('timeline');
+            if (!container) return;
+            
+            container.innerHTML = TIMELINE.map((entry, i) => `
+                <div class="timeline-item relative pl-8 reveal stagger-${Math.min(i + 1, 8)}">
+                    <div class="absolute left-0 top-1 w-6 h-6 timeline-dot ${i === 0 ? 'bg-accent border-accent' : ''}"></div>
+                    <div class="card p-6">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="font-mono text-xs text-accent">${entry.date}</span>
+                            <span class="text-textMuted text-sm">${entry.org}</span>
+                        </div>
+                        <h4 class="text-textPrimary font-medium mb-2">${entry.role}</h4>
+                        <p class="text-textSecondary text-xs mb-3">${entry.location}</p>
+                        <ul class="text-textSecondary text-sm space-y-1">
+                            ${entry.items.map(item => `<li>• ${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // ============ SYSTEMS ============
+        function renderSystems() {
+            const container = document.getElementById('systems-grid');
+            if (!container) return;
+            
+            container.innerHTML = SYSTEMS.map((sys, i) => `
+                <article class="card p-6 reveal stagger-${Math.min(i + 1, 8)} group">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="font-mono text-xs text-accent">${sys.badge}</span>
+                        <a href="${sys.url}" target="_blank" rel="noopener" class="text-textMuted hover:text-accent transition-colors" aria-label="GitHub">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">${sys.name}</h3>
+                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">${sys.desc}</p>
+                    <div class="flex flex-wrap gap-2">
+                        ${sys.tech.split(', ').map(t => `<span class="tag px-3 py-1 rounded text-xs">${t}</span>`).join('')}
+                    </div>
+                </article>
+            `).join('');
+        }
+        
+        // ============ DISPATCHES ============
+        function renderDispatches() {
+            const container = document.getElementById('dispatches-grid');
+            if (!container) return;
+            
+            container.innerHTML = DISPATCHES.map((d, i) => `
+                <article class="card p-6 reveal stagger-${Math.min(i + 1, 8)} group">
+                    <div class="flex items-center gap-2 mb-4">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-accent"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        <span class="font-mono text-xs text-accent">Medium</span>
+                    </div>
+                    <h3 class="text-lg font-medium mb-2 text-textPrimary group-hover:text-accent transition-colors">${d.title}</h3>
+                    <p class="text-textSecondary text-sm mb-4 leading-relaxed">${d.desc}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="font-mono text-xs text-textMuted">${d.year}</span>
+                        <a href="${d.url}" target="_blank" rel="noopener" class="btn-ghost px-3 py-1 rounded text-xs font-mono">Read</a>
+                    </div>
+                </article>
+            `).join('');
+        }
+        
+        // ============ SPOTIFY ============
+        function renderSpotify() {
+            const container = document.getElementById('spotify-grid');
+            if (!container) return;
+            
+            container.innerHTML = SPOTIFY_PLAYLISTS.map((p, i) => `
+                <div class="card p-6 reveal stagger-${Math.min(i + 1, 8)} spotify-embed">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-accent"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.35-.66.48-1.021.24-1.32-.96-2.82-1.44-4.5-1.44-1.68 0-3.18.48-4.5 1.44-.36.24-.78.12-1.021-.24-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.2-3.12c-.24-.24-.48-.36-.72-.36-.48-.72-.48-1.56 0-2.16 2.4-2.28 4.8-3.6 7.32-3.6 2.4 0 4.8 1.32 7.32 3.6.48.6.48 1.44 0 2.16zm-1.08-9.6c-.6-.36-1.32-.48-2.16-.48-.84 0-1.56.12-2.16.48-.72.36-1.08 1.08-1.08 1.92s.36 1.56 1.08 1.92c.72.48 1.68.72 2.64.72 1.08 0 2.04-.36 2.76-1.08.84-.84 1.08-1.92 1.08-3.24 0-1.32-.36-2.52-1.08-3.24zm-.24 5.28c-1.2 1.2-2.88 1.8-4.8 1.8-2.04 0-3.84-.6-5.16-1.8-.96-.96-1.44-2.16-1.44-3.6 0-1.56.6-2.76 1.56-3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72.84-.96 1.92-1.44 3.24-1.44 1.32 0 2.52.48 3.36 1.32.84.84 1.32 1.92 1.32 3.12 0 1.44-.6 2.76 1.56 3.72"/></svg>
+                        <div>
+                            <p class="font-mono text-xs text-accent">Playlist</p>
+                            <p class="font-display text-sm text-textPrimary">${p.title}</p>
+                        </div>
+                    </div>
+                    <p class="text-textSecondary text-sm mb-4">${p.desc}</p>
+                    <iframe style="border-radius:8px;border:1px solid #1a1a1a;width:100%;height:152px" src="https://open.spotify.com/embed/playlist/${p.id}?utm_source=generator" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            `).join('');
+        }
+        
+        // ============ HONORS ============
+        function renderHonors() {
+            const container = document.getElementById('honors-grid');
+            if (!container) return;
+            
+            container.innerHTML = HONORS.map((h, i) => `
+                <article class="card p-6 reveal stagger-${Math.min(i + 1, 8)}">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="font-mono text-xs text-accent">${h.year}</span>
+                    </div>
+                    <h3 class="text-lg font-medium mb-1 text-textPrimary">${h.title}</h3>
+                    <p class="text-textMuted text-sm mb-3">${h.issuer}</p>
+                    <p class="text-textSecondary text-sm">${h.desc}</p>
+                </article>
+            `).join('');
+        }
+        
+        // ============ PHOTOS ============
+        async function loadPhotos() {
+            renderPhotos();
+            try {
+                const response = await fetch('img/pics/all_photos.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && data.length > 0) {
+                        PHOTOS = data;
+                        filteredPhotos = PHOTOS;
+                        renderPhotos();
+                    }
+                }
+            } catch (err) {
+                // Embedded photos already rendered
+            }
+        }
+        
         function renderPhotos() {
             const start = 0;
             const end = currentPage * PHOTOS_PER_PAGE;
             const photosToShow = filteredPhotos.slice(start, end);
             
-            grid.innerHTML = '';
+            if (currentPage === 1) {
+                grid.innerHTML = '';
+            }
             
             photosToShow.forEach((photo, index) => {
                 const item = document.createElement('div');
@@ -1514,18 +1446,14 @@
                 item.setAttribute('role', 'listitem');
                 item.setAttribute('tabindex', '0');
                 
-                const src = photo.thumb || photo.file;
-                
                 item.innerHTML = `
-                    <img src="${src}" alt="${photo.title}: ${photo.description}" loading="lazy" decoding="async">
+                    <img src="${photo.thumb}" alt="${photo.rawName}" loading="lazy" decoding="async">
                     <div class="photo-overlay">
-                        <h4 class="font-display text-sm font-normal text-textPrimary">${photo.title}</h4>
-                        <p class="text-textSecondary text-xs mt-1">${photo.description}</p>
-                        <span class="font-mono text-xs text-textMuted mt-2 inline-block">${photo.category}</span>
+                        <h4 class="font-display text-sm font-normal text-textPrimary">${photo.rawName}</h4>
+                        <span class="font-mono text-xs text-textMuted mt-2 inline-block">${photo.rawName}</span>
                     </div>
                 `;
                 
-                // Click to open lightbox
                 item.addEventListener('click', () => openLightbox(PHOTOS.indexOf(photo)));
                 item.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -1537,10 +1465,6 @@
                 grid.appendChild(item);
             });
             
-            // Show/hide load more
-            loadMoreBtn.classList.toggle('hidden', end >= filteredPhotos.length);
-            
-            // Trigger reveal animations
             requestAnimationFrame(() => {
                 document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
                     if (isInViewport(el)) el.classList.add('visible');
@@ -1548,26 +1472,11 @@
             });
         }
         
-        // Load more
-        loadMoreBtn.addEventListener('click', () => {
-            currentPage++;
-            renderPhotos();
-        });
-        
-        // Lightbox
         function openLightbox(index) {
             lightboxIndex = index;
             updateLightbox();
             lightbox.classList.add('open');
             document.body.style.overflow = 'hidden';
-            
-            // Preload next/prev images
-            const nextIdx = (lightboxIndex + 1) % PHOTOS.length;
-            const prevIdx = (lightboxIndex - 1 + PHOTOS.length) % PHOTOS.length;
-            new Image().src = PHOTOS[nextIdx].file;
-            new Image().src = PHOTOS[prevIdx].file;
-            
-            // Focus trap
             lightboxClose.focus();
         }
         
@@ -1579,11 +1488,9 @@
         function updateLightbox() {
             const photo = PHOTOS[lightboxIndex];
             const src = photo.file;
-            
             lightboxImg.src = src;
-            lightboxImg.alt = `${photo.title}: ${photo.description}`;
-            lightboxTitle.textContent = photo.title;
-            lightboxDesc.textContent = photo.description;
+            lightboxImg.alt = photo.rawName;
+            lightboxTitle.textContent = photo.rawName;
         }
         
         function navigateLightbox(dir) {
@@ -1595,21 +1502,16 @@
             lightboxClose.addEventListener('click', closeLightbox);
             lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
             lightboxNext.addEventListener('click', () => navigateLightbox(1));
-            
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) closeLightbox();
-            });
-            
+            lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
             document.addEventListener('keydown', (e) => {
                 if (!lightbox.classList.contains('open')) return;
-                
                 if (e.key === 'Escape') closeLightbox();
                 if (e.key === 'ArrowLeft') navigateLightbox(-1);
                 if (e.key === 'ArrowRight') navigateLightbox(1);
             });
         }
         
-        // Scroll reveal
+        // ============ SCROLL REVEAL ============
         function setupScrollReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1623,12 +1525,7 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
         
-        function isInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return rect.top < window.innerHeight && rect.bottom > 0;
-        }
-        
-        // Footer date
+        // ============ FOOTER DATE ============
         function setupFooterDate() {
             const now = new Date();
             const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' };
@@ -1636,13 +1533,12 @@
             document.getElementById('year').textContent = now.getFullYear();
         }
         
-        // Smooth scroll for nav links
+        // ============ SMOOTH SCROLL ============
         function setupSmoothScroll() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
-                    
                     const target = document.querySelector(targetId);
                     if (target) {
                         e.preventDefault();
@@ -1653,6 +1549,31 @@
                 });
             });
         }
+        
+        // ============ MAIN INIT ============
+        document.addEventListener('DOMContentLoaded', async () => {
+            initThemeToggle();
+            renderTechStack();
+            fetchGitHubActivity();
+            renderTimeline();
+            renderSystems();
+            renderDispatches();
+            renderSpotify();
+            renderHonors();
+            await loadPhotos();
+            setupLightbox();
+            setupScrollReveal();
+            setupFooterDate();
+            setupSmoothScroll();
+            
+            // Start ASCII animation
+            animateAscii();
+            setInterval(animateAscii, 4000);
+            
+            // Start clock
+            updateTelemetryClock();
+            setInterval(updateTelemetryClock, 1000);
+        });
     </script>
 </body>
 </html>
