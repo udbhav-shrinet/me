@@ -27,9 +27,9 @@
                         accentDim: '#9b87a8',
                         accentMuted: '#6b5b78',
                         textPrimary: '#fafafa',
-                        textSecondary: '#a0a0a0',
-                        textMuted: '#606060',
-                        textDim: '#383838',
+                        textSecondary: '#d4d4d8',
+                        textMuted: '#a1a1aa',
+                        textDim: '#71717a',
                     },
                     fontFamily: {
                         mono: ['JetBrains Mono', 'monospace'],
@@ -130,9 +130,9 @@
             overflow-x: auto;
         }
         
-        .ascii-banner .dim { color: #383838; }
-        .ascii-banner .accent { color: #e8d5ff; }
-        .ascii-banner .muted { color: #606060; }
+        .ascii-banner .dim { color: #8a8a9a; }
+        .ascii-banner .accent { color: #ffffff; font-weight: 700; text-shadow: 0 0 12px rgba(232, 213, 255, 0.6); }
+        .ascii-banner .muted { color: #e4d4ff; font-weight: 500; }
         
         /* Terminal cursor */
         .cursor {
@@ -199,7 +199,8 @@
         /* Nav link */
         .nav-link {
             position: relative;
-            color: #606060;
+            color: #d4d4dc;
+            font-weight: 500;
             transition: color 0.2s ease;
         }
         .nav-link::after {
@@ -212,7 +213,7 @@
             background: #e8d5ff;
             transition: width 0.3s ease;
         }
-        .nav-link:hover, .nav-link.active { color: #e8d5ff; }
+        .nav-link:hover, .nav-link.active { color: #ffffff; }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
         
         /* Button styles */
@@ -238,9 +239,26 @@
             color: #e8d5ff;
         }
         
-        /* Section reveal */
-        .reveal { opacity: 0; transform: translateY(30px); }
-        .reveal.visible { animation: reveal 0.8s ease-out forwards; }
+        /* Section reveal - fully visible by default */
+        @keyframes revealFade {
+            from {
+                opacity: 0.2;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .reveal {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .reveal.visible {
+            opacity: 1 !important;
+            transform: none !important;
+        }
         
         /* Stagger delays */
         .stagger-1 { animation-delay: 0.1s; }
@@ -441,7 +459,7 @@
     </nav>
     
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+    <section id="home" class="min-h-screen flex flex-col justify-center py-28 relative overflow-hidden">
         <!-- Background grid -->
         <div class="absolute inset-0 opacity-5" aria-hidden="true">
             <div class="absolute inset-0" style="background-image: 
@@ -463,10 +481,12 @@
                .;ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.               
           .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.           
      .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.        
-.ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko.
-    <span class="accent">        U D B H A V   S H R I N E T</span>                                                   
-<span class="muted">           Data Analyst • Economist • Builder</span>                                                     
-<span class="dim">    Distributed Systems • Quantitative Research • Visual Storytelling</span>                                           
+.ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko.
+
+            <span class="accent">        U D B H A V   S H R I N E T</span>
+            <span class="muted">   Data Analyst • Economist • Systems Builder</span>
+     <span class="dim">Distributed Systems • Quantitative Research • Visual Storytelling</span>
+
 .k0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko.
      .:ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.        
           .;ok0KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK0ko:.               
