@@ -1,0 +1,130 @@
+[
+  {
+    "file": "img/pics/20230408_180109.jpg",
+    "thumb": "img/pics/thumb_20230408_180109.jpg",
+    "title": "Himalayan Camp",
+    "description": "Alpine meadow camp at golden hour \u2014 orange tent against snow-capped peaks",
+    "category": "landscape",
+    "date": "2023-04-08"
+  },
+  {
+    "file": "img/pics/20230409_120027.jpg",
+    "thumb": "img/pics/thumb_20230409_120027.jpg",
+    "title": "Rock Cave & Stream",
+    "description": "Natural rock shelter with cascading mountain stream, early spring",
+    "category": "landscape",
+    "date": "2023-04-09"
+  },
+  {
+    "file": "img/pics/20221108_163730.jpg",
+    "thumb": "img/pics/thumb_20221108_163730.jpg",
+    "title": "Cafe Backstage",
+    "description": "Behind the counter at a bubble tea shop \u2014 syrup bottles, blenders, prep station",
+    "category": "urban",
+    "date": "2022-11-08"
+  },
+  {
+    "file": "img/pics/20230218_151102.jpg",
+    "thumb": "img/pics/thumb_20230218_151102.jpg",
+    "title": "Campus Architecture",
+    "description": "Modern university complex with bronze skybridge and jali screens, overcast day",
+    "category": "architecture",
+    "date": "2023-02-18"
+  },
+  {
+    "file": "img/pics/20230218_205708.jpg",
+    "thumb": "img/pics/thumb_20230218_205708.jpg",
+    "title": "Campus Dog at Night",
+    "description": "Stray dog on amphitheater steps at DTU, yellow security barriers, floodlights",
+    "category": "street",
+    "date": "2023-02-18"
+  },
+  {
+    "file": "img/pics/20231126_160408.jpg",
+    "thumb": "img/pics/thumb_20231126_160408.jpg",
+    "title": "Fountain Through Foliage",
+    "description": "Water jets arcing across pond viewed through foreground branches, overcast",
+    "category": "abstract",
+    "date": "2023-11-26"
+  },
+  {
+    "file": "img/pics/img_20240222_062520567.jpg",
+    "thumb": "img/pics/thumb_img_20240222_062520567.jpg",
+    "title": "Lonely Lamppost",
+    "description": "Single streetlamp illuminating path and shrubs at night, building silhouette",
+    "category": "night",
+    "date": "2024-02-22"
+  },
+  {
+    "file": "img/pics/20251028_164508.jpg",
+    "thumb": "img/pics/thumb_20251028_164508.jpg",
+    "title": "Kitten Huddle",
+    "description": "Three tiny kittens curled together \u2014 brown tabby, ginger, and grey sibling",
+    "category": "animals",
+    "date": "2025-10-28"
+  },
+  {
+    "file": "img/pics/img_20240215_192520198_hdr.jpg",
+    "thumb": "img/pics/thumb_img_20240215_192520198_hdr.jpg",
+    "title": "Sunset Silhouette",
+    "description": "Trees and power lines against dramatic orange-red sunset sky",
+    "category": "sky",
+    "date": "2024-02-15"
+  },
+  {
+    "file": "img/pics/snapchat_1607269524.jpg",
+    "thumb": "img/pics/thumb_snapchat_1607269524.jpg",
+    "title": "City Lights",
+    "description": "Night cityscape with illuminated buildings and reflections",
+    "category": "night",
+    "date": "2020-12-07"
+  },
+  {
+    "file": "img/pics/img_20230407_wa0007.jpg",
+    "thumb": "img/pics/thumb_img_20230407_wa0007.jpg",
+    "title": "Mountain Vista",
+    "description": "Wide valley view with layered ridges fading into mist",
+    "category": "landscape",
+    "date": "2023-04-07"
+  },
+  {
+    "file": "img/pics/img_20240126_142942067.jpg",
+    "thumb": "img/pics/thumb_img_20240126_142942067.jpg",
+    "title": "Road Perspective",
+    "description": "Empty road stretching toward mountains, power lines framing",
+    "category": "road",
+    "date": "2024-01-26"
+  },
+  {
+    "file": "img/pics/img_0100.jpg",
+    "thumb": "img/pics/thumb_img_0100.jpg",
+    "title": "Nocturnal Walkway",
+    "description": "Quiet outdoor pathway bathed in warm amber lamppost glow",
+    "category": "night",
+    "date": "2021-10-14"
+  },
+  {
+    "file": "img/pics/20230409_115249.jpg",
+    "thumb": "img/pics/thumb_20230409_115249.jpg",
+    "title": "Glacial Runoff",
+    "description": "Himalayan boulders and crystal clear glacial mountain water",
+    "category": "landscape",
+    "date": "2023-04-09"
+  },
+  {
+    "file": "img/pics/20251123_193714.jpg",
+    "thumb": "img/pics/thumb_20251123_193714.jpg",
+    "title": "Twilight Horizon",
+    "description": "Dusk falling over urban textures with subtle ambient light",
+    "category": "night",
+    "date": "2025-11-23"
+  },
+  {
+    "file": "img/pics/snapchat_1541689392.jpg",
+    "thumb": "img/pics/thumb_snapchat_1541689392.jpg",
+    "title": "Golden Hour Drift",
+    "description": "Warm light cast across evening atmosphere",
+    "category": "abstract",
+    "date": "2022-09-15"
+  }
+]
