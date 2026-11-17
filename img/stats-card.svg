@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="495" height="210" viewBox="0 0 495 210" role="img" aria-label="GitHub stats for udbhav-shrinet">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+.h{font-size:16px;font-weight:600;fill:#c084fc;letter-spacing:0.5px}
+.l{font-size:13px;fill:#aab2e0} .v{font-size:13px;font-weight:700;fill:#f1f3ff}
+.k{font-size:32px;font-weight:700;fill:#f1f3ff} .s{font-size:11px;fill:#a78bfa;font-weight:500}
+.r{opacity:1}
+</style>
+<rect x="0.5" y="0.5" width="494" height="209" rx="12" fill="#0d0a1a" stroke="#2c2250"/>
+<text x="25" y="38" class="h">udbhav-shrinet · open source</text>
+<g class="r"><circle cx="30" cy="73" r="3" fill="#c084fc"/><text x="44" y="78" class="l">Merged PRs (upstream)</text><text x="300" y="78" class="v" text-anchor="end">6</text></g><g class="r"><circle cx="30" cy="99" r="3" fill="#c084fc"/><text x="44" y="104" class="l">Merge rate</text><text x="300" y="104" class="v" text-anchor="end">25%</text></g><g class="r"><circle cx="30" cy="125" r="3" fill="#c084fc"/><text x="44" y="130" class="l">Code reviews</text><text x="300" y="130" class="v" text-anchor="end">4</text></g><g class="r"><circle cx="30" cy="151" r="3" fill="#c084fc"/><text x="44" y="156" class="l">Issues opened</text><text x="300" y="156" class="v" text-anchor="end">4</text></g><g class="r"><circle cx="30" cy="177" r="3" fill="#c084fc"/><text x="44" y="182" class="l">Total commits</text><text x="300" y="182" class="v" text-anchor="end">539</text></g>
+<g transform="translate(395,100)">
+<circle r="38" fill="none" stroke="#251b47" stroke-width="6"/>
+<circle r="38" fill="none" stroke="#c084fc" stroke-width="6" stroke-linecap="round" stroke-dasharray="238.8" stroke-dashoffset="146.3" transform="rotate(-90)"/>
+<text y="11" text-anchor="middle" class="k">B</text>
+<text y="64" text-anchor="middle" class="s">open source</text>
+</g>
+</svg>
